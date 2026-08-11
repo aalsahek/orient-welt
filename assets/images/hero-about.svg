@@ -1,0 +1,3 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Port and warehouse placeholder">
+  <rect width="1600" height="900" fill="#ddebf0"/><rect y="585" width="1600" height="315" fill="#c7d8df"/><path d="M240 570h1110V330H240z" fill="#eef3f4"/><path d="M300 570V385h170v185M560 570V385h170v185M820 570V385h170v185M1080 570V385h170v185" fill="#177bb2" opacity=".75"/><path d="M180 315h1230" stroke="#88c345" stroke-width="18"/>
+</svg>

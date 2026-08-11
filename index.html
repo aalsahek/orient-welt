@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Orient Welt | International Food Trading</title>
+    <meta name="description" content="Orient Welt imports frozen packed vegetables from Middle Eastern producers into Europe.">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/translations.js" defer></script>
+    <script src="js/products-data.js" defer></script>
+    <script src="https://cdn.amcharts.com/lib/5/index.js" defer></script>
+    <script src="https://cdn.amcharts.com/lib/5/map.js" defer></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js" defer></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </head>
+  <body data-page="home">
+    <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Orient Welt home">
+        <img src="assets/images/logo-orient-welt.png" alt="Orient Welt logo">
+      </a>
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+        <a href="index.html" data-i18n="nav.home">Home</a>
+        <a href="about.html" data-i18n="nav.about">Orient Welt</a>
+        <a href="products.html" data-i18n="nav.products">Products</a>
+        <a href="contact.html" data-i18n="nav.contact">Contact Us</a>
+      </nav>
+      <div class="language-switcher" aria-label="Language">
+        <button type="button" data-lang="en" aria-label="English">🇬🇧</button>
+        <button type="button" data-lang="de" aria-label="Deutsch">🇩🇪</button>
+      </div>
+      <button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false">
+        <span></span><span></span><span></span>
+        <span class="sr-only" data-i18n="nav.menu">Menu</span>
+      </button>
+    </header>
+
+    <main id="main">
+      <section class="hero-carousel" aria-label="Orient Welt highlights">
+        <input class="hero-radio sr-only" type="radio" id="hero-slide-1" name="hero-slide" tabindex="-1" checked>
+        <input class="hero-radio sr-only" type="radio" id="hero-slide-2" name="hero-slide" tabindex="-1">
+        <input class="hero-radio sr-only" type="radio" id="hero-slide-3" name="hero-slide" tabindex="-1">
+        <input class="hero-radio sr-only" type="radio" id="hero-slide-4" name="hero-slide" tabindex="-1">
+        <div class="hero-slider">
+          <article class="hero-slide" style="--hero-image: url('assets/images/hero-quality.svg')">
+            <div class="hero-slide-copy">
+              <span class="hero-eyebrow" data-i18n="home.hero1.eyebrow">Quality at Source</span>
+              <h1 data-i18n="home.hero1.title">Frozen vegetable quality, selected at source</h1>
+              <span class="hero-divider" aria-hidden="true"></span>
+              <p data-i18n="home.hero1.text">We work with trusted producers to bring carefully packed vegetables into European markets.</p>
+              <a class="hero-cta" href="products.html" data-i18n="home.hero1.cta">Explore Our Products</a>
+            </div>
+          </article>
+          <article class="hero-slide" style="--hero-image: url('assets/images/hero-logistics.svg')">
+            <div class="hero-slide-copy">
+              <span class="hero-eyebrow" data-i18n="home.hero2.eyebrow">Logistics Network</span>
+              <h2 data-i18n="home.hero2.title">Reliable routes from the East to Europe</h2>
+              <span class="hero-divider" aria-hidden="true"></span>
+              <p data-i18n="home.hero2.text">Cold-chain awareness, clear communication, and efficient movement from supplier to buyer.</p>
+              <a class="hero-cta" href="about.html" data-i18n="home.hero2.cta">Learn About Us</a>
+            </div>
+          </article>
+          <article class="hero-slide" style="--hero-image: url('assets/images/hero-partnership.svg')">
+            <div class="hero-slide-copy">
+              <span class="hero-eyebrow" data-i18n="home.hero3.eyebrow">Partnership First</span>
+              <h2 data-i18n="home.hero3.title">Built for long-term trading partnerships</h2>
+              <span class="hero-divider" aria-hidden="true"></span>
+              <p data-i18n="home.hero3.text">We value practical service, steady supply, and relationships based on trust.</p>
+              <a class="hero-cta" href="contact.html" data-i18n="home.hero3.cta">Get in Touch</a>
+            </div>
+          </article>
+          <article class="hero-slide" style="--hero-image: url('assets/images/hero-variety.svg')">
+            <div class="hero-slide-copy">
+              <span class="hero-eyebrow" data-i18n="home.hero4.eyebrow">Focused Variety</span>
+              <h2 data-i18n="home.hero4.title">A focused range for everyday food service needs</h2>
+              <span class="hero-divider" aria-hidden="true"></span>
+              <p data-i18n="home.hero4.text">Okra, green beans, peas, spinach, carrots, and mixed vegetables packed for professional buyers.</p>
+              <a class="hero-cta" href="products.html" data-i18n="home.hero4.cta">View Product Range</a>
+            </div>
+          </article>
+        </div>
+        <div class="hero-controls" aria-label="Hero slide controls">
+          <label for="hero-slide-1" tabindex="0" role="button"><span class="hero-progress"><span></span></span><strong>01</strong><span data-i18n="home.hero1.control">Quality</span></label>
+          <label for="hero-slide-2" tabindex="0" role="button"><span class="hero-progress"><span></span></span><strong>02</strong><span data-i18n="home.hero2.control">Logistics</span></label>
+          <label for="hero-slide-3" tabindex="0" role="button"><span class="hero-progress"><span></span></span><strong>03</strong><span data-i18n="home.hero3.control">Partnership</span></label>
+          <label for="hero-slide-4" tabindex="0" role="button"><span class="hero-progress"><span></span></span><strong>04</strong><span data-i18n="home.hero4.control">Variety</span></label>
+        </div>
+      </section>
+
+      <section class="section intro">
+        <div class="section-heading">
+          <span data-i18n="home.why.kicker">Why Choose Us</span>
+          <h2 data-i18n="home.why.title">Trading with care from source to delivery</h2>
+          <p data-i18n="home.why.text">Orient Welt connects Middle Eastern producers with European customers through quality-focused sourcing, responsive service, and efficient coordination. Our work is built around practical reliability and long-term partnership.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card"><span class="icon">✓</span><h3 data-i18n="pillars.quality.title">Quality</h3><p data-i18n="pillars.quality.short">Products selected with attention to condition, packing, and consistency.</p></article>
+          <article class="feature-card"><span class="icon">☎</span><h3 data-i18n="pillars.service.title">Customer Service</h3><p data-i18n="pillars.service.short">Clear communication before, during, and after every shipment.</p></article>
+          <article class="feature-card"><span class="icon">↗</span><h3 data-i18n="pillars.efficiency.title">Efficiency</h3><p data-i18n="pillars.efficiency.short">Lean coordination designed to keep trade moving smoothly.</p></article>
+          <article class="feature-card"><span class="icon">◆</span><h3 data-i18n="pillars.trust.title">Trust & Partnership</h3><p data-i18n="pillars.trust.short">A relationship-first approach for repeat business.</p></article>
+        </div>
+        <section class="trade-flow" aria-labelledby="trade-flow-title">
+          <div class="trade-flow-copy">
+            <span data-i18n="home.trade.kicker">Global Trade Flow</span>
+            <h3 id="trade-flow-title" data-i18n="home.trade.title">Connecting the East to Europe</h3>
+            <p data-i18n="home.trade.text">Placeholder export routes show how frozen vegetable supply can move from regional producers toward Germany through practical maritime corridors.</p>
+          </div>
+          <div class="trade-flow-chart-wrap">
+            <!-- amCharts 5 licensing note: the free version requires the default amCharts attribution/logo to remain visible, or a paid license is required to remove it for commercial use. Do not strip the attribution unless a license has been purchased. -->
+            <div id="trade-flow-globe" class="trade-flow-chart" role="img" aria-label="Interactive globe showing placeholder trade flows from Egypt, Turkey, and Jordan to Germany"></div>
+            <p class="trade-flow-note" data-i18n="home.trade.note">Volumes are placeholder planning figures and should be replaced with real trade data.</p>
+          </div>
+        </section>
+        <div class="centered"><a class="btn btn-outline" href="about.html" data-i18n="home.why.cta">Learn More About Us</a></div>
+      </section>
+
+      <section class="section soft">
+        <div class="section-heading">
+          <span data-i18n="home.products.kicker">Our Products</span>
+          <h2 data-i18n="home.products.title">Frozen vegetables for European buyers</h2>
+        </div>
+        <div class="product-tabs" id="home-product-tabs">
+          <div class="product-tab-list" id="home-product-tab-list" role="tablist" aria-label="Product categories"></div>
+          <article class="product-tab-panel" id="home-product-panel" role="tabpanel" aria-live="polite">
+            <img id="home-product-image" src="" alt="" loading="lazy">
+            <div class="product-tab-copy">
+              <span class="product-tab-accent" aria-hidden="true"></span>
+              <h3 id="home-product-title"></h3>
+              <p id="home-product-description"></p>
+              <a class="btn btn-outline" href="products.html" data-i18n="home.products.cta">View All Products</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Partners section hidden until real partner/testimonial content is available.
+      <section class="section">
+        <div class="section-heading">
+          <span data-i18n="home.partners.kicker">Partners</span>
+          <h2 data-i18n="home.partners.title">Trusted by Our Partners</h2>
+        </div>
+        <div class="testimonial-grid">
+          <blockquote><p data-i18n="home.testimonial1.text">Orient Welt keeps the process clear and dependable from order planning to delivery.</p><cite data-i18n="home.testimonial1.name">European Food Distributor</cite></blockquote>
+          <blockquote><p data-i18n="home.testimonial2.text">Their team understands practical trading requirements and responds quickly.</p><cite data-i18n="home.testimonial2.name">Wholesale Buyer</cite></blockquote>
+          <blockquote><p data-i18n="home.testimonial3.text">A focused partner for frozen vegetables with a strong service mindset.</p><cite data-i18n="home.testimonial3.name">Import Partner</cite></blockquote>
+        </div>
+        <div class="logo-row" aria-label="Partner and certification placeholders">
+          <span>HACCP</span><span>ISO</span><span>EU Trade</span><span>Cold Chain</span>
+        </div>
+      </section>
+      -->
+
+      <section class="cta-strip">
+        <h2 data-i18n="cta.title">Ready to build a lasting partnership with us?</h2>
+        <a class="btn btn-light" href="contact.html" data-i18n="cta.button">Contact Us</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand"><img src="assets/images/logo-orient-welt.png" alt="Orient Welt logo"><span data-i18n="brand.tagline">International Food Trading</span></div>
+      <nav aria-label="Footer navigation"><a href="index.html" data-i18n="nav.home">Home</a><a href="about.html" data-i18n="nav.about">Orient Welt</a><a href="products.html" data-i18n="nav.products">Products</a><a href="contact.html" data-i18n="nav.contact">Contact Us</a></nav>
+      <address><span data-i18n="footer.address">Hamburg, Germany</span><span data-i18n="footer.phone">+49 40 000000</span><a href="mailto:info@orientwelt.example">info@orientwelt.example</a></address>
+      <div class="socials"><a href="#" aria-label="LinkedIn">in</a><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="Instagram">ig</a></div>
+      <p class="copyright" data-i18n="footer.copy">© 2026 Orient Welt. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
