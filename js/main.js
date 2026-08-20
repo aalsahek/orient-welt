@@ -7,6 +7,7 @@
     navPill: null,
     globeFrame: null,
     globeResumeTimer: null,
+    rotatingTimer: null,
     lastFocus: null
   };
 
@@ -17,6 +18,9 @@
   function applyTranslations() {
     document.documentElement.lang = state.lang;
     document.querySelectorAll("[data-i18n]").forEach((node) => {
+      if (node.classList.contains("word")) {
+        node.removeAttribute("data-word-text");
+      }
       node.textContent = t(node.dataset.i18n);
     });
     document.querySelectorAll("[data-lang]").forEach((button) => {
@@ -24,6 +28,7 @@
     });
     renderHomeProductTabs();
     renderProducts();
+    initRotatingText();
     requestAnimationFrame(() => updateNavPill(undefined, false));
   }
 
@@ -608,6 +613,90 @@
     });
   }
 
+  function initRotatingText() {
+    const container = document.querySelector(".rotating-text");
+    if (!container) return;
+    const words = [...container.querySelectorAll(".word")];
+    if (!words.length) return;
+
+    if (state.rotatingTimer) {
+      clearInterval(state.rotatingTimer);
+      state.rotatingTimer = null;
+    }
+
+    const wordArray = [];
+    let currentWord = 0;
+
+    function splitLetters(word) {
+      const content = word.getAttribute("data-word-text") || word.textContent.trim();
+      word.setAttribute("data-word-text", content);
+      word.innerHTML = "";
+      const letters = [];
+      for (let i = 0; i < content.length; i++) {
+        const letter = document.createElement("span");
+        letter.className = "letter";
+        letter.innerHTML = content.charAt(i) === " " ? "&nbsp;" : content.charAt(i);
+        word.appendChild(letter);
+        letters.push(letter);
+      }
+      wordArray.push(letters);
+    }
+
+    words.forEach((word, index) => {
+      word.style.opacity = index === 0 ? "1" : "0";
+      splitLetters(word);
+    });
+
+    if (wordArray[0]) {
+      wordArray[0].forEach((letter) => {
+        letter.className = "letter in";
+      });
+    }
+
+    function animateLetterOut(cw, i) {
+      setTimeout(function () {
+        if (cw && cw[i]) {
+          cw[i].className = "letter out";
+        }
+      }, i * 80);
+    }
+
+    function animateLetterIn(nw, i) {
+      setTimeout(function () {
+        if (nw && nw[i]) {
+          nw[i].className = "letter in";
+        }
+      }, 340 + (i * 80));
+    }
+
+    function changeWord() {
+      if (!wordArray.length) return;
+      const cw = wordArray[currentWord];
+      const nextIndex = currentWord === wordArray.length - 1 ? 0 : currentWord + 1;
+      const nw = wordArray[nextIndex];
+
+      if (cw) {
+        for (let i = 0; i < cw.length; i++) {
+          animateLetterOut(cw, i);
+        }
+      }
+
+      if (nw && nw.length) {
+        for (let i = 0; i < nw.length; i++) {
+          nw[i].className = "letter behind";
+          if (nw[0]?.parentElement) {
+            nw[0].parentElement.style.opacity = "1";
+          }
+          animateLetterIn(nw, i);
+        }
+      }
+
+      currentWord = nextIndex;
+    }
+
+    state.rotatingTimer = setInterval(changeWord, 4000);
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     setupNavigation();
     setupCarousel();
@@ -616,5 +705,6 @@
     setupContactForm();
     initGlobalTradeGlobe();
     applyTranslations();
+    initRotatingText();
   });
 })();
