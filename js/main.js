@@ -231,7 +231,15 @@
     const grid = document.getElementById("product-grid");
     const bar = document.getElementById("filter-bar");
     if (!grid || !bar || !window.products) return;
-    const categories = ["all", ...new Set(window.products.map((product) => product.category))];
+
+    const categoryOrder = window.productCategories ? window.productCategories.map((c) => c.id) : [];
+    const availableCategories = [...new Set(window.products.map((product) => product.category))];
+    const orderedCategories = [
+      ...categoryOrder.filter((id) => availableCategories.includes(id)),
+      ...availableCategories.filter((id) => !categoryOrder.includes(id))
+    ];
+    const categories = ["all", ...orderedCategories];
+
     bar.innerHTML = "";
     categories.forEach((category) => {
       const button = document.createElement("button");
@@ -246,18 +254,19 @@
     window.products
       .filter((product) => active === "all" || product.category === active)
       .forEach((product) => {
+        const specText = (typeof product.spec === "object" ? product.spec[state.lang] : product.spec) || "";
         const card = document.createElement("article");
         card.className = `product-card product-${product.id}`;
         card.innerHTML = `
           <div class="card-img">
-            <img src="${product.image}" alt="${product.alt[state.lang]}" loading="lazy">
+            <img src="${product.image}" alt="${product.alt?.[state.lang] || ''}" loading="lazy">
           </div>
           <div class="card-content">
             <h3 class="card-title">${product.name[state.lang]}</h3>
             <p class="card-subtitle">${categoryLabel(product.category)}</p>
-            <p class="card-spec">12 x 500g | Wholesale Box</p>
+            ${specText ? `<p class="card-spec">${specText}</p>` : ""}
             <h4 class="bg-title">${product.name[state.lang]}</h4>
-            <button class="btn-action" type="button">View Details</button>
+            <button class="btn-action" type="button">${t("products.card.details")}</button>
           </div>`;
         card.querySelector("button").addEventListener("click", (event) => {
           event.stopPropagation();
@@ -275,12 +284,17 @@
     modal.hidden = false;
     document.body.style.overflow = "hidden";
     document.getElementById("modal-image").src = product.image;
-    document.getElementById("modal-image").alt = product.alt[state.lang];
+    document.getElementById("modal-image").alt = product.alt?.[state.lang] || "";
     document.getElementById("modal-title").textContent = product.name[state.lang];
     document.getElementById("modal-description").textContent = product.description[state.lang];
-    document.getElementById("modal-packaging").textContent = product.packaging;
-    document.getElementById("modal-storage").textContent = product.storage;
-    document.getElementById("modal-origin").textContent = product.origin;
+
+    const packagingText = typeof product.packaging === "object" ? product.packaging[state.lang] : product.packaging;
+    const storageText = typeof product.storage === "object" ? product.storage[state.lang] : product.storage;
+    const originText = typeof product.origin === "object" ? product.origin[state.lang] : product.origin;
+
+    document.getElementById("modal-packaging").textContent = packagingText || "-";
+    document.getElementById("modal-storage").textContent = storageText || "-";
+    document.getElementById("modal-origin").textContent = originText || "-";
     modal.querySelector(".modal-close").focus();
   }
 
