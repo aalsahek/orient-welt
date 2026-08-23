@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Orient Welt | Products</title>
     <meta name="description" content="Explore Orient Welt food products for professional buyers.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/translations.js" defer></script>
     <script src="js/products-data.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
     <script src="js/main.js" defer></script>
   </head>
   <body data-page="products">
@@ -15,15 +17,71 @@
     <header class="site-header"><a class="brand" href="index.html"><img src="assets/images/logo-orient-welt.png" alt="Orient Welt logo"></a><button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false"><span></span><span></span><span></span><span class="sr-only" data-i18n="nav.menu">Menu</span></button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="index.html" data-i18n="nav.home">Home</a><a href="about.html" data-i18n="nav.about">Orient Welt</a><a href="products.html" data-i18n="nav.products">Products</a><a href="contact.html" data-i18n="nav.contact">Contact Us</a></nav><div class="language-switcher" aria-label="Language"><button type="button" data-lang="en" aria-label="English">🇬🇧</button><button type="button" data-lang="de" aria-label="Deutsch">🇩🇪</button></div></header>
     <aside class="floating-social" aria-label="Floating contact and social links">
       <ul>
-        <li><a href="tel:+4940000000" aria-label="Phone"><img src="assets/images/icons/socials/phone-call.png" alt=""></a></li>
-        <li><a href="mailto:info@orientwelt.example" aria-label="Email"><img src="assets/images/icons/socials/gmail.png" alt=""></a></li>
+        <li><a href="tel:+4940000000" aria-label="Phone"><img src="assets/images/icons/socials/whatsapp-2.png" alt=""></a></li>
+        <li><a href="mailto:info@orientwelt.example" aria-label="Email"><img src="assets/images/icons/socials/email.png" alt=""></a></li>
         <li><a href="#" aria-label="TikTok"><img src="assets/images/icons/socials/tik-tok.png" alt=""></a></li>
         <li><a href="#" aria-label="Instagram"><img src="assets/images/icons/socials/instagram.png" alt=""></a></li>
         <li><a href="#" aria-label="Facebook"><img src="assets/images/icons/socials/facebook.png" alt=""></a></li>
       </ul>
     </aside>
     <main id="main">
-      <section class="page-hero products-hero" style="--hero-image: url('assets/images/products-header.jpeg?v=3')"><div><h1 data-i18n="products.hero.title">Our Products</h1><p data-i18n="products.hero.text">A focused food range selected for quality, practicality, and supply reliability.</p></div></section>
+      <section class="page-hero products-hero" style="--hero-image: url('assets/images/products-header.jpeg?v=3')">
+        <div class="hero-slide-copy">
+          <h1 class="rotating-text" aria-label="Our Products are quality, reliable, authentic, fresh, practical">
+            <span class="rotating-prefix" data-i18n="products.hero.rotatingPrefix">Our Products are</span>
+            <span class="rotating-words">
+              <span class="word wisteria" data-i18n="products.hero.word1">quality.</span>
+              <span class="word belize" data-i18n="products.hero.word2">reliable.</span>
+              <span class="word pomegranate" data-i18n="products.hero.word3">authentic.</span>
+              <span class="word green" data-i18n="products.hero.word4">fresh.</span>
+              <span class="word midnight" data-i18n="products.hero.word5">practical.</span>
+            </span>
+          </h1>
+        </div>
+      </section>
+      <section class="products-stage-section" aria-labelledby="products-stage-title">
+        <div class="products-stage-sky" aria-hidden="true"></div>
+        <div class="products-stage-horizon" aria-hidden="true"></div>
+        <div class="products-stage-inner">
+          <div class="products-stage-heading">
+            <h2 id="products-stage-title">Food products for European buyers</h2>
+          </div>
+          <div class="products-stage-carousel">
+            <div class="swiper products-coverflow" aria-label="Featured product carousel">
+              <div class="swiper-wrapper"></div>
+            </div>
+            <button class="swiper-button-prev" type="button" aria-label="Previous product"></button>
+            <button class="swiper-button-next" type="button" aria-label="Next product"></button>
+            <div class="swiper-pagination"></div>
+          </div>
+          <div class="products-feature-bar" aria-label="Product benefits">
+            <article><span aria-hidden="true"><img src="assets/images/icons/check.png" alt=""></span><div><h3>100% NATURAL</h3><p>No artificial additives</p></div></article>
+            <article><span aria-hidden="true"><img src="assets/images/icons/leaf.png" alt=""></span><div><h3>VEGAN</h3><p>Plant-based and wholesome</p></div></article>
+            <article><span aria-hidden="true">❄</span><div><h3>FROZEN</h3><p>For freshness and vitamins</p></div></article>
+            <article><span aria-hidden="true"><img src="assets/images/icons/timer.png" alt=""></span><div><h3>QUICK TO PREPARE</h3><p>Simple and time-saving</p></div></article>
+          </div>
+        </div>
+        <div class="product-stage-modal" id="product-stage-modal" hidden>
+          <button class="product-stage-backdrop" type="button" data-stage-modal-close aria-label="Close product details"></button>
+          <article class="product-stage-dialog" role="dialog" aria-modal="true" aria-labelledby="stage-modal-title">
+            <button class="product-stage-close" type="button" data-stage-modal-close aria-label="Close">×</button>
+            <img id="stage-modal-image" src="" alt="">
+            <div class="product-stage-dialog-copy">
+              <span id="stage-modal-weight" class="product-stage-dialog-weight"></span>
+              <h3 id="stage-modal-title"></h3>
+              <p id="stage-modal-description"></p>
+              <dl>
+                <div><dt>Packaging</dt><dd id="stage-modal-carton"></dd></div>
+                <div><dt>Origin</dt><dd id="stage-modal-pallet"></dd></div>
+                <div><dt>Storage</dt><dd id="stage-modal-storage"></dd></div>
+                <div><dt>EAN</dt><dd id="stage-modal-ean"></dd></div>
+              </dl>
+              <div class="stage-modal-options" aria-label="Weight options"><span>400g</span><span>1kg</span><span>10kg</span></div>
+              <a class="btn btn-primary" href="contact.html">Send Inquiry</a>
+            </div>
+          </article>
+        </div>
+      </section>
       <div class="content-parallax-panel">
       <section class="section"><div class="section-heading"><span data-i18n="products.filter.kicker">Product Range</span><h2 data-i18n="products.filter.title">Browse by category</h2></div><div class="filter-bar" id="filter-bar" aria-label="Product filters"></div><div class="product-grid" id="product-grid"></div></section>
       <section class="cta-strip"><h2 data-i18n="products.cta.title">Interested in our products? Let’s talk.</h2><a class="btn btn-light" href="contact.html" data-i18n="cta.button">Contact Us</a></section>

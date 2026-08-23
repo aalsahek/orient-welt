@@ -204,26 +204,26 @@ window.products = [
   {
     id: "ardh-shawki",
     category: "vegetables",
-    image: "assets/images/products/ardh-shawki.png",
+    image: "assets/images/products/bags/Ardh Shawki (Artichoke Bottoms).png",
     alt: { en: "Ardh Shawki artichoke product image", de: "Produktbild von Ardh Shawki Artischocken" },
     name: { en: "Ardh Shawki (Artichoke Bottoms)", de: "Ardh Shawki (Artischockenböden)" },
-    spec: { en: "10 x 400g | IQF Master Box", de: "10 x 400g | IQF Karton" },
+    spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "Cleaned and trimmed artichoke bottoms, individually quick-frozen at source.", de: "Gereinigte und zugeschnittene Artischockenböden, einzeln schockgefrostet." },
     description: {
       en: "Premium selected artichoke bottoms picked at peak tenderness. Ideal for stuffing with meat and rice, stewing, or fine catering preparations.",
       de: "Erstklassige Artischockenböden, erntefrisch verarbeitet und schockgefrostet. Perfekt zum Füllen, Schmoren und für gehobene Gastronomiemenüs."
     },
-    packaging: { en: "10 x 400g retail bags / 10kg catering boxes", de: "10 x 400g Beutel / 10kg Gastrokartons" },
+    packaging: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     storage: { en: "Keep frozen at -18°C", de: "Tiefgekühlt lagern bei -18°C" },
     origin: { en: "Egypt / Selected Farms", de: "Ägypten / Ausgewählte Betriebe" }
   },
   {
     id: "coriander",
     category: "vegetables",
-    image: "assets/images/products/coriander.png",
+    image: "assets/images/products/bags/Chopped Coriander.png",
     alt: { en: "Frozen Coriander product image", de: "Produktbild von Tiefkühl-Koriander" },
     name: { en: "Chopped Coriander", de: "Gehackter Koriander" },
-    spec: { en: "20 x 400g | IQF Herb Bag", de: "20 x 400g | IQF Kräuterbeutel" },
+    spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "Aromatic chopped green coriander for seasonings, garnishes, and soups.", de: "Aromatischer gehackter Koriander zum Würzen, Garnieren und für Suppen." },
     description: {
       en: "Fresh green coriander washed, finely chopped, and individually frozen to preserve aroma and vibrant color. Essential for curries, molokhia, and marinades.",
@@ -236,128 +236,128 @@ window.products = [
   {
     id: "eggplant",
     category: "vegetables",
-    image: "assets/images/products/eggplant.png",
+    image: "assets/images/products/bags/grilled-eggplant.png",
     alt: { en: "Roasted Eggplant product image", de: "Produktbild von Gegrillter Aubergine" },
     name: { en: "Roasted Eggplant Pulp", de: "Gegrilltes Auberginenfruchtfleisch" },
-    spec: { en: "12 x 400g | Flame-Roasted Pack", de: "12 x 400g | Rauchig Gegrillt" },
+    spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "Flame-roasted eggplant pulp with natural smoky flavor for Baba Ghanoush.", de: "Über offener Flamme gegrillte Aubergine für authentisches Baba Ghanoush." },
     description: {
       en: "Fire-roasted whole eggplants peeled and packed ready to use. Gives authentic smoky depth to dips, mezze spreads, and vegetable sauces.",
       de: "Über Feuer geröstete ganze Auberginen, geschält und verzehrfertig vorbereitet. Verleiht Dips und Mezze ein unverwechselbares Raucharoma."
     },
-    packaging: { en: "12 x 400g packs / 5kg catering tubs", de: "12 x 400g Packungen / 5kg Gastrobehälter" },
+    packaging: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     storage: { en: "Keep frozen at -18°C", de: "Tiefgekühlt lagern bei -18°C" },
     origin: { en: "Egypt / Levant", de: "Ägypten / Levante" }
   },
   {
     id: "falafel",
     category: "vegetables",
-    image: "assets/images/products/falafel.png",
+    image: "assets/images/products/bags/falafel.png",
     alt: { en: "Prepared Falafel product image", de: "Produktbild von Zubereiteter Falafel" },
     name: { en: "Pre-formed Falafel Patties", de: "Vorgeformte Falafel-Bällchen" },
-    spec: { en: "10 x 500g | Pre-fried IQF", de: "10 x 500g | Vorgebacken IQF" },
+    spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "Crispy chickpea and herb falafel, pre-fried and quick-frozen for fast serving.", de: "Knusprige Kichererbsen-Falafel, vorgebacken und schockgefrostet." },
     description: {
       en: "Traditional recipe combining ground chickpeas, fresh parsley, coriander, and spices. Ready in minutes in fryer or oven for wraps and salad bowls.",
       de: "Traditionelle Rezeptur aus Kichererbsen, frischen Kräutern und Gewürzen. In wenigen Minuten in Fritteuse oder Ofen servierfertig zubereitet."
     },
-    packaging: { en: "10 x 500g retail packs / 10kg bulk boxes", de: "10 x 500g Packungen / 10kg Großkartons" },
+    packaging: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     storage: { en: "Keep frozen at -18°C", de: "Tiefgekühlt lagern bei -18°C" },
     origin: { en: "Middle East", de: "Naher Osten" }
   },
   {
     id: "foul",
     category: "vegetables",
-    image: "assets/images/products/foul.png",
+    image: "assets/images/products/bags/green-ful.png",
     alt: { en: "Foul Fava Beans product image", de: "Produktbild von Foul Ackerbohnen" },
     name: { en: "Foul Mudammas (Fava Beans)", de: "Foul Mudammas (Ackerbohnen)" },
-    spec: { en: "24 x 400g | Premium Can Tray", de: "24 x 400g | Dosen-Tray" },
+    spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "Tender cooked fava beans prepared for traditional breakfast dishes.", de: "Zart gekochte Saubohnen für das traditionelle nahöstliche Frühstück." },
     description: {
       en: "Selected premium fava beans cooked to creamy perfection. A cornerstone of Middle Eastern hospitality, served with cumin, lemon juice, and olive oil.",
       de: "Ausgewählte Ackerbohnen, cremig und zart vorgekocht. Grundbaustein für klassische Frühstücksgerichte mit Kreuzkümmel, Zitrone und Olivenöl."
     },
-    packaging: { en: "24 x 400g easy-open cans / 3kg catering tins", de: "24 x 400g Dosen / 3kg Gastrodosen" },
+    packaging: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     storage: { en: "Ambient dry storage / refrigerate after opening", de: "Trocken lagern / nach dem Öffnen kühlen" },
     origin: { en: "Egypt / Middle East", de: "Ägypten / Naher Osten" }
   },
   {
     id: "green-bean",
     category: "vegetables",
-    image: "assets/images/products/green-bean.png",
+    image: "assets/images/products/bags/green-bean.png",
     alt: { en: "Cut Green Beans product image", de: "Produktbild von Schnittbohnen" },
     name: { en: "Cut Green Beans (IQF)", de: "Schnittbohnen (IQF)" },
-    spec: { en: "10 x 400g | IQF Green Pack", de: "10 x 400g | IQF Beutel" },
+    spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "Tender young green beans trimmed, uniformly cut, and quickly frozen.", de: "Zarte grüne Bohnen, gleichmäßig geschnitten und schockgefrostet." },
     description: {
       en: "Sweet, stringless green beans harvested young to maintain crispness and bright green coloration. Excellent for stews, side dishes, and steam cooking.",
       de: "Schnittfeste grüne Bohnen ohne Fäden, jung geerntet für knackigen Biss und leuchtende Farbe. Ideal für Eintöpfe und Gemüsebeilagen."
     },
-    packaging: { en: "10 x 400g bags / 10kg master box", de: "10 x 400g Beutel / 10kg Sammelkarton" },
+    packaging: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     storage: { en: "Keep frozen at -18°C", de: "Tiefgekühlt lagern bei -18°C" },
     origin: { en: "Egypt / Selected Farms", de: "Ägypten / Ausgewählte Betriebe" }
   },
   {
     id: "mango",
     category: "vegetables",
-    image: "assets/images/products/mango.png",
+    image: "assets/images/products/bags/mango.png",
     alt: { en: "Frozen Mango Pulp & Chunks product image", de: "Produktbild von Mango-Fruchtfleisch & Würfel" },
     name: { en: "Egyptian Mango Chunks / Pulp", de: "Ägyptische Mango (Würfel / Fruchtfleisch)" },
-    spec: { en: "10 x 1kg | Sweet IQF Pack", de: "10 x 1kg | IQF Fruchtbeutel" },
+    spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "Naturally sweet Egyptian mango chunks with rich aroma and golden color.", de: "Sonnengereifte Mangostücke mit unvergleichlicher Süße und Aroma." },
     description: {
       en: "Famous Egyptian mango varieties processed at peak ripeness. 100% natural fruit without additives, ideal for smoothies, juices, desserts, and bakery.",
       de: "Berühmte ägyptische Mangosorten, bei voller Reife geerntet und verarbeitet. Ideal für Säfte, Smoothies, Desserts und Eiscremezubereitung."
     },
-    packaging: { en: "10 x 1kg bags / 18kg bulk drums", de: "10 x 1kg Beutel / 18kg Großgebinde" },
+    packaging: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     storage: { en: "Keep frozen at -18°C", de: "Tiefgekühlt lagern bei -18°C" },
     origin: { en: "Ismailia, Egypt", de: "Ismailia, Ägypten" }
   },
   {
     id: "mlokhya-leafs",
     category: "vegetables",
-    image: "assets/images/products/mlokhya-leaf.png",
+    image: "assets/images/products/bags/mlokhya-leavs.png",
     alt: { en: "Whole Molokhia Leaves product image", de: "Produktbild von Ganzen Molokhia-Blättern" },
     name: { en: "Molokhia Whole Leaves", de: "Molokhia Ganze Blätter" },
-    spec: { en: "10 x 400g | Whole Leaf IQF", de: "10 x 400g | Blattware IQF" },
+    spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "Carefully hand-picked whole Molokhia leaves frozen fresh.", de: "Sorgfältig handgepflückte ganze Molokhia-Blätter, schockgefrostet." },
     description: {
       en: "Cleaned and destemmed jute mallow leaves preserved whole. Preferred by chefs for authentic Levantine stews requiring intact leafy texture.",
       de: "Gewaschene und entstielte ganze Molokhia-Blätter. Von Köchen geschätzt für traditionelle Schmorgerichte mit Blattstruktur."
     },
-    packaging: { en: "10 x 400g bags / 10kg catering carton", de: "10 x 400g Beutel / 10kg Gastrokarton" },
+    packaging: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     storage: { en: "Keep frozen at -18°C", de: "Tiefgekühlt lagern bei -18°C" },
     origin: { en: "Egypt / Nile Delta", de: "Ägypten / Nildelta" }
   },
   {
     id: "mlokhya",
     category: "vegetables",
-    image: "assets/images/products/mlokhya.png",
+    image: "assets/images/products/bags/mlokhya.png",
     alt: { en: "Minced Molokhia product image", de: "Produktbild von Fein Gehackter Molokhia" },
     name: { en: "Molokhia Minced (Classic)", de: "Molokhia Fein Gehackt (Klassik)" },
-    spec: { en: "20 x 400g | Traditional Block", de: "20 x 400g | Klassischer Block" },
+    spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "Finely minced Molokhia greens, the classic staple for Egyptian national soup.", de: "Fein gehackte Molokhia-Blätter, der Klassiker für die Nationalküche." },
     description: {
       en: "Finely chopped jute mallow leaves ready for garlic-coriander tasha tempering. Delivers authentic silky consistency and deep green vibrancy.",
       de: "Feinst gehackte Molokhia-Blätter für die klassische Zubereitung mit Knoblauch-Koriander-Tasha. Sichert seidenweiche Konsistenz und satte Farbe."
     },
-    packaging: { en: "20 x 400g blocks per carton", de: "20 x 400g Blöcke pro Karton" },
+    packaging: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     storage: { en: "Keep frozen at -18°C", de: "Tiefgekühlt lagern bei -18°C" },
     origin: { en: "Egypt / Nile Delta", de: "Ägypten / Nildelta" }
   },
   {
     id: "peas-carrots",
     category: "vegetables",
-    image: "assets/images/products/peas-carrot-bag.png",
+    image: "assets/images/products/bags/carrot-peas.png",
     alt: { en: "Peas and Carrots product image", de: "Produktbild von Erbsen und Karotten" },
     name: { en: "Green Peas & Diced Carrots", de: "Erbsen & Karottenwürfel" },
-    spec: { en: "10 x 400g | Balanced Mix IQF", de: "10 x 400g | Ausgewogene Mischung" },
+    spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "Sweet green peas blended with uniformly diced tender carrots.", de: "Süße grüne Erbsen gemischt mit zarten Karottenwürfeln." },
     description: {
       en: "A balanced 50/50 mix of sweet green peas and orange carrot cubes. Retains texture and sweetness for rice dishes, side vegetables, and stews.",
       de: "Ausgewogene Mischung aus feinen Erbsen und Karottenwürfeln. Behält Biss und Frische bei, ideal für Reisgerichte und Eintöpfe."
     },
-    packaging: { en: "10 x 400g bags / 10kg master carton", de: "10 x 400g Beutel / 10kg Großkarton" },
+    packaging: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     storage: { en: "Keep frozen at -18°C", de: "Tiefgekühlt lagern bei -18°C" },
     origin: { en: "Egypt / Selected Farms", de: "Ägypten / Ausgewählte Betriebe" }
   },
@@ -367,29 +367,29 @@ window.products = [
     image: "assets/images/products/peas.png",
     alt: { en: "Extra Fine Green Peas product image", de: "Produktbild von Extra Feinen Erbsen" },
     name: { en: "Extra Fine Green Peas", de: "Extra Feine Grüne Erbsen" },
-    spec: { en: "10 x 400g | Extra Fine IQF", de: "10 x 400g | Extra Feine Auslese" },
+    spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "Tender, naturally sweet green peas sorted for size and softness.", de: "Zarte, süße grüne Erbsen, schonend sortiert und schockgefrostet." },
     description: {
       en: "Selected extra-fine green peas flash frozen within hours of harvesting to seal in delicate sweetness and vital nutrients.",
       de: "Sorgfältig verlesene feine Erbsen, wenige Stunden nach der Ernte schockgefrostet für maximalen Geschmack und Vitamingehalt."
     },
-    packaging: { en: "10 x 400g bags / 10kg master carton", de: "10 x 400g Beutel / 10kg Großkarton" },
+    packaging: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     storage: { en: "Keep frozen at -18°C", de: "Tiefgekühlt lagern bei -18°C" },
     origin: { en: "Egypt / Selected Farms", de: "Ägypten / Ausgewählte Betriebe" }
   },
   {
     id: "peeled-foul",
     category: "vegetables",
-    image: "assets/images/products/peeled-foul.png",
+    image: "assets/images/products/bags/peeled-ful.png",
     alt: { en: "Peeled Fava Beans product image", de: "Produktbild von Geschälten Ackerbohnen" },
     name: { en: "Peeled Fava Beans (Foul Madchouch)", de: "Geschälte Ackerbohnen (Foul Madchouch)" },
-    spec: { en: "10 x 400g | Split Peeled IQF", de: "10 x 400g | Geschält & Halbiert IQF" },
+    spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "De-skinned fava beans, essential base for traditional falafel and dips.", de: "Geschälte Saubohnen, unverzichtbare Basis für hausgemachte Falafel." },
     description: {
       en: "High-grade fava beans with outer skin removed, quick-frozen. The essential ingredient for crafting authentic Egyptian Ta'ameya / Falafel and creamy bean purees.",
       de: "Hochwertige Saubohnen ohne Schale, schockgefrostet. Die unverzichtbare Hauptzutat für traditionelle ägyptische Ta'ameya (Falafel) und cremige Pürees."
     },
-    packaging: { en: "10 x 400g bags / 10kg master carton", de: "10 x 400g Beutel / 10kg Großkarton" },
+    packaging: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     storage: { en: "Keep frozen at -18°C", de: "Tiefgekühlt lagern bei -18°C" },
     origin: { en: "Egypt / Middle East", de: "Ägypten / Naher Osten" }
   }

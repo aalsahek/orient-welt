@@ -8,7 +8,8 @@
     globeFrame: null,
     globeResumeTimer: null,
     rotatingTimer: null,
-    lastFocus: null
+    lastFocus: null,
+    productsStageSwiper: null
   };
 
   function t(key) {
@@ -28,6 +29,7 @@
     });
     renderHomeProductTabs();
     renderProducts();
+    refreshProductsStageCarousel();
     initRotatingText();
     requestAnimationFrame(() => updateNavPill(undefined, false));
   }
@@ -93,17 +95,38 @@
   function setupScrollChromeEffect(header, footer, nav) {
     let ticking = false;
     let previousY = Math.max(0, window.scrollY || document.documentElement.scrollTop || 0);
+    let coverflowInView = false;
+    let scrollActive = false;
+    let scrollResumeTimer = null;
+
+    function setCoverflowHeaderState(forceVisible = false) {
+      if (!header) return;
+      const menuOpen = nav?.classList.contains("open");
+      header.classList.toggle("is-coverflow-hidden", coverflowInView && !forceVisible && !menuOpen);
+    }
+
+    function setupCoverflowHeaderObserver() {
+      const coverflowStage = document.querySelector(".products-stage-section");
+      if (document.body.dataset.page !== "products" || !coverflowStage || !header || !("IntersectionObserver" in window)) return;
+
+      const observer = new IntersectionObserver(([entry]) => {
+        coverflowInView = Boolean(entry?.isIntersecting && entry.intersectionRatio >= 0.55);
+        setCoverflowHeaderState(scrollActive);
+      }, { threshold: [0, 0.55, 0.8] });
+
+      observer.observe(coverflowStage);
+    }
 
     function update() {
       const scroller = document.scrollingElement || document.documentElement;
       const currentY = Math.max(0, window.scrollY || scroller.scrollTop || 0);
       const footerHeight = footer?.offsetHeight || 0;
       const maxScroll = Math.max(0, scroller.scrollHeight - window.innerHeight);
-      const revealPoint = Math.max(0, maxScroll - footerHeight - 24);
+      const revealPoint = Math.max(0, maxScroll - footerHeight);
       const menuOpen = nav?.classList.contains("open");
 
       if (footer) {
-        document.documentElement.style.setProperty("--footer-reveal-space", `${Math.ceil(footerHeight + 32)}px`);
+        document.documentElement.style.setProperty("--footer-reveal-space", `${Math.ceil(footerHeight)}px`);
         footer.classList.toggle("topper", currentY >= revealPoint);
       }
 
@@ -112,6 +135,13 @@
           header.style.setProperty("--glare-x", "50%");
           header.style.setProperty("--glare-y", "50%");
         }
+        scrollActive = true;
+        setCoverflowHeaderState(true);
+        window.clearTimeout(scrollResumeTimer);
+        scrollResumeTimer = window.setTimeout(() => {
+          scrollActive = false;
+          setCoverflowHeaderState();
+        }, 220);
       }
       previousY = currentY;
       ticking = false;
@@ -124,6 +154,7 @@
     }
 
     update();
+    setupCoverflowHeaderObserver();
     window.addEventListener("scroll", requestUpdate, { passive: true });
     window.addEventListener("resize", requestUpdate);
   }
@@ -169,6 +200,188 @@
       control.addEventListener("click", () => showSlide(index));
     });
     showSlide(0);
+  }
+
+  function setupProductsStageCarousel() {
+    const carousel = document.querySelector(".products-coverflow");
+    const modal = document.getElementById("product-stage-modal");
+    if (!carousel || !window.Swiper) return;
+
+    renderProductsStageSlides();
+    state.productsStageSwiper = createProductsStageSwiper(carousel);
+    setupProductsStageAutoplayHover(carousel, state.productsStageSwiper);
+
+    function closeStageModal() {
+      if (!modal) return;
+      modal.hidden = true;
+      document.body.classList.remove("modal-open");
+    }
+
+    function openStageModal(product) {
+      if (!modal || !product) return;
+      const title = product.name?.en || "";
+      const description = product.description?.en || product.short?.en || "";
+      const packaging = product.packaging?.en || product.spec?.en || "-";
+      const storage = product.storage?.en || "-";
+      const origin = product.origin?.en || "-";
+
+      document.getElementById("stage-modal-image").src = product.image;
+      document.getElementById("stage-modal-image").alt = product.alt?.en || title;
+      document.getElementById("stage-modal-title").textContent = title;
+      document.getElementById("stage-modal-description").textContent = description;
+      document.getElementById("stage-modal-carton").textContent = packaging;
+      document.getElementById("stage-modal-pallet").textContent = origin;
+      document.getElementById("stage-modal-storage").textContent = storage;
+      document.getElementById("stage-modal-ean").textContent = product.ean || "-";
+      document.getElementById("stage-modal-weight").textContent = product.weight || extractWeight(product.spec?.en || packaging);
+      modal.hidden = false;
+      document.body.classList.add("modal-open");
+    }
+
+    carousel.addEventListener("click", (event) => {
+      const slide = event.target.closest(".product-stage-card");
+      if (!slide || !slide.classList.contains("swiper-slide-active")) return;
+      const product = window.products?.find((item) => item.id === slide.dataset.productId);
+      openStageModal(product);
+    });
+
+    modal?.querySelectorAll("[data-stage-modal-close]").forEach((button) => {
+      button.addEventListener("click", closeStageModal);
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && modal && !modal.hidden) closeStageModal();
+    });
+  }
+
+  function createProductsStageSwiper(carousel) {
+    const slideCount = carousel.querySelectorAll(".swiper-slide").length;
+    const initialSlide = slideCount ? Math.floor(slideCount / 2) : 0;
+    return new window.Swiper(carousel, {
+      effect: "coverflow",
+      centeredSlides: true,
+      slidesPerView: "auto",
+      initialSlide,
+      loop: true,
+      grabCursor: true,
+      speed: 620,
+      autoplay: {
+        delay: 2800,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: false
+      },
+      coverflowEffect: {
+        rotate: 25,
+        stretch: 0,
+        depth: 200,
+        modifier: 1,
+        slideShadows: false
+      },
+      navigation: {
+        nextEl: ".products-stage-carousel .swiper-button-next",
+        prevEl: ".products-stage-carousel .swiper-button-prev"
+      },
+      pagination: {
+        el: ".products-stage-carousel .swiper-pagination",
+        clickable: true
+      }
+    });
+  }
+
+  function setupProductsStageAutoplayHover(carousel, swiper) {
+    if (!carousel || !swiper?.autoplay) return;
+    if (carousel.dataset.autoplayHoverBound === "true") return;
+    carousel.dataset.autoplayHoverBound = "true";
+
+    carousel.addEventListener("pointerover", (event) => {
+      const slide = event.target.closest(".product-stage-card");
+      if (slide?.classList.contains("swiper-slide-active")) {
+        state.productsStageSwiper?.autoplay?.stop();
+      }
+    });
+
+    carousel.addEventListener("pointerout", (event) => {
+      const slide = event.target.closest(".product-stage-card");
+      if (!slide?.classList.contains("swiper-slide-active")) return;
+      if (slide.contains(event.relatedTarget)) return;
+      state.productsStageSwiper?.autoplay?.start();
+    });
+  }
+
+  function productText(value, lang = state.lang) {
+    if (!value || typeof value !== "object") return value || "";
+    return value[lang] || value.en || "";
+  }
+
+  function extractWeight(text) {
+    const match = String(text || "").match(/\b\d+(?:[.,]\d+)?\s?(?:kg|g)\b/i);
+    return match ? match[0].replace(/\s+/g, "") : "400g";
+  }
+
+  function renderProductsStageSlides() {
+    const wrapper = document.querySelector(".products-coverflow .swiper-wrapper");
+    if (!wrapper || !window.products?.length) return;
+    wrapper.innerHTML = window.products.filter((product) => product.category === "vegetables").map((product) => {
+      const name = productText(product.name, "en");
+      return `
+        <article class="swiper-slide product-stage-card" data-product-id="${product.id}">
+          <img class="product-stage-badge" src="assets/images/halal.png" alt="Halal certified" loading="lazy">
+          <img class="product-stage-image" src="${product.image}" alt="${productText(product.alt, "en") || name}" loading="lazy">
+          <div class="product-stage-label"><h3>${name}</h3></div>
+        </article>`;
+    }).join("");
+  }
+
+  function refreshProductsStageCarousel() {
+    const carousel = document.querySelector(".products-coverflow");
+    if (!carousel || !window.Swiper || !window.products?.length) return;
+    if (state.productsStageSwiper) {
+      state.productsStageSwiper.destroy(true, true);
+    }
+    renderProductsStageSlides();
+    state.productsStageSwiper = createProductsStageSwiper(carousel);
+    setupProductsStageAutoplayHover(carousel, state.productsStageSwiper);
+  }
+
+  function setupProductsStageSnap() {
+    const stage = document.querySelector(".products-stage-section");
+    if (document.body.dataset.page !== "products" || !stage || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let ticking = false;
+    let snapping = false;
+    let snapped = false;
+    let lastY = window.scrollY;
+
+    function updateSnapState() {
+      const currentY = window.scrollY;
+      const direction = currentY > lastY ? "down" : "up";
+      const rect = stage.getBoundingClientRect();
+      const viewHeight = window.innerHeight;
+      const approachingFromAbove = direction === "down" && rect.top > 0 && rect.top < viewHeight * 0.62;
+      const approachingFromBelow = direction === "up" && rect.top < 0 && rect.bottom > viewHeight * 0.38;
+      const farAway = rect.top > viewHeight * 0.86 || rect.bottom < viewHeight * 0.14;
+
+      if (farAway) snapped = false;
+
+      if (!snapping && !snapped && (approachingFromAbove || approachingFromBelow)) {
+        snapping = true;
+        snapped = true;
+        stage.scrollIntoView({ behavior: "smooth", block: "start" });
+        window.setTimeout(() => {
+          snapping = false;
+        }, 520);
+      }
+
+      lastY = currentY;
+      ticking = false;
+    }
+
+    function requestSnapUpdate() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(updateSnapState);
+    }
+
+    window.addEventListener("scroll", requestSnapUpdate, { passive: true });
   }
 
   function initFloatingSocial() {
@@ -261,7 +474,7 @@
       .forEach((product) => {
         const specText = (typeof product.spec === "object" ? product.spec[state.lang] : product.spec) || "";
         const card = document.createElement("article");
-        card.className = `product-card product-${product.id}`;
+        card.className = `product-card product-${product.id} product-category-${product.category}`;
         card.innerHTML = `
           <div class="card-img">
             <img src="${product.image}" alt="${product.alt?.[state.lang] || ''}" loading="lazy">
@@ -714,6 +927,8 @@
   document.addEventListener("DOMContentLoaded", () => {
     setupNavigation();
     setupCarousel();
+    setupProductsStageCarousel();
+    setupProductsStageSnap();
     initFloatingSocial();
     setupModal();
     setupContactForm();
