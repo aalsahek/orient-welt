@@ -13,70 +13,76 @@
     <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
     <header class="site-header"><a class="brand" href="index.html"><img src="assets/images/logo-orient-welt.png" alt="Orient Welt logo"></a><button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false"><span></span><span></span><span></span><span class="sr-only" data-i18n="nav.menu">Menu</span></button><nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="index.html" data-i18n="nav.home">Home</a><a href="about.html" data-i18n="nav.about">Orient Welt</a><a href="products.html" data-i18n="nav.products">Products</a><a href="contact.html" data-i18n="nav.contact">Contact Us</a></nav><div class="language-switcher" aria-label="Language"><button type="button" data-lang="en" aria-label="English">🇬🇧</button><button type="button" data-lang="de" aria-label="Deutsch">🇩🇪</button></div></header>
     <main id="main">
-      <section class="page-hero" style="--hero-image: url('assets/images/hero-contact.svg')"><div><h1 data-i18n="contact.hero.title">Contact Us</h1><p data-i18n="contact.hero.text">Start a conversation about sourcing, supply, and long-term cooperation.</p></div></section>
-      <div class="content-parallax-panel">
-      <section class="section contact-layout">
-        <form class="contact-form" id="contact-form" novalidate>
-          <h2 data-i18n="contact.form.title">Send us a message</h2>
-          <div><label for="name" data-i18n="contact.form.name">Name</label><input id="name" name="name" autocomplete="name" required></div>
-          <div><label for="company" data-i18n="contact.form.company">Company Name</label><input id="company" name="company" autocomplete="organization"></div>
-          <div><label for="email" data-i18n="contact.form.email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
-          <div><label for="phone" data-i18n="contact.form.phone">Phone</label><input id="phone" name="phone" autocomplete="tel"></div>
-          <div><label for="message" data-i18n="contact.form.message">Message</label><textarea id="message" name="message" rows="6" required></textarea></div>
-          <p class="form-status" id="form-status" aria-live="polite"></p>
-          <button class="btn btn-primary" type="submit" data-i18n="contact.form.submit">Send Message</button>
-        </form>
-        <aside class="contact-details">
-          <h2 data-i18n="contact.details.title">Contact details</h2>
-          <p><strong data-i18n="contact.details.addressLabel">Address</strong><span data-i18n="footer.address">Hamburg, Germany</span></p>
-          <p><strong data-i18n="contact.details.phoneLabel">Phone</strong><span data-i18n="footer.phone">+49 40 000000</span></p>
-          <p><strong data-i18n="contact.details.emailLabel">Email</strong><a href="mailto:info@orientwelt.example">info@orientwelt.example</a></p>
-          <p><strong data-i18n="contact.details.hoursLabel">Business Hours</strong><span data-i18n="contact.details.hours">Mon-Fri, 9:00-17:00</span></p>
-          <div class="socials"><a href="#" aria-label="TikTok">tt</a><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="Instagram">ig</a></div>
-        </aside>
-      </section>
-      <section class="team-showcase" aria-labelledby="contact-team-title">
-        <div class="team-showcase-inner">
-          <div class="team-showcase-heading">
-            <span data-i18n="about.team.kicker">Leadership</span>
-            <h2 id="contact-team-title" data-i18n="about.team.title">MEET OUR TEAM</h2>
-          </div>
-          <div class="team-member-row">
-            <div class="team-member-copy">
-              <h3 data-i18n="about.team.one.name">Team Member</h3>
-              <p class="team-member-title" data-i18n="about.team.one.role">Managing Director</p>
-              <p data-i18n="about.team.one.desc">Guides Orient Welt’s commercial direction, supplier relationships, and long-term growth across European food trading channels.</p>
-            </div>
-            <div class="team-member-photo">
-              <img src="assets/images/team-1.svg" alt="Team member portrait" loading="lazy">
-            </div>
-          </div>
-          <div class="team-member-row team-member-row-even">
-            <div class="team-member-photo">
-              <img src="assets/images/team-2.svg" alt="Team member portrait" loading="lazy">
-            </div>
-            <div class="team-member-copy">
-              <h3 data-i18n="about.team.two.name">Team Member</h3>
-              <p class="team-member-title" data-i18n="about.team.two.role">Supply Coordination</p>
-              <p data-i18n="about.team.two.desc">Coordinates practical product flow, documentation, and supplier communication so each trading process stays clear and dependable.</p>
-            </div>
-          </div>
-          <div class="team-member-row">
-            <div class="team-member-copy">
-              <h3 data-i18n="about.team.three.name">Team Member</h3>
-              <p class="team-member-title" data-i18n="about.team.three.role">Customer Relations</p>
-              <p data-i18n="about.team.three.desc">Supports buyers with responsive communication, product details, and steady follow-through from inquiry to delivery planning.</p>
-            </div>
-            <div class="team-member-photo">
-              <img src="assets/images/team-3.svg" alt="Team member portrait" loading="lazy">
-            </div>
-          </div>
+      <section class="page-hero contact-hero" style="--hero-image: url('assets/images/hero-contact.svg')">
+        <div>
+          <span data-i18n="contact.hero.kicker">Direct Trade Desk</span>
+          <h1 data-i18n="contact.hero.title">Contact Us</h1>
+          <p data-i18n="contact.hero.text">Reach the people who coordinate sourcing, documentation, and buyer support.</p>
         </div>
       </section>
-      <section class="map-section">
-        <!-- Placeholder map: replace with the real office or warehouse location when available. -->
-        <iframe title="Placeholder map of Hamburg city center" loading="lazy" src="https://www.google.com/maps?q=Hamburg%2C%20Germany&output=embed"></iframe>
-      </section>
+      <div class="content-parallax-panel">
+        <section class="contact-command" aria-labelledby="contact-command-title">
+          <div class="contact-command-heading">
+            <span data-i18n="contact.details.title">Contact details</span>
+            <h2 id="contact-command-title" data-i18n="contact.command.title">One clear route into Orient Welt</h2>
+          </div>
+          <div class="contact-signal-grid">
+            <a class="contact-signal" href="tel:+4940000000">
+              <span class="contact-signal-icon">☎</span>
+              <span data-i18n="contact.details.phoneLabel">Phone</span>
+              <strong data-i18n="footer.phone">+49 40 000000</strong>
+            </a>
+            <a class="contact-signal" href="mailto:info@orientwelt.example">
+              <span class="contact-signal-icon">@</span>
+              <span data-i18n="contact.details.emailLabel">Email</span>
+              <strong>info@orientwelt.example</strong>
+            </a>
+            <div class="contact-signal">
+              <span class="contact-signal-icon">⌖</span>
+              <span data-i18n="contact.details.addressLabel">Address</span>
+              <strong data-i18n="footer.address">Hamburg, Germany</strong>
+            </div>
+          </div>
+        </section>
+        <section class="team-showcase contact-team-showcase" aria-labelledby="contact-team-title">
+          <div class="team-showcase-inner">
+            <div class="team-showcase-heading">
+              <span data-i18n="about.team.kicker">Leadership</span>
+              <h2 id="contact-team-title" data-i18n="about.team.title">MEET OUR TEAM</h2>
+            </div>
+            <div class="contact-team-grid">
+              <article class="contact-team-card">
+                <div class="contact-team-photo">
+                  <img src="assets/images/team-1.svg" alt="Team member portrait" loading="lazy">
+                </div>
+                <div class="contact-team-copy">
+                  <h3 data-i18n="about.team.one.name">Team Member</h3>
+                  <p class="team-member-title" data-i18n="about.team.one.role">Managing Director</p>
+                  <div class="contact-team-actions">
+                    <a href="tel:+4940000000"><span>☎</span><strong data-i18n="footer.phone">+49 40 000000</strong></a>
+                    <a href="mailto:info@orientwelt.example"><span>@</span><strong>info@orientwelt.example</strong></a>
+                  </div>
+                </div>
+              </article>
+              <article class="contact-team-card">
+                <div class="contact-team-photo">
+                  <img src="assets/images/team-2.svg" alt="Team member portrait" loading="lazy">
+                </div>
+                <div class="contact-team-copy">
+                  <h3 data-i18n="about.team.two.name">Team Member</h3>
+                  <p class="team-member-title" data-i18n="about.team.two.role">Supply Coordination</p>
+                  <div class="contact-team-actions">
+                    <a href="tel:+4940000000"><span>☎</span><strong data-i18n="footer.phone">+49 40 000000</strong></a>
+                    <a href="mailto:info@orientwelt.example"><span>@</span><strong>info@orientwelt.example</strong></a>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+        <section class="map-section contact-map-section">
+          <iframe title="Map of Hamburg city center" loading="lazy" src="https://www.google.com/maps?q=Hamburg%2C%20Germany&output=embed"></iframe>
+        </section>
       </div>
     </main>
     <footer class="site-footer"><span class="footer-glass-shine" aria-hidden="true"></span><div class="footer-inner"><div class="footer-brand"><img src="assets/images/logo-orient-welt.png" alt="Orient Welt logo"><span data-i18n="brand.tagline">International Food Trading</span><p data-i18n="footer.description">Selected food products, clear sourcing, and reliable trading support for European buyers.</p></div><div class="footer-links"><h2 class="footer-title" data-i18n="footer.quickLinks">Quick Links</h2><nav aria-label="Footer navigation"><a href="index.html" data-i18n="nav.home">Home</a><a href="about.html" data-i18n="nav.about">Orient Welt</a><a href="products.html" data-i18n="nav.products">Products</a><a href="contact.html" data-i18n="nav.contact">Contact Us</a></nav></div><div class="footer-contact"><h2 class="footer-title" data-i18n="footer.contact">Contact</h2><address><span data-i18n="footer.address">Hamburg, Germany</span><span data-i18n="footer.phone">+49 40 000000</span><a href="mailto:info@orientwelt.example">info@orientwelt.example</a></address><div class="socials"><a href="#" aria-label="TikTok">tt</a><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="Instagram">ig</a></div></div></div></footer>

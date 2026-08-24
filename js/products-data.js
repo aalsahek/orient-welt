@@ -206,7 +206,7 @@ window.products = [
     category: "vegetables",
     image: "assets/images/products/bags/Ardh Shawki (Artichoke Bottoms).png",
     alt: { en: "Ardh Shawki artichoke product image", de: "Produktbild von Ardh Shawki Artischocken" },
-    name: { en: "Ardh Shawki (Artichoke Bottoms)", de: "Ardh Shawki (Artischockenböden)" },
+    name: { en: "Ardh Shawki (Artichoke Bottoms)", de: "Artischockenböden" },
     spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "Cleaned and trimmed artichoke bottoms, individually quick-frozen at source.", de: "Gereinigte und zugeschnittene Artischockenböden, einzeln schockgefrostet." },
     description: {
@@ -222,7 +222,7 @@ window.products = [
     category: "vegetables",
     image: "assets/images/products/bags/Chopped Coriander.png",
     alt: { en: "Frozen Coriander product image", de: "Produktbild von Tiefkühl-Koriander" },
-    name: { en: "Chopped Coriander", de: "Gehackter Koriander" },
+    name: { en: "Chopped Coriander", de: "Koriander fein gehackt" },
     spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "Aromatic chopped green coriander for seasonings, garnishes, and soups.", de: "Aromatischer gehackter Koriander zum Würzen, Garnieren und für Suppen." },
     description: {
@@ -238,7 +238,7 @@ window.products = [
     category: "vegetables",
     image: "assets/images/products/bags/grilled-eggplant.png",
     alt: { en: "Roasted Eggplant product image", de: "Produktbild von Gegrillter Aubergine" },
-    name: { en: "Roasted Eggplant Pulp", de: "Gegrilltes Auberginenfruchtfleisch" },
+    name: { en: "Roasted Eggplant Pulp", de: "Geröstete Auberginenpaste" },
     spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "Flame-roasted eggplant pulp with natural smoky flavor for Baba Ghanoush.", de: "Über offener Flamme gegrillte Aubergine für authentisches Baba Ghanoush." },
     description: {
@@ -254,7 +254,7 @@ window.products = [
     category: "vegetables",
     image: "assets/images/products/bags/falafel.png",
     alt: { en: "Prepared Falafel product image", de: "Produktbild von Zubereiteter Falafel" },
-    name: { en: "Pre-formed Falafel Patties", de: "Vorgeformte Falafel-Bällchen" },
+    name: { en: "Pre-formed Falafel Patties", de: "Falafel" },
     spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "Crispy chickpea and herb falafel, pre-fried and quick-frozen for fast serving.", de: "Knusprige Kichererbsen-Falafel, vorgebacken und schockgefrostet." },
     description: {
@@ -270,7 +270,7 @@ window.products = [
     category: "vegetables",
     image: "assets/images/products/bags/green-ful.png",
     alt: { en: "Foul Fava Beans product image", de: "Produktbild von Foul Ackerbohnen" },
-    name: { en: "Foul Mudammas (Fava Beans)", de: "Foul Mudammas (Ackerbohnen)" },
+    name: { en: "Foul Mudammas (Fava Beans)", de: "Dicke Bohnen" },
     spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "Tender cooked fava beans prepared for traditional breakfast dishes.", de: "Zart gekochte Saubohnen für das traditionelle nahöstliche Frühstück." },
     description: {
@@ -286,7 +286,7 @@ window.products = [
     category: "vegetables",
     image: "assets/images/products/bags/green-bean.png",
     alt: { en: "Cut Green Beans product image", de: "Produktbild von Schnittbohnen" },
-    name: { en: "Cut Green Beans (IQF)", de: "Schnittbohnen (IQF)" },
+    name: { en: "Cut Green Beans (IQF)", de: "Junge Brechbohnen" },
     spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "Tender young green beans trimmed, uniformly cut, and quickly frozen.", de: "Zarte grüne Bohnen, gleichmäßig geschnitten und schockgefrostet." },
     description: {
@@ -302,7 +302,7 @@ window.products = [
     category: "vegetables",
     image: "assets/images/products/bags/mango.png",
     alt: { en: "Frozen Mango Pulp & Chunks product image", de: "Produktbild von Mango-Fruchtfleisch & Würfel" },
-    name: { en: "Egyptian Mango Chunks / Pulp", de: "Ägyptische Mango (Würfel / Fruchtfleisch)" },
+    name: { en: "Egyptian Mango Chunks / Pulp", de: "Mango in Streifen" },
     spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "Naturally sweet Egyptian mango chunks with rich aroma and golden color.", de: "Sonnengereifte Mangostücke mit unvergleichlicher Süße und Aroma." },
     description: {
@@ -318,7 +318,7 @@ window.products = [
     category: "vegetables",
     image: "assets/images/products/bags/mlokhya-leavs.png",
     alt: { en: "Whole Molokhia Leaves product image", de: "Produktbild von Ganzen Molokhia-Blättern" },
-    name: { en: "Molokhia Whole Leaves", de: "Molokhia Ganze Blätter" },
+    name: { en: "Molokhia Whole Leaves", de: "Molokhia (Blätter)" },
     spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "Carefully hand-picked whole Molokhia leaves frozen fresh.", de: "Sorgfältig handgepflückte ganze Molokhia-Blätter, schockgefrostet." },
     description: {
@@ -334,7 +334,7 @@ window.products = [
     category: "vegetables",
     image: "assets/images/products/bags/mlokhya.png",
     alt: { en: "Minced Molokhia product image", de: "Produktbild von Fein Gehackter Molokhia" },
-    name: { en: "Molokhia Minced (Classic)", de: "Molokhia Fein Gehackt (Klassik)" },
+    name: { en: "Molokhia Minced (Classic)", de: "Molokhia (gehackt)" },
     spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "Finely minced Molokhia greens, the classic staple for Egyptian national soup.", de: "Fein gehackte Molokhia-Blätter, der Klassiker für die Nationalküche." },
     description: {
@@ -364,9 +364,9 @@ window.products = [
   {
     id: "peas",
     category: "vegetables",
-    image: "assets/images/products/peas.png",
+    image: "assets/images/products/bags/peas.png",
     alt: { en: "Extra Fine Green Peas product image", de: "Produktbild von Extra Feinen Erbsen" },
-    name: { en: "Extra Fine Green Peas", de: "Extra Feine Grüne Erbsen" },
+    name: { en: "Extra Fine Green Peas", de: "Grüne Erbsen" },
     spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "Tender, naturally sweet green peas sorted for size and softness.", de: "Zarte, süße grüne Erbsen, schonend sortiert und schockgefrostet." },
     description: {
@@ -382,7 +382,7 @@ window.products = [
     category: "vegetables",
     image: "assets/images/products/bags/peeled-ful.png",
     alt: { en: "Peeled Fava Beans product image", de: "Produktbild von Geschälten Ackerbohnen" },
-    name: { en: "Peeled Fava Beans (Foul Madchouch)", de: "Geschälte Ackerbohnen (Foul Madchouch)" },
+    name: { en: "Peeled Fava Beans (Foul Madchouch)", de: "Saubohnen (geschält)" },
     spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     short: { en: "De-skinned fava beans, essential base for traditional falafel and dips.", de: "Geschälte Saubohnen, unverzichtbare Basis für hausgemachte Falafel." },
     description: {
@@ -392,5 +392,53 @@ window.products = [
     packaging: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
     storage: { en: "Keep frozen at -18°C", de: "Tiefgekühlt lagern bei -18°C" },
     origin: { en: "Egypt / Middle East", de: "Ägypten / Naher Osten" }
+  },
+  {
+    id: "okra-zero",
+    category: "vegetables",
+    image: "assets/images/products/bags/okra-zero.png",
+    alt: { en: "Okra Zero product image", de: "Produktbild von Okra Zero" },
+    name: { en: "Okra Zero", de: "Okraschoten (Zero)" },
+    spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
+    short: { en: "Small tender okra pods, quick-frozen for traditional stews and side dishes.", de: "Kleine zarte Okraschoten, schockgefrostet für traditionelle Eintöpfe und Beilagen." },
+    description: {
+      en: "Selected fine okra pods cleaned, trimmed, and quick-frozen to preserve natural texture and color. Ideal for Middle Eastern okra stews and professional kitchen preparation.",
+      de: "Ausgewählte feine Okraschoten, gereinigt, zugeschnitten und schockgefrostet zur Bewahrung von Textur und Farbe. Ideal für nahöstliche Okra-Eintöpfe und Profiküchen."
+    },
+    packaging: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
+    storage: { en: "Keep frozen at -18°C", de: "Tiefgekühlt lagern bei -18°C" },
+    origin: { en: "Egypt / Selected Farms", de: "Ägypten / Ausgewählte Betriebe" }
+  },
+  {
+    id: "okra-f1",
+    category: "vegetables",
+    image: "assets/images/products/bags/okra-f1.png",
+    alt: { en: "Okra F1 product image", de: "Produktbild von Okra F1" },
+    name: { en: "Okra F1", de: "Okraschoten F1" },
+    spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
+    short: { en: "Uniform frozen okra selected for consistent size, color, and cooking quality.", de: "Gleichmäßige Tiefkühl-Okra, ausgewählt für konstante Größe, Farbe und Kochqualität." },
+    description: {
+      en: "Carefully graded okra with consistent pod size for reliable retail and food-service use. Frozen quickly after harvest to support dependable quality in every carton.",
+      de: "Sorgfältig sortierte Okra mit gleichmäßiger Schotengröße für zuverlässige Retail- und Food-Service-Anwendungen. Direkt nach der Ernte schockgefrostet."
+    },
+    packaging: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
+    storage: { en: "Keep frozen at -18°C", de: "Tiefgekühlt lagern bei -18°C" },
+    origin: { en: "Egypt / Selected Farms", de: "Ägypten / Ausgewählte Betriebe" }
+  },
+  {
+    id: "okra-extra",
+    category: "vegetables",
+    image: "assets/images/products/bags/okra-extra.png",
+    alt: { en: "Okra Extra product image", de: "Produktbild von Okra Extra" },
+    name: { en: "Okra Extra", de: "Okra Extra (Fein)" },
+    spec: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
+    short: { en: "Premium okra pods prepared for authentic stews, catering, and retail assortments.", de: "Premium-Okraschoten für authentische Eintöpfe, Catering und Retail-Sortimente." },
+    description: {
+      en: "Premium grade frozen okra selected for clean appearance, tender bite, and dependable cooking performance across wholesale and food-service programs.",
+      de: "Premium-Tiefkühlokra, ausgewählt für saubere Optik, zarten Biss und verlässliche Zubereitung in Großhandel und Food-Service."
+    },
+    packaging: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton" },
+    storage: { en: "Keep frozen at -18°C", de: "Tiefgekühlt lagern bei -18°C" },
+    origin: { en: "Egypt / Selected Farms", de: "Ägypten / Ausgewählte Betriebe" }
   }
 ];

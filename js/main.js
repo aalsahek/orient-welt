@@ -202,6 +202,51 @@
     showSlide(0);
   }
 
+  function setupHomeHeroScrollEffect() {
+    const hero = document.querySelector(".hero-carousel");
+    if (document.body.dataset.page !== "home" || !hero) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let ticking = false;
+    let heroTop = hero.offsetTop;
+
+    function setProgress(progress) {
+      const eased = Math.min(1, Math.max(0, progress));
+      hero.style.setProperty("--home-hero-y", `${-10 * eased}vh`);
+      hero.style.setProperty("--home-hero-opacity", String(Math.max(0, 1 - (1.2 * eased))));
+      hero.style.setProperty("--home-hero-blur", `${8 * eased}px`);
+      hero.style.setProperty("--home-hero-controls-opacity", String(Math.max(0, 1 - (1.6 * eased))));
+      hero.style.setProperty("--home-hero-controls-y", `${34 * eased}px`);
+    }
+
+    function update() {
+      if (reduceMotion.matches) {
+        setProgress(0);
+        ticking = false;
+        return;
+      }
+      const scroller = document.scrollingElement || document.documentElement;
+      const currentY = window.scrollY || scroller.scrollTop || 0;
+      const distance = Math.max(1, hero.offsetHeight * .58);
+      setProgress((currentY - heroTop) / distance);
+      ticking = false;
+    }
+
+    function requestUpdate() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
+
+    update();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", () => {
+      heroTop = hero.offsetTop;
+      requestUpdate();
+    });
+    reduceMotion.addEventListener?.("change", requestUpdate);
+  }
+
   function setupProductsStageCarousel() {
     const carousel = document.querySelector(".products-coverflow");
     const modal = document.getElementById("product-stage-modal");
@@ -210,6 +255,7 @@
     renderProductsStageSlides();
     state.productsStageSwiper = createProductsStageSwiper(carousel);
     setupProductsStageAutoplayHover(carousel, state.productsStageSwiper);
+    setupProductsFeatureReveal(state.productsStageSwiper);
 
     function closeStageModal() {
       if (!modal) return;
@@ -219,21 +265,21 @@
 
     function openStageModal(product) {
       if (!modal || !product) return;
-      const title = product.name?.en || "";
-      const description = product.description?.en || product.short?.en || "";
-      const packaging = product.packaging?.en || product.spec?.en || "-";
-      const storage = product.storage?.en || "-";
-      const origin = product.origin?.en || "-";
+      const title = product.name?.[state.lang] || product.name?.en || "";
+      const description = product.description?.[state.lang] || product.short?.[state.lang] || product.description?.en || product.short?.en || "";
+      const packaging = product.packaging?.[state.lang] || product.spec?.[state.lang] || product.packaging?.en || product.spec?.en || "-";
+      const storage = product.storage?.[state.lang] || product.storage?.en || "-";
+      const origin = product.origin?.[state.lang] || product.origin?.en || "-";
 
       document.getElementById("stage-modal-image").src = product.image;
-      document.getElementById("stage-modal-image").alt = product.alt?.en || title;
+      document.getElementById("stage-modal-image").alt = product.alt?.[state.lang] || product.alt?.en || title;
       document.getElementById("stage-modal-title").textContent = title;
       document.getElementById("stage-modal-description").textContent = description;
       document.getElementById("stage-modal-carton").textContent = packaging;
       document.getElementById("stage-modal-pallet").textContent = origin;
       document.getElementById("stage-modal-storage").textContent = storage;
       document.getElementById("stage-modal-ean").textContent = product.ean || "-";
-      document.getElementById("stage-modal-weight").textContent = product.weight || extractWeight(product.spec?.en || packaging);
+      document.getElementById("stage-modal-weight").textContent = productWeight(product);
       modal.hidden = false;
       document.body.classList.add("modal-open");
     }
@@ -270,10 +316,11 @@
         pauseOnMouseEnter: false
       },
       coverflowEffect: {
-        rotate: 25,
-        stretch: 0,
-        depth: 200,
-        modifier: 1,
+        rotate: 32,
+        stretch: 10,
+        depth: 300,
+        modifier: 1.1,
+        scale: 0.88,
         slideShadows: false
       },
       navigation: {
@@ -307,6 +354,20 @@
     });
   }
 
+  function restartProductsFeatureReveal() {
+    const featureBar = document.querySelector(".products-feature-bar");
+    if (!featureBar) return;
+    featureBar.classList.remove("is-revealing");
+    void featureBar.offsetWidth;
+    featureBar.classList.add("is-revealing");
+  }
+
+  function setupProductsFeatureReveal(swiper) {
+    if (!swiper?.on) return;
+    restartProductsFeatureReveal();
+    swiper.on("slideChangeTransitionStart", restartProductsFeatureReveal);
+  }
+
   function productText(value, lang = state.lang) {
     if (!value || typeof value !== "object") return value || "";
     return value[lang] || value.en || "";
@@ -317,15 +378,55 @@
     return match ? match[0].replace(/\s+/g, "") : "400g";
   }
 
+  function productWeight(product) {
+    const weights = {
+      coriander: "200g",
+      "okra-zero": "750g"
+    };
+    return product.weight || weights[product.id] || extractWeight(product.spec?.[state.lang] || product.spec?.en || product.packaging?.[state.lang] || product.packaging?.en);
+  }
+
   function renderProductsStageSlides() {
     const wrapper = document.querySelector(".products-coverflow .swiper-wrapper");
     if (!wrapper || !window.products?.length) return;
+    const shortNames = {
+      en: {
+        "ardh-shawki": "Artichoke Bottoms",
+        "green-bean": "Green Beans",
+        "mlokhya-leafs": "Molokhia Leaves",
+        "mlokhya": "Minced Molokhia",
+        "peas-carrots": "Peas & Carrots",
+        "peeled-foul": "Peeled Fava Beans",
+        "okra-zero": "Okra Zero",
+        "okra-f1": "Okra F1",
+        "okra-extra": "Okra Extra"
+      },
+      de: {
+        "ardh-shawki": "Artischockenböden",
+        "coriander": "Koriander fein gehackt",
+        "eggplant": "Geröstete Auberginenpaste",
+        "foul": "Dicke Bohnen",
+        "green-bean": "Junge Brechbohnen",
+        "mango": "Mango in Streifen",
+        "mlokhya-leafs": "Molokhia (Blätter)",
+        "mlokhya": "Molokhia (gehackt)",
+        "peas-carrots": "Erbsen & Karotten",
+        "peas": "Grüne Erbsen",
+        "peeled-foul": "Saubohnen (geschält)",
+        "okra-zero": "Okraschoten (Zero)",
+        "okra-f1": "Okraschoten F1",
+        "okra-extra": "Okra Extra (Fein)"
+      }
+    };
     wrapper.innerHTML = window.products.filter((product) => product.category === "vegetables").map((product) => {
-      const name = productText(product.name, "en");
+      const name = shortNames[state.lang]?.[product.id] || productText(product.name, state.lang);
+      const weight = productWeight(product);
+      const halalAlt = state.lang === "de" ? "Halal zertifiziert" : "Halal certified";
       return `
         <article class="swiper-slide product-stage-card" data-product-id="${product.id}">
-          <img class="product-stage-badge" src="assets/images/halal.png" alt="Halal certified" loading="lazy">
-          <img class="product-stage-image" src="${product.image}" alt="${productText(product.alt, "en") || name}" loading="lazy">
+          <span class="product-stage-weight">${weight}</span>
+          <img class="product-stage-badge" src="assets/images/halal.png" alt="${halalAlt}" loading="lazy">
+          <img class="product-stage-image" src="${product.image}" alt="${productText(product.alt, state.lang) || name}" loading="lazy">
           <div class="product-stage-label"><h3>${name}</h3></div>
         </article>`;
     }).join("");
@@ -340,6 +441,7 @@
     renderProductsStageSlides();
     state.productsStageSwiper = createProductsStageSwiper(carousel);
     setupProductsStageAutoplayHover(carousel, state.productsStageSwiper);
+    setupProductsFeatureReveal(state.productsStageSwiper);
   }
 
   function setupProductsStageSnap() {
@@ -475,7 +577,9 @@
         const specText = (typeof product.spec === "object" ? product.spec[state.lang] : product.spec) || "";
         const card = document.createElement("article");
         card.className = `product-card product-${product.id} product-category-${product.category}`;
+        const weightBadge = product.category === "vegetables" ? `<span class="product-card-weight">${productWeight(product)}</span>` : "";
         card.innerHTML = `
+          ${weightBadge}
           <div class="card-img">
             <img src="${product.image}" alt="${product.alt?.[state.lang] || ''}" loading="lazy">
           </div>
@@ -925,8 +1029,12 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
+    if (document.body.dataset.lang) {
+      state.lang = document.body.dataset.lang;
+    }
     setupNavigation();
     setupCarousel();
+    setupHomeHeroScrollEffect();
     setupProductsStageCarousel();
     setupProductsStageSnap();
     initFloatingSocial();
