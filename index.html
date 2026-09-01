@@ -16,7 +16,7 @@
   </head>
   <body data-page="home">
     <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
-    <header class="site-header">
+    <header class="site-header is-chrome-hidden">
       <a class="brand" href="index.html" aria-label="Orient Welt home">
         <img src="assets/images/logo-orient-welt.png" alt="Orient Welt logo">
       </a>
@@ -39,7 +39,7 @@
     <aside class="floating-social" aria-label="Floating contact and social links">
       <ul>
         <li><a href="tel:+4940000000" aria-label="Phone"><img src="assets/images/icons/socials/whatsapp-2.png" alt=""></a></li>
-        <li><a href="mailto:info@orientwelt.example" aria-label="Email"><img src="assets/images/icons/socials/email.png" alt=""></a></li>
+        <li><a href="mailto:info@orientwelt.com" aria-label="Email"><img src="assets/images/icons/socials/email.png" alt=""></a></li>
         <li><a href="#" aria-label="TikTok"><img src="assets/images/icons/socials/tik-tok.png" alt=""></a></li>
         <li><a href="#" aria-label="Instagram"><img src="assets/images/icons/socials/instagram.png" alt=""></a></li>
         <li><a href="#" aria-label="Facebook"><img src="assets/images/icons/socials/facebook.png" alt=""></a></li>
@@ -53,36 +53,36 @@
         <input class="hero-radio sr-only" type="radio" id="hero-slide-3" name="hero-slide" tabindex="-1">
         <input class="hero-radio sr-only" type="radio" id="hero-slide-4" name="hero-slide" tabindex="-1">
         <div class="hero-slider">
-          <article class="hero-slide hero-slide-arabic" style="--hero-image: url('../assets/images/home-header.png')">
+          <article class="hero-slide hero-slide-arabic" style="--hero-image: url('assets/images/home-header.png')">
             <div class="hero-slide-copy" dir="rtl">
-              <h1>نجعل منتجات العالم أقرب إليكم... وكأنكم في وطنكم.</h1>
+              <h1>نجعل منتجات العالم أقرب إليكم وكأنكم في وطنكم</h1>
             </div>
           </article>
-          <article class="hero-slide" style="--hero-image: url('../assets/images/home-header-2.png')">
-            <div class="hero-slide-copy">
-              <span class="hero-eyebrow" data-i18n="home.hero2.eyebrow">Logistics Network</span>
-              <h2 data-i18n="home.hero2.title">Reliable routes from the East to Europe</h2>
+          <article class="hero-slide hero-slide-arabic" style="--hero-image: url('assets/images/home-header-2.png')">
+            <div class="hero-slide-copy" dir="rtl" lang="ar">
+              <span class="hero-eyebrow">شبكة لوجستية</span>
+              <h2>طرق موثوقة من الشرق إلى أوروبا</h2>
               <span class="hero-divider" aria-hidden="true"></span>
-              <p data-i18n="home.hero2.text">Cold-chain awareness, clear communication, and efficient movement from supplier to buyer.</p>
-              <a class="hero-cta" href="about.html" data-i18n="home.hero2.cta">Learn About Us</a>
+              <p>خبرة في سلسلة التبريد، وتواصل واضح، ونقل فعّال من المورد إلى المشتري.</p>
+              <a class="hero-cta" href="about.html">تعرف علينا</a>
             </div>
           </article>
-          <article class="hero-slide" style="--hero-image: url('../assets/images/home-header-3.png')">
-            <div class="hero-slide-copy">
-              <span class="hero-eyebrow" data-i18n="home.hero3.eyebrow">Partnership First</span>
-              <h2 data-i18n="home.hero3.title">Built for long-term trading partnerships</h2>
+          <article class="hero-slide hero-slide-arabic" style="--hero-image: url('assets/images/home-header-3.png')">
+            <div class="hero-slide-copy" dir="rtl" lang="ar">
+              <span class="hero-eyebrow">الشراكة أولاً</span>
+              <h2>بُنينا من أجل شراكات تجارية طويلة الأمد</h2>
               <span class="hero-divider" aria-hidden="true"></span>
-              <p data-i18n="home.hero3.text">We value practical service, steady supply, and relationships based on trust.</p>
-              <a class="hero-cta" href="contact.html" data-i18n="home.hero3.cta">Get in Touch</a>
+              <p>نُقدّر الخدمة العملية، والتوريد المستقر، والعلاقات القائمة على الثقة.</p>
+              <a class="hero-cta" href="contact.html">تواصل معنا</a>
             </div>
           </article>
-          <article class="hero-slide" style="--hero-image: url('../assets/images/home-header-4.png')">
-            <div class="hero-slide-copy">
-              <span class="hero-eyebrow" data-i18n="home.hero4.eyebrow">Focused Variety</span>
-              <h2 data-i18n="home.hero4.title">A focused range for everyday food service needs</h2>
+          <article class="hero-slide hero-slide-arabic" style="--hero-image: url('assets/images/home-header-4.png')">
+            <div class="hero-slide-copy" dir="rtl" lang="ar">
+              <span class="hero-eyebrow">تشكيلة مركزة</span>
+              <h2>مجموعة مختارة لاحتياجات قطاع المواد الغذائية اليومية</h2>
               <span class="hero-divider" aria-hidden="true"></span>
-              <p data-i18n="home.hero4.text">Cheese, dairy, meat, and vegetable products selected for professional buyers.</p>
-              <a class="hero-cta" href="products.html" data-i18n="home.hero4.cta">View Product Range</a>
+              <p>منتجات الأجبان، الألبان، اللحوم، والخضروات المختارة للمشترين المحترفين.</p>
+              <a class="hero-cta" href="products.html">تصفح منتجاتنا</a>
             </div>
           </article>
         </div>
@@ -95,79 +95,73 @@
       </section>
 
       <div class="content-parallax-panel">
+        <canvas class="home-shader-bg" aria-hidden="true"></canvas>
         <section class="why-choose" aria-labelledby="why-choose-title">
           <div class="why-choose-inner">
-            <div class="why-heading">
-              <span>Why Choose Us</span>
-              <h2 id="why-choose-title">A dependable B2B gateway for Middle Eastern food trade</h2>
-              <p>Orient Welt GmbH supports European importers, wholesalers, and food-service partners with transparent sourcing, reliable logistics, and long-term supplier relationships.</p>
+            <div class="why-heading" dir="rtl" lang="ar">
+              <h2 id="why-choose-title">شريككم في تجارة المواد الغذائية</h2>
+              <p>تمثل Orient Welt GmbH شريكًا متخصصًا في استيراد وتوزيع المنتجات الغذائية المختارة. نربط المصنّعين بالشركات والأسواق بأسلوب موثوق، فعّال، وموجّه نحو الجودة.</p>
             </div>
 
             <div class="why-card-grid">
-              <article class="why-card">
+              <article class="why-card" dir="rtl" lang="ar">
                 <div class="why-card-content">
                   <span class="why-icon" aria-hidden="true">
                     <svg viewBox="0 0 48 48" role="img" focusable="false"><path d="M17 21h-5a6 6 0 0 0-6 6v9h14v-7"/><path d="M31 21h5a6 6 0 0 1 6 6v9H28v-7"/><circle cx="14" cy="12" r="5"/><circle cx="34" cy="12" r="5"/><path d="m18 29 5-5a3 3 0 0 1 4 0l3 3"/><path d="m30 27 2 2a3 3 0 0 1-4 4l-2-2"/><path d="m22 28 5 5"/></svg>
                   </span>
-                  <h3>Direct Factory Sourcing</h3>
-                  <p>Connecting European businesses directly with verified Middle Eastern food manufacturers for maximum transparency and efficiency.</p>
+                  <h3>استيراد</h3>
+                  <p>نستورد منتجات غذائية مختارة بعناية من مصنّعين موثوقين، مع رقابة جودة دقيقة وتوثيق كامل من المصدر حتى الوصول إلى أوروبا.</p>
                 </div>
-                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Business partners shaking hands" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="استيراد المنتجات الغذائية" loading="lazy">
               </article>
 
-              <article class="why-card">
+              <article class="why-card" dir="rtl" lang="ar">
                 <div class="why-card-content">
                   <span class="why-icon" aria-hidden="true">
                     <svg viewBox="0 0 48 48" role="img" focusable="false"><path d="M24 7v6"/><path d="M24 35v6"/><path d="m36 12-4 4"/><path d="m16 32-4 4"/><path d="M41 24h-6"/><path d="M13 24H7"/><path d="m36 36-4-4"/><path d="m16 16-4-4"/><circle cx="24" cy="24" r="8"/><path d="M19 24h10"/><path d="M24 19v10"/></svg>
                   </span>
-                  <h3>Reliable Supply Chains</h3>
-                  <p>Professional management of logistics from factory origin to European destination, guaranteeing punctual deliveries.</p>
+                  <h3>تجارة</h3>
+                  <p>نبني شراكات تجارية مباشرة وشفافة بين المصنّعين والعملاء، بأسعار تنافسية وشروط توريد واضحة تخدم جميع الأطراف.</p>
                 </div>
-                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Warehouse logistics and supply chain operations" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="تجارة المنتجات الغذائية" loading="lazy">
               </article>
 
-              <article class="why-card">
+              <article class="why-card" dir="rtl" lang="ar">
                 <div class="why-card-content">
                   <span class="why-icon" aria-hidden="true">
                     <svg viewBox="0 0 48 48" role="img" focusable="false"><circle cx="24" cy="24" r="17"/><path d="M7 24h34"/><path d="M24 7c5 5 8 11 8 17s-3 12-8 17"/><path d="M24 7c-5 5-8 11-8 17s3 12 8 17"/><circle cx="24" cy="24" r="6"/><path d="m24 18 2 4 4 2-4 2-2 4-2-4-4-2 4-2 2-4Z"/></svg>
                   </span>
-                  <h3>Vision &amp; Sustainable Growth</h3>
-                  <p>Aiming to be Europe’s most trusted B2B partner for Middle Eastern food trade through long-term value and competitive pricing.</p>
+                  <h3>توزيع</h3>
+                  <p>نوزّع المنتجات على الشركات والأسواق الأوروبية عبر شبكة لوجستية موثوقة تضمن التسليم في الوقت المحدد وبكل كفاءة.</p>
                 </div>
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Global network view representing international distribution" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="توزيع المنتجات الغذائية" loading="lazy">
               </article>
             </div>
 
-            <div class="pillar-panel">
-              <h3>Our Core Pillars</h3>
+            <div class="pillar-panel" dir="rtl">
+              <h3>ما يميزنا</h3>
               <div class="pillar-grid">
                 <article class="pillar-item">
-                  <span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><path d="M24 6 9 13v11c0 10 6 16 15 18 9-2 15-8 15-18V13L24 6Z"/><path d="m17 24 5 5 10-11"/></svg></span>
-                  <h4>Trust</h4>
-                  <p>Honesty and transparency in every transaction.</p>
+                  <span class="pillar-icon" aria-hidden="true"><img src="assets/images/icons/shaking-hands.png" alt="" loading="lazy"></span>
+                  <h4>تجارة مباشرة</h4>
+                  <p>طرق فعّالة ومباشرة من المصنّع إلى العميل</p>
                 </article>
                 <article class="pillar-item">
-                  <span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><path d="M24 6 30 18l13 2-9 9 2 13-12-6-12 6 2-13-9-9 13-2 6-12Z"/></svg></span>
-                  <h4>Quality</h4>
-                  <p>Uncompromised standards in every product line.</p>
+                  <span class="pillar-icon" aria-hidden="true"><img src="assets/images/icons/trade.png" alt="" loading="lazy"></span>
+                  <h4>جودة مختارة</h4>
+                  <p>منتجات غذائية مختارة بعناية</p>
                 </article>
                 <article class="pillar-item">
-                  <span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><path d="M8 27h8l7 7a5 5 0 0 0 7 0l10-10"/><path d="M40 20h-8l-6-6a5 5 0 0 0-7 0l-4 4"/><path d="m18 22 7 7"/></svg></span>
-                  <h4>Partnership</h4>
-                  <p>Building long-term, mutually beneficial business relations.</p>
+                  <span class="pillar-icon" aria-hidden="true"><img src="assets/images/icons/shield.png" alt="" loading="lazy"></span>
+                  <h4>تنفيذ موثوق</h4>
+                  <p>تنظيم ودقة من الطلب وحتى التسليم</p>
                 </article>
                 <article class="pillar-item">
-                  <span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><path d="M24 42s15-8 15-22a15 15 0 0 0-30 0c0 14 15 22 15 22Z"/><path d="M18 22c3 0 6-3 6-6 0 3 3 6 6 6-3 0-6 3-6 6 0-3-3-6-6-6Z"/></svg></span>
-                  <h4>Responsibility</h4>
-                  <p>Commitment to our products, clients, and community.</p>
-                </article>
-                <article class="pillar-item">
-                  <span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 48 48" focusable="false"><path d="M8 34c8 0 12-4 16-10s8-10 16-10"/><path d="M31 14h9v9"/><path d="M10 22h8"/><path d="M10 14h12"/><path d="M10 30h5"/></svg></span>
-                  <h4>Continuous Growth</h4>
-                  <p>Evolving our supply chain to meet market needs.</p>
+                  <span class="pillar-icon" aria-hidden="true"><img src="assets/images/icons/b2b.png" alt="" loading="lazy"></span>
+                  <h4>B2B في أوروبا</h4>
+                  <p>للشركات والتجار ومحلات السوبرماركت في السوق الأوروبي</p>
                 </article>
               </div>
-              <p class="pillar-note">These are not just slogans for Orient Welt, but the guiding principles behind every decision we make.</p>
             </div>
           </div>
         </section>
@@ -224,7 +218,7 @@
         </div>
         <div class="footer-contact">
           <h2 class="footer-title" data-i18n="footer.contact">Contact</h2>
-          <address><span data-i18n="footer.address">Hamburg, Germany</span><span data-i18n="footer.phone">+49 40 000000</span><a href="mailto:info@orientwelt.example">info@orientwelt.example</a></address>
+          <address><span data-i18n="footer.address">Andreas-Meyer-Straße 45, 22113 Hamburg</span><span data-i18n="footer.phone">+49 40 000000</span><a href="mailto:info@orientwelt.com">info@orientwelt.com</a></address>
           <div class="socials"><a href="#" aria-label="TikTok">tt</a><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="Instagram">ig</a></div>
         </div>
       </div>
