@@ -3,8 +3,6 @@
     lang: localStorage.getItem("orientWeltLang") || "en",
     homeProductCategory: null,
     navPill: null,
-    globeFrame: null,
-    globeResumeTimer: null,
     rotatingTimer: null,
     lastFocus: null,
     productsStageSwiper: null,
@@ -684,50 +682,6 @@
     reduceMotion.addEventListener?.("change", requestUpdate);
   }
 
-  function setupHomeHeroPointer() {
-    if (document.body.dataset.page !== "home") return;
-    if (window.innerWidth <= 1024) return;
-    if ("ontouchstart" in window || navigator.maxTouchPoints > 0) return;
-    const supportsFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    if (!supportsFinePointer) return;
-
-    const dot = document.createElement("span");
-    const ring = document.createElement("span");
-    dot.className = "home-cursor-dot";
-    ring.className = "home-cursor-ring";
-    dot.setAttribute("aria-hidden", "true");
-    ring.setAttribute("aria-hidden", "true");
-    document.body.append(dot, ring);
-    document.body.classList.add("home-custom-cursor");
-
-    let ringX = 0;
-    let ringY = 0;
-    let targetX = 0;
-    let targetY = 0;
-    let pointerSeen = false;
-
-    function render() {
-      ringX += (targetX - ringX) * .18;
-      ringY += (targetY - ringY) * .18;
-      dot.style.transform = `translate3d(${targetX}px, ${targetY}px, 0) translate(-50%, -50%)`;
-      ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
-      window.requestAnimationFrame(render);
-    }
-
-    window.addEventListener("pointermove", (event) => {
-      if (event.pointerType && event.pointerType !== "mouse") return;
-      targetX = event.clientX;
-      targetY = event.clientY;
-      if (!pointerSeen) {
-        pointerSeen = true;
-        ringX = targetX;
-        ringY = targetY;
-      }
-    }, { passive: true });
-
-    window.requestAnimationFrame(render);
-  }
-
   function setupProductsStageCarousel() {
     const carousel = document.querySelector(".products-coverflow");
     const modal = document.getElementById("product-stage-modal");
@@ -1138,7 +1092,7 @@
     if (!modal) return;
     state.lastFocus = document.activeElement;
     modal.hidden = false;
-    document.body.style.overflow = "hidden";
+    document.body.classList.add("modal-open");
     document.getElementById("modal-image").src = product.image;
     document.getElementById("modal-image").alt = product.alt?.[state.lang] || "";
     document.getElementById("modal-title").textContent = product.name[state.lang];
@@ -1158,7 +1112,7 @@
     const modal = document.getElementById("product-modal");
     if (!modal || modal.hidden) return;
     modal.hidden = true;
-    document.body.style.overflow = "";
+    document.body.classList.remove("modal-open");
     state.lastFocus?.focus();
   }
 
@@ -1242,7 +1196,7 @@
         panX: "rotateX",
         panY: "rotateY",
         wheelY: "none",
-        rotationX: -24,
+        rotationX: -42,
         rotationY: -32,
         maxZoomLevel: 1.6,
         minZoomLevel: 1
@@ -1461,14 +1415,7 @@
         });
       });
 
-      const rotate = function () {
-        chart.set("rotationX", (chart.get("rotationX") || 0) + 0.035);
-        state.globeFrame = window.requestAnimationFrame(rotate);
-      };
-      rotate();
-
       root.events.on("disposed", function () {
-        window.cancelAnimationFrame(state.globeFrame);
         bulletTimers.forEach(function (timer) {
           window.clearTimeout(timer);
         });
@@ -1570,7 +1517,6 @@
     setupCarousel();
     initHomeShaderBackground();
     setupHomeHeroScrollEffect();
-    setupHomeHeroPointer();
     setupProductsStageCarousel();
     setupProductsStageSnap();
     initScrollReveal();
