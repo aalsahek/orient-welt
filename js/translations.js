@@ -31,7 +31,6 @@ window.translations = {
     "home.why.title": "Trading with care from source to delivery",
     "home.why.text": "Orient Welt connects Middle Eastern producers with European customers through quality-focused sourcing, responsive service, and efficient coordination. Our work is built around practical reliability and long-term partnership.",
     "home.why.cta": "Learn More About Us",
-    "home.trade.kicker": "Global Trade Flow",
     "home.trade.title": "Connecting the East to Europe",
     "home.trade.text": "Placeholder export routes show how food supply can move from regional producers toward Germany through practical maritime corridors.",
     "home.trade.note": "Volumes are placeholder planning figures and should be replaced with real trade data.",
@@ -111,7 +110,6 @@ window.translations = {
     "products.stage.feature.quick.title": "سريع التحضير",
     "products.stage.feature.quick.text": "سهل وموفر للوقت",
     "products.stage.cta": "Send Inquiry",
-    "products.filter.kicker": "Product Range",
     "products.filter.title": "Browse by category",
     "products.filter.all": "All",
     "products.modal.packaging": "Packaging",
@@ -171,7 +169,6 @@ window.translations = {
     "home.why.title": "Handel mit Sorgfalt von der Quelle bis zur Lieferung",
     "home.why.text": "Orient Welt verbindet Produzenten aus dem Nahen Osten mit europäischen Kunden durch qualitätsorientierte Beschaffung, schnellen Service und effiziente Koordination. Unsere Arbeit basiert auf praktischer Zuverlässigkeit und langfristiger Partnerschaft.",
     "home.why.cta": "Mehr über uns",
-    "home.trade.kicker": "Globale Handelsströme",
     "home.trade.title": "Den Osten mit Europa verbinden",
     "home.trade.text": "Platzhalter-Exportrouten zeigen, wie Lebensmittel von regionalen Produzenten über praktische Seewege nach Deutschland gelangen können.",
     "home.trade.note": "Die Volumen sind Platzhalterwerte und sollten später durch echte Handelsdaten ersetzt werden.",
@@ -251,7 +248,6 @@ window.translations = {
     "products.stage.feature.quick.title": "SCHNELL ZUBEREITET",
     "products.stage.feature.quick.text": "Einfach und zeitsparend",
     "products.stage.cta": "Anfrage senden",
-    "products.filter.kicker": "Sortiment",
     "products.filter.title": "Nach Kategorie suchen",
     "products.filter.all": "Alle",
     "products.modal.packaging": "Verpackung",
@@ -278,5 +274,13 @@ window.translations = {
     "contact.details.emailLabel": "E-Mail",
     "contact.details.hoursLabel": "Geschäftszeiten",
     "contact.details.hours": "Mo-Fr, 9:00-17:00"
+  },
+  ar: {
+    "products.filter.title": "تصفح حسب الفئة",
+    "products.filter.all": "الكل",
+    "products.modal.packaging": "التعبئة",
+    "products.modal.storage": "التخزين",
+    "products.modal.origin": "المنشأ",
+    "products.card.details": "عرض التفاصيل"
   }
 };

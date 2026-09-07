@@ -6,7 +6,11 @@
     <title>Orient Welt | About Us</title>
     <meta name="description" content="Learn about Orient Welt, a Hamburg-based international food trading company.">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap">
     <script src="js/translations.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <script src="js/product-wall.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
     <script src="js/main.js" defer></script>
   </head>
   <body data-page="about">
@@ -15,7 +19,7 @@
       <a class="brand" href="index.html"><img src="assets/images/logo-orient-welt.png" alt="Orient Welt logo"></a>
       <button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false"><span></span><span></span><span></span><span class="sr-only" data-i18n="nav.menu">Menu</span></button>
       <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation"><a href="index.html" data-i18n="nav.home">Home</a><a href="about.html" data-i18n="nav.about">Orient Welt</a><a href="products.html" data-i18n="nav.products">Products</a><a href="contact.html" data-i18n="nav.contact">Contact Us</a></nav>
-      <div class="language-switcher" aria-label="Language"><button type="button" data-lang="en" aria-label="English">🇬🇧</button><button type="button" data-lang="de" aria-label="Deutsch">🇩🇪</button></div>
+      <div class="language-switcher" aria-label="Language"><button type="button" data-lang="en" aria-label="English">🇬🇧</button><button type="button" data-lang="de" aria-label="Deutsch">🇩🇪</button><button type="button" data-lang="ar" aria-label="العربية">🇸🇦</button></div>
     </header>
     <aside class="floating-social" aria-label="Floating contact and social links">
       <ul>
@@ -28,15 +32,15 @@
     </aside>
     <main id="main">
       <section class="page-hero products-hero" style="--hero-image: url('assets/images/products-header.jpeg?v=3')">
-        <div class="hero-slide-copy">
-          <h1 class="rotating-text" aria-label="Our Products are quality, reliable, authentic, fresh, practical">
-            <span class="rotating-prefix" data-i18n="products.hero.rotatingPrefix">Our Products are</span>
+        <div class="hero-slide-copy" dir="rtl" lang="ar">
+          <h1 class="rotating-text" dir="rtl" lang="ar" aria-label="من الشرق إلى أوروبا، منتجاتنا دائمًا جيدة، موثوقة، أصيلة، طازجة، عملية">
+            <span class="rotating-prefix">من الشرق إلى أوروبا، منتجاتنا دائمًا</span>
             <span class="rotating-words">
-              <span class="word wisteria" data-i18n="products.hero.word1">quality.</span>
-              <span class="word belize" data-i18n="products.hero.word2">reliable.</span>
-              <span class="word pomegranate" data-i18n="products.hero.word3">authentic.</span>
-              <span class="word green" data-i18n="products.hero.word4">fresh.</span>
-              <span class="word midnight" data-i18n="products.hero.word5">practical.</span>
+              <span class="word wisteria">جيدة</span>
+              <span class="word belize">موثوقة</span>
+              <span class="word pomegranate">أصيلة</span>
+              <span class="word green">طازجة</span>
+              <span class="word midnight">عملية</span>
             </span>
           </h1>
         </div>
@@ -44,7 +48,30 @@
       <div class="content-parallax-panel">
         <section class="contact-command" aria-labelledby="about-values-title">
           <div class="contact-command-heading" dir="rtl" lang="ar">
-            <h2 id="about-values-title">ما نقوله نطبقه</h2>
+            <h2 id="about-values-title">
+              <span class="sr-only">ما نقوله نطبقه</span>
+              <svg class="handwritten-svg" viewBox="-29 -969.5 4082.9 1221.1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <g transform="scale(1,-1)">
+    <path class="handwritten-path" d="M78 130Q107 130 130.5 142Q154 154 170 168L181 11Q182 3 190.5 1Q199 -1 203 6L277 142L259 400Q257 471 215 488Q206 492 193 492Q158 492 120 455V456Q117 453 112.5 448.5Q108 444 103 437Q70 394 40.5 343Q11 292 -5 232Q-9 220 -9 204Q-9 181 5 164.5Q19 148 39.5 139Q60 130 78 130ZM156 290Q156 289 156 288Q156 287 156 285Q156 284 155.5 283Q155 282 155 280Q150 279 145 278.5Q140 278 135 278Q121 278 110 281Q89 288 79 304Q76 309 76 312Q76 314 79 318Q84 325 91 331Q98 337 106 344Q116 352 125 352Q129 352 131 351Q133 350 137 349Q149 345 152.5 326.5Q156 308 156 290Z"/>
+    <path class="handwritten-path" d="M625 560 682 673Q687 681 682 686.5Q677 692 670 690Q625 681 579.5 672.5Q534 664 487 656Q485 655 482 653.5Q479 652 478 650L422 536Q418 529 422.5 523.5Q427 518 434 519Q480 527 525.5 536Q571 545 617 553Q623 556 625 560Z"/>
+    <path class="handwritten-path" d="M543 231Q543 223 535 218Q501 203 474 200Q470 202 466 207.5Q462 213 462 219Q462 222 465 228L491 262Q502 276 518 282Q525 278 534 262.5Q543 247 543 231ZM293 21 426 54Q470 67 505.5 89.5Q541 112 567 145Q618 209 648 291Q652 306 654 319.5Q656 333 656 345Q656 397 618 417Q611 422 603 423.5Q595 425 587 425Q559 425 539 408.5Q519 392 504 374Q469 332 437 279.5Q405 227 381 174L213 148Q203 146 203 138L185 13Q184 6 188 2.5Q192 -1 199 0Z"/>
+    <path class="handwritten-path" d="M834 -113 768 -50Q764 -46 758.5 -47Q753 -48 750 -52Q731 -77 711.5 -101Q692 -125 672 -150Q666 -158 673 -165L740 -228Q744 -232 749 -231.5Q754 -231 757 -227Q767 -215 771.5 -208.5Q776 -202 781 -196Q786 -190 796 -178Q806 -166 816 -154Q826 -142 836 -129Q841 -120 834 -113Z"/>
+    <path class="handwritten-path" d="M470 23H471Q479 22 487.5 22Q496 22 506 22Q534 22 567 25Q623 30 681.5 39.5Q740 49 784 63Q787 51 806 52Q845 94 868 147Q876 167 884.5 190Q893 213 900 232Q903 237 903 249Q903 275 894.5 273Q886 271 875 255Q865 229 846 218Q827 207 795 199Q776 195 745.5 189.5Q715 184 682.5 179.5Q650 175 622 172Q594 169 579 169Q575 169 573.5 169Q572 169 568 169Q537 169 505.5 175.5Q474 182 466 207Q463 215 455 215Q448 215 444 208Q433 179 423.5 147Q414 115 405 81Q405 52 428 38Q448 26 470 23Z"/>
+    <path class="handwritten-path" d="M996 559 1017 245Q1018 236 1026 234.5Q1034 233 1039 240L1111 357L1091 670Q1090 679 1082 681.5Q1074 684 1069 676ZM827 195 806 71Q805 66 808.5 61.5Q812 57 817 57Q823 57 825 58Q893 64 956 77.5Q1019 91 1080 109Q1151 130 1204 164Q1250 194 1282 235Q1314 276 1340 325V324Q1350 341 1350 362Q1350 390 1330 414Q1308 441 1271 441Q1241 441 1215 429.5Q1189 418 1175 406Q1129 362 1086 317.5Q1043 273 1001 224Q964 217 925 213Q886 209 837 205Q829 203 827 195ZM1229 283Q1196 267 1159 256.5Q1122 246 1081 238Q1100 257 1120.5 275Q1141 293 1165 306Q1174 311 1185 311Q1202 311 1214 303Q1226 295 1229 283Z"/>
+    <path class="handwritten-path" d="M1568 496 1502 559Q1498 563 1492.5 562Q1487 561 1484 557Q1465 532 1445.5 508Q1426 484 1406 459Q1400 451 1407 444L1474 381Q1478 377 1483 377.5Q1488 378 1491 382Q1501 394 1505.5 400.5Q1510 407 1515 413Q1520 419 1530 431Q1540 443 1550 455Q1560 467 1570 480Q1575 489 1568 496Z"/>
+    <path class="handwritten-path" d="M1000 64Q1000 84 1010 115.5Q1020 147 1041 187Q1042 189 1042 193Q1042 204 1032 207L1033 206Q1029 208 1026 208Q1022 208 1019.5 207Q1017 206 1015 204Q988 165 963.5 121.5Q939 78 923 27Q920 15 916.5 -4Q913 -23 913 -38Q913 -98 949 -118Q985 -138 1045 -138Q1086 -138 1132 -129Q1150 -125 1168 -121Q1186 -117 1204 -111Q1277 -88 1341 -51Q1405 -14 1450 38Q1475 67 1493.5 113Q1512 159 1512 202Q1512 218 1510 231Q1508 244 1504 257L1481 329Q1479 337 1472 337.5Q1465 338 1460 331L1385 222Q1382 217 1384 212Q1390 197 1394.5 181.5Q1399 166 1404 149Q1408 135 1410.5 124.5Q1413 114 1413 106L1359 79Q1301 51 1231 34Q1218 30 1205 27Q1192 24 1178 21Q1154 16 1129 11Q1104 6 1075 6Q1043 6 1021.5 19Q1000 32 1000 64Z"/>
+    <path class="handwritten-path" d="M1785 130Q1814 130 1837.5 142Q1861 154 1877 168L1888 11Q1889 3 1897.5 1Q1906 -1 1910 6L1984 142L1966 400Q1964 471 1922 488Q1913 492 1900 492Q1865 492 1827 455V456Q1824 453 1819.5 448.5Q1815 444 1810 437Q1777 394 1747.5 343Q1718 292 1702 232Q1698 220 1698 204Q1698 181 1712 164.5Q1726 148 1746.5 139Q1767 130 1785 130ZM1863 290Q1863 289 1863 288Q1863 287 1863 285Q1863 284 1862.5 283Q1862 282 1862 280Q1857 279 1852 278.5Q1847 278 1842 278Q1828 278 1817 281Q1796 288 1786 304Q1783 309 1783 312Q1783 314 1786 318Q1791 325 1798 331Q1805 337 1813 344Q1823 352 1832 352Q1836 352 1838 351Q1840 350 1844 349Q1856 345 1859.5 326.5Q1863 308 1863 290Z"/>
+    <path class="handwritten-path" d="M2126 195Q2080 176 2031 167Q1982 158 1923 148Q1915 146 1913 138L1892 18L1899 9Q1943 20 1976 27.5Q2009 35 2031 40Q2053 45 2065 48.5Q2077 52 2079 53Q2127 79 2161 121.5Q2195 164 2210 222Q2221 261 2221 313Q2221 316 2221 317.5Q2221 319 2221 322Q2221 324 2221 326Q2221 328 2221 330L2203 652Q2203 660 2195 663Q2187 666 2182 658L2108 541Q2113 450 2119 367.5Q2125 285 2126 195Z"/>
+    <path class="handwritten-path" d="M2489 266V267Q2507 245 2551 245Q2567 245 2580 248Q2582 244 2583 241Q2583 240 2583 238.5Q2583 237 2583 235Q2583 234 2583.5 233.5Q2584 233 2584 233V232Q2557 202 2516 185Q2433 151 2347 118Q2261 85 2185 43Q2176 37 2176 25Q2176 10 2192 8Q2221 6 2251 3Q2281 0 2311 0Q2315 0 2316 0Q2317 0 2321 0Q2346 0 2368 2Q2390 4 2412 8Q2462 18 2504 46.5Q2546 75 2579.5 113.5Q2613 152 2635 193Q2650 222 2661 257.5Q2672 293 2673 333V339Q2673 408 2625 457Q2618 464 2606.5 471Q2595 478 2581 478Q2568 478 2555 465Q2537 445 2525 420.5Q2513 396 2501 370Q2494 356 2484.5 337.5Q2475 319 2475 301Q2475 289 2479 281Q2483 273 2489 266Z"/>
+    <path class="handwritten-path" d="M3042 819 3099 932Q3104 940 3099 945.5Q3094 951 3087 949Q3042 940 2996.5 931.5Q2951 923 2904 915Q2902 914 2899 912.5Q2896 911 2895 909L2839 795Q2835 788 2839.5 782.5Q2844 777 2851 778Q2897 786 2942.5 795Q2988 804 3034 812Q3040 815 3042 819Z"/>
+    <path class="handwritten-path" d="M2960 490Q2960 482 2952 477Q2918 462 2891 459Q2887 461 2883 466.5Q2879 472 2879 478Q2879 481 2882 487L2908 521Q2919 535 2935 541Q2942 537 2951 521.5Q2960 506 2960 490ZM2710 280 2843 313Q2887 326 2922.5 348.5Q2958 371 2984 404Q3035 468 3065 550Q3069 565 3071 578.5Q3073 592 3073 604Q3073 656 3035 676Q3028 681 3020 682.5Q3012 684 3004 684Q2976 684 2956 667.5Q2936 651 2921 633Q2886 591 2854 538.5Q2822 486 2798 433L2630 407Q2620 405 2620 397L2602 272Q2601 265 2605 261.5Q2609 258 2616 259Z"/>
+    <path class="handwritten-path" d="M3361 854 3295 917Q3291 921 3285.5 920Q3280 919 3277 915Q3258 890 3238.5 866Q3219 842 3199 817Q3193 809 3200 802L3267 739Q3271 735 3276 735.5Q3281 736 3284 740Q3294 752 3298.5 758.5Q3303 765 3308 771Q3313 777 3323 789Q3333 801 3343 813Q3353 825 3363 838Q3368 847 3361 854Z"/>
+    <path class="handwritten-path" d="M3316 678 3243 569Q3242 568 3241 564Q3240 560 3241 558Q3248 539 3253.5 520.5Q3259 502 3260 482Q3253 479 3243.5 476Q3234 473 3223 469Q3172 453 3114 440.5Q3056 428 2990 428Q2968 428 2945 430.5Q2922 433 2905.5 441Q2889 449 2884 466Q2881 474 2873 474Q2865 474 2861 467Q2850 438 2841 406.5Q2832 375 2823 341Q2825 303 2855.5 292Q2886 281 2926 281Q2958 281 2987.5 284Q3017 287 3048 291Q3101 299 3141 310Q3233 336 3289 400Q3345 464 3358 567Q3359 579 3358 596Q3357 606 3353 624Q3349 642 3343.5 658.5Q3338 675 3331 682.5Q3324 690 3316 678Z"/>
+    <path class="handwritten-path" d="M3595 565 3634 11Q3634 1 3643 0Q3652 -1 3656 6L3717 124L3680 677Q3679 685 3670.5 687Q3662 689 3658 681Z"/>
+    <path class="handwritten-path" d="M3860 258 3826 181Q3788 170 3748.5 161.5Q3709 153 3665 148Q3657 146 3655 138L3634 14Q3633 7 3637 3Q3641 -1 3648 0L3686 10Q3699 13 3711.5 16Q3724 19 3736 22Q3792 36 3843 55.5Q3894 75 3934 104Q3957 121 3977 145.5Q3997 170 4008 190Q4020 212 4032 270Q4039 300 4020.5 311.5Q4002 323 3973 323Q3969 323 3967.5 323Q3966 323 3962 323Q3935 323 3918 318Q3897 317 3883 297Q3869 277 3860 258Z"/>
+  </g>
+</svg>
+            </h2>
             <p>فقيمنا بالنسبة لنا أكثر من مجرد كلمات.</p>
           </div>
         </section>
@@ -54,19 +81,49 @@
             <div class="team-showcase-heading" dir="rtl" lang="ar">
               <h2 id="about-why-title">لماذا Orient Welt؟</h2>
             </div>
-            <div class="contact-signal-grid about-duo-grid">
-              <article class="contact-signal about-duo-card" dir="rtl" lang="ar">
-                <span class="contact-signal-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" focusable="false"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span>
-                <h3>Orient <small>(الشرق)</small></h3>
-                <p>يرمز إلى النكهات الأصيلة، والمنتجات المختارة، والتنوع الغذائي الذي يتميز به الشرق.</p>
-              </article>
-              <article class="contact-signal about-duo-card" dir="rtl" lang="ar">
-                <span class="contact-signal-icon" aria-hidden="true"><svg viewBox="0 0 24 24" role="img" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></svg></span>
+            <div class="about-duo-grid" dir="rtl" lang="ar">
+              <canvas class="border-spark-canvas" aria-hidden="true"></canvas>
+              <article class="orient-welt-item">
                 <h3>Welt <small>(العالم)</small></h3>
                 <p>تعكس رؤيتنا في إيصال هذا التنوع إلى أوروبا اليوم، وإلى الأسواق العالمية مستقبلًا.</p>
               </article>
+              <article class="orient-welt-item">
+                <h3>Orient <small>(الشرق)</small></h3>
+                <p>يرمز إلى النكهات الأصيلة، والمنتجات المختارة، والتنوع الغذائي الذي يتميز به الشرق.</p>
+              </article>
             </div>
             <p class="about-lede" dir="rtl" lang="ar">نحن لا نسعى فقط إلى نقل المنتجات، بل إلى تقريب الطعم المألوف، ليبقى جزء من الوطن دائمًا قريبًا.</p>
+          </div>
+        </section>
+
+        <section class="story-slide story-slide-1" aria-label="مصدر الجودة">
+          <div class="story-slide-bg" aria-hidden="true"></div>
+          <div class="story-slide-title story-slide-title-start" dir="rtl" lang="ar">
+            <h2>نختار مكوّناتنا بعناية من قلب الشرق</h2>
+            <p>من زيت الزيتون والزعتر إلى الأجبان والمعلبات، نتعامل مباشرة مع منتجين موثوقين نعرفهم شخصيًا، لضمان جودة أصيلة تصل إليكم كما هي.</p>
+          </div>
+        </section>
+
+        <section class="story-slide story-slide-2" aria-label="من الميناء إلى بابكم">
+          <div class="story-slide-bg" aria-hidden="true"></div>
+          <div class="story-slide-title story-slide-title-end" dir="rtl" lang="ar">
+            <h2>رحلة موثوقة من الشرق إلى أوروبا</h2>
+            <p>نتابع كل شحنة خطوة بخطوة، من التحميل في الميناء وحتى التسليم في أوروبا، بلوجستيات دقيقة وشراكات شحن موثوقة.</p>
+          </div>
+          <img class="story-slide-photo story-slide-photo-1" src="assets/images/products/bags/cropped/mango.png" alt="منتج المانجو من Orient Welt" loading="lazy" data-parallax-base="-92%" data-parallax-factor="-0.18">
+          <img class="story-slide-photo story-slide-photo-2" src="assets/images/products/bags/cropped/green-bean.png" alt="منتج الفاصولياء الخضراء من Orient Welt" loading="lazy" data-parallax-base="-30%" data-parallax-factor="-0.28">
+          <img class="story-slide-photo story-slide-photo-3" src="assets/images/products/bags/cropped/falafel.png" alt="منتج الفلافل من Orient Welt" loading="lazy" data-parallax-base="32%" data-parallax-factor="-0.35">
+        </section>
+
+        <section class="product-wall" aria-labelledby="about-wall-title" hidden>
+          <div class="product-wall-heading" dir="rtl" lang="ar">
+            <h2 id="about-wall-title">لمحة حيّة من مجموعة منتجاتنا</h2>
+            <p>اسحبوا يمينًا أو يسارًا للتنقل بين منتجاتنا المختارة بعناية، من الخضروات المجمّدة إلى الفول والفلافل وأطباقنا الشعبية الأصيلة.</p>
+          </div>
+          <div class="product-wall-stage" role="img" aria-label="معرض تفاعلي لمنتجات Orient Welt">
+            <div class="product-wall-canvas" id="product-wall-canvas" aria-hidden="true"></div>
+            <p class="product-wall-loading" id="product-wall-loading">جارٍ تحميل المنتجات…</p>
+            <span class="product-wall-hint" id="product-wall-hint" hidden>اسحبوا يمينًا أو يسارًا للاستكشاف</span>
           </div>
         </section>
 

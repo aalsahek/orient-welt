@@ -13,6 +13,17 @@
     return window.translations?.[state.lang]?.[key] || window.translations?.en?.[key] || key;
   }
 
+  function applyProductRangeDirection() {
+    const isArabic = state.lang === "ar";
+    const filterHeading = document.querySelector('[data-i18n="products.filter.title"]')?.parentElement;
+    const filterBar = document.getElementById("filter-bar");
+    const grid = document.getElementById("product-grid");
+    const modal = document.getElementById("product-modal");
+    [filterHeading, filterBar, grid, modal].forEach((el) => {
+      if (el) el.dir = isArabic ? "rtl" : "ltr";
+    });
+  }
+
   function applyTranslations() {
     document.documentElement.lang = state.lang;
     document.querySelectorAll("[data-i18n]").forEach((node) => {
@@ -26,6 +37,7 @@
     });
     renderHomeProductTabs();
     renderProducts();
+    applyProductRangeDirection();
     refreshProductsStageCarousel();
     initRotatingText();
     requestAnimationFrame(() => updateNavPill(undefined, false));
@@ -532,12 +544,12 @@
       colors: [
         [0.9333333333333333, 0.9647058823529412, 0.9490196078431372],
         [0.09019607843137255, 0.4823529411764706, 0.6980392156862745],
-        [0.5333333333333333, 0.7647058823529411, 0.27058823529411763],
         [0.09019607843137255, 0.4823529411764706, 0.6980392156862745],
         [0.5333333333333333, 0.7647058823529411, 0.27058823529411763],
         [0.09019607843137255, 0.4823529411764706, 0.6980392156862745],
-        [0.5333333333333333, 0.7647058823529411, 0.27058823529411763],
-        [0.5333333333333333, 0.7647058823529411, 0.27058823529411763]
+        [0.09019607843137255, 0.4823529411764706, 0.6980392156862745],
+        [0.09019607843137255, 0.4823529411764706, 0.6980392156862745],
+        [0.09019607843137255, 0.4823529411764706, 0.6980392156862745]
       ].flat(),
       colorCount: 7,
       scale: 2,
@@ -680,6 +692,236 @@
       requestUpdate();
     });
     reduceMotion.addEventListener?.("change", requestUpdate);
+  }
+
+  function setupStoryParallax() {
+    const bgLayers = [...document.querySelectorAll(".story-slide")]
+      .map((slide) => ({ slide, bg: slide.querySelector(".story-slide-bg") }))
+      .filter((layer) => layer.bg);
+    const photoLayers = [...document.querySelectorAll(".story-slide-photo")]
+      .map((photo) => ({
+        photo,
+        slide: photo.closest(".story-slide"),
+        base: photo.dataset.parallaxBase || "0px",
+        factor: parseFloat(photo.dataset.parallaxFactor || "0")
+      }))
+      .filter((layer) => layer.slide);
+    if (!bgLayers.length && !photoLayers.length) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const BG_FACTOR = 0.3;
+    let ticking = false;
+
+    function shiftFor(rect, factor) {
+      const viewportMid = window.innerHeight / 2;
+      const maxShift = rect.height * 0.4;
+      const raw = (viewportMid - (rect.top + rect.height / 2)) * factor;
+      return Math.max(-maxShift, Math.min(maxShift, raw));
+    }
+
+    function update() {
+      if (reduceMotion.matches) {
+        bgLayers.forEach(({ bg }) => { bg.style.transform = ""; });
+        photoLayers.forEach(({ photo, base }) => { photo.style.translate = `0 ${base}`; });
+        ticking = false;
+        return;
+      }
+      bgLayers.forEach(({ slide, bg }) => {
+        const shift = shiftFor(slide.getBoundingClientRect(), BG_FACTOR);
+        bg.style.transform = `translateY(${shift}px)`;
+      });
+      photoLayers.forEach(({ photo, slide, base, factor }) => {
+        const shift = shiftFor(slide.getBoundingClientRect(), factor);
+        photo.style.translate = `0 calc(${base} + ${shift}px)`;
+      });
+      ticking = false;
+    }
+
+    function requestUpdate() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
+
+    update();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    reduceMotion.addEventListener?.("change", requestUpdate);
+  }
+
+  function initHandwrittenHeading() {
+    const svg = document.querySelector(".handwritten-svg");
+    const paths = [...document.querySelectorAll(".handwritten-path")];
+    if (!svg || !paths.length) return;
+
+    const svgNS = "http://www.w3.org/2000/svg";
+    let defs = svg.querySelector("defs");
+    if (!defs) {
+      defs = document.createElementNS(svgNS, "defs");
+      svg.insertBefore(defs, svg.firstChild);
+    }
+
+    // Each glyph gets its own clip rect sized to its own bounding box
+    // (padded slightly), defaulting to full coverage so the heading is a
+    // normal solid word if JS/anime.js never runs. Filling the glyph shape
+    // itself (rather than stroking its outline) is what keeps each letter
+    // solid instead of a hollow double line.
+    const reveals = paths.map((path, i) => {
+      const bbox = path.getBBox();
+      const pad = Math.max(bbox.width, bbox.height) * 0.06;
+      const x0 = bbox.x - pad;
+      const x1 = bbox.x + bbox.width + pad;
+      const rect = document.createElementNS(svgNS, "rect");
+      rect.setAttribute("x", x0);
+      rect.setAttribute("y", bbox.y - pad);
+      rect.setAttribute("width", x1 - x0);
+      rect.setAttribute("height", bbox.height + pad * 2);
+
+      const clipPath = document.createElementNS(svgNS, "clipPath");
+      clipPath.id = `handwrittenClip${i}`;
+      clipPath.setAttribute("clipPathUnits", "userSpaceOnUse");
+      clipPath.appendChild(rect);
+      defs.appendChild(clipPath);
+      path.setAttribute("clip-path", `url(#${clipPath.id})`);
+
+      return { rect, x0, x1 };
+    });
+
+    if (!window.anime || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    // Arabic reads right to left, so the last glyph in DOM/left-to-right
+    // order (the rightmost one) must reveal first. Plays once on load and
+    // settles on the fully-revealed state — no loop/alternate, so letters
+    // don't keep vanishing and redrawing forever.
+    const total = reveals.length;
+    anime({
+      targets: reveals.map((r) => r.rect),
+      x: (el, i) => [reveals[i].x1, reveals[i].x0],
+      width: (el, i) => [0, reveals[i].x1 - reveals[i].x0],
+      easing: "easeInOutSine",
+      duration: 260,
+      delay: (el, i) => (total - 1 - i) * 70
+    });
+  }
+
+  // Particle-burst spark (reference: CodePen /kaigth/pen/PoQMMv — a fading
+  // particle shower; ported from its Three.js scene to a plain 2D canvas
+  // since we only need two small bursts, not a full WebGL scene) timed to
+  // the exact instants the .about-duo-grid border traces (css/style.css)
+  // meet: the top edge at the start of each 6s loop, the bottom edge
+  // halfway through it.
+  function initAboutDuoBorderSpark() {
+    const grid = document.querySelector(".about-duo-grid");
+    const canvas = grid?.querySelector(".border-spark-canvas");
+    if (!grid || !canvas || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const ctx = canvas.getContext("2d");
+    const GOLD = ["255, 244, 214", "247, 190, 73", "217, 148, 31"];
+    const CYCLE_MS = 6000;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let width = 0;
+    let height = 0;
+    let particles = [];
+
+    function resize() {
+      const rect = grid.getBoundingClientRect();
+      width = rect.width;
+      height = rect.height;
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resize();
+    window.addEventListener("resize", resize);
+
+    function spawnBurst(originY, directionY) {
+      const originX = width / 2;
+      for (let i = 0; i < 34; i++) {
+        const angle = (Math.random() - 0.5) * Math.PI * 0.9;
+        const speed = 0.6 + Math.random() * 1.8;
+        particles.push({
+          x: originX,
+          y: originY,
+          vx: Math.sin(angle) * speed,
+          vy: Math.cos(angle) * speed * directionY,
+          size: 1 + Math.random() * 1.8,
+          life: 1,
+          fade: 0.02 + Math.random() * 0.02,
+          color: GOLD[i % GOLD.length]
+        });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.vx *= 0.97;
+        p.vy = p.vy * 0.97 + 0.03;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life -= p.fade;
+        if (p.life <= 0) {
+          particles.splice(i, 1);
+          continue;
+        }
+        ctx.globalAlpha = Math.max(p.life, 0);
+        ctx.fillStyle = `rgba(${p.color}, 1)`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+
+    function repeat(fn, delay) {
+      window.setTimeout(function fire() {
+        fn();
+        window.setTimeout(fire, CYCLE_MS);
+      }, Math.max(delay, 0));
+    }
+
+    // The CSS border-trace (::before/::after on this element, css/style.css)
+    // starts as soon as the page applies styles — long before this deferred
+    // script finishes loading three.js/anime.js and runs. Starting the burst
+    // timers from "now" instead of the trace's own clock left the spark
+    // trailing the actual meeting point by however long that load took. The
+    // Web Animations API exposes the trace's real start time, so phase-align
+    // to that instead of to script-init time. document.getAnimations() (not
+    // element.getAnimations({subtree:true})) is used because it reliably
+    // reports pseudo-element animations across browsers.
+    let traceStart = null;
+    if (typeof document.getAnimations === "function") {
+      const traceAnim = document
+        .getAnimations()
+        .find((a) => a.animationName === "aboutDuoBorderTraceCCW");
+      if (traceAnim && typeof traceAnim.startTime === "number") {
+        traceStart = traceAnim.startTime;
+      }
+    }
+
+    const now = (document.timeline && document.timeline.currentTime) || performance.now();
+    const elapsed = traceStart === null ? 0 : now - traceStart;
+    const phase = ((elapsed % CYCLE_MS) + CYCLE_MS) % CYCLE_MS;
+
+    // The trace isn't a single traveling dot: each color sweeps the full
+    // top/bottom edge over half the cycle, growing from one corner and
+    // shrinking toward the other, so green and blue are both present on
+    // the same edge for a whole stretch of the cycle, not just an instant.
+    // They first touch (share any pixels) 1/8 of a cycle before the
+    // instant they're perfectly coincident across the whole edge — solving
+    // W-right(f) = right(f) for the crossing point works out to exactly
+    // CYCLE_MS/8 regardless of the box's actual width. Firing the spark at
+    // that earlier "first contact" moment (rather than at full overlap) is
+    // what reads as "the spark happens where the lines touch."
+    const MEET_OFFSET_MS = CYCLE_MS / 8;
+    const topMeetPhase = (CYCLE_MS - MEET_OFFSET_MS) % CYCLE_MS;
+    const bottomMeetPhase = (CYCLE_MS / 2 - MEET_OFFSET_MS + CYCLE_MS) % CYCLE_MS;
+
+    repeat(() => spawnBurst(0, 1), (topMeetPhase - phase + CYCLE_MS) % CYCLE_MS);
+    repeat(() => spawnBurst(height, -1), (bottomMeetPhase - phase + CYCLE_MS) % CYCLE_MS);
   }
 
   function setupProductsStageCarousel() {
@@ -930,7 +1172,7 @@
   function initScrollReveal() {
     const targets = document.querySelectorAll(
       ".why-choose .why-card-grid, .why-choose .pillar-panel, .why-choose .pillar-item, " +
-      ".contact-command-heading, .team-showcase-heading, .contact-signal, .contact-team-card, .contact-map-frame"
+      ".contact-command-heading, .team-showcase-heading, .contact-signal, .contact-team-card, .team-alt-row, .team-plain-row, .contact-map-frame"
     );
     if (!targets.length) return;
     if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -953,7 +1195,7 @@
     const floating = document.body.dataset.page === "contact" ? null : document.querySelector(".floating-social");
     if (!header && !floating) return;
 
-    const IDLE_DELAY = 5000;
+    const IDLE_DELAY = 8000;
     let idleTimer = null;
 
     function isMenuOpen() {
@@ -1187,6 +1429,9 @@
       const germanyDestination = { longitude: 10.45, latitude: 51.16 };
 
       const root = am5.Root.new("trade-flow-globe");
+      if (root._logo) {
+        root._logo.dispose();
+      }
       if (window.am5themes_Animated) {
         root.setThemes([am5themes_Animated.new(root)]);
       }
@@ -1438,18 +1683,30 @@
 
     const wordArray = [];
     let currentWord = 0;
+    // Arabic (and other cursive/joining scripts) render as isolated, disconnected
+    // glyphs if split into one span per character, so animate those as a single
+    // unit instead of letter-by-letter.
+    const isJoiningScript = getComputedStyle(container).direction === "rtl";
 
     function splitLetters(word) {
       const content = word.getAttribute("data-word-text") || word.textContent.trim();
       word.setAttribute("data-word-text", content);
       word.innerHTML = "";
       const letters = [];
-      for (let i = 0; i < content.length; i++) {
-        const letter = document.createElement("span");
-        letter.className = "letter";
-        letter.innerHTML = content.charAt(i) === " " ? "&nbsp;" : content.charAt(i);
-        word.appendChild(letter);
-        letters.push(letter);
+      if (isJoiningScript) {
+        const unit = document.createElement("span");
+        unit.className = "letter";
+        unit.textContent = content;
+        word.appendChild(unit);
+        letters.push(unit);
+      } else {
+        for (let i = 0; i < content.length; i++) {
+          const letter = document.createElement("span");
+          letter.className = "letter";
+          letter.innerHTML = content.charAt(i) === " " ? "&nbsp;" : content.charAt(i);
+          word.appendChild(letter);
+          letters.push(letter);
+        }
       }
       wordArray.push(letters);
     }
@@ -1517,6 +1774,9 @@
     setupCarousel();
     initHomeShaderBackground();
     setupHomeHeroScrollEffect();
+    setupStoryParallax();
+    initHandwrittenHeading();
+    initAboutDuoBorderSpark();
     setupProductsStageCarousel();
     setupProductsStageSnap();
     initScrollReveal();

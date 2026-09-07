@@ -15,6 +15,15 @@
     <script src="js/main.js" defer></script>
   </head>
   <body data-page="home">
+    <svg width="0" height="0" style="position: absolute;" aria-hidden="true" focusable="false">
+      <filter id="why-card-lens" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
+        <feComponentTransfer in="SourceAlpha" result="alpha">
+          <feFuncA type="identity" />
+        </feComponentTransfer>
+        <feGaussianBlur in="alpha" stdDeviation="40" result="blur" />
+        <feDisplacementMap in="SourceGraphic" in2="blur" scale="30" xChannelSelector="A" yChannelSelector="A" />
+      </filter>
+    </svg>
     <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
     <header class="site-header is-chrome-hidden">
       <a class="brand" href="index.html" aria-label="Orient Welt home">
@@ -29,6 +38,7 @@
       <div class="language-switcher" aria-label="Language">
         <button type="button" data-lang="en" aria-label="English">🇬🇧</button>
         <button type="button" data-lang="de" aria-label="Deutsch">🇩🇪</button>
+        <button type="button" data-lang="ar" aria-label="العربية">🇸🇦</button>
       </div>
       <button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -53,12 +63,12 @@
         <input class="hero-radio sr-only" type="radio" id="hero-slide-3" name="hero-slide" tabindex="-1">
         <input class="hero-radio sr-only" type="radio" id="hero-slide-4" name="hero-slide" tabindex="-1">
         <div class="hero-slider">
-          <article class="hero-slide hero-slide-arabic" style="--hero-image: url('assets/images/home-header.png')">
+          <article class="hero-slide hero-slide-arabic hero-slide-sky" style="--hero-image: url('../assets/images/hero-header-1.png')">
             <div class="hero-slide-copy" dir="rtl">
               <h1>نجعل منتجات العالم أقرب إليكم وكأنكم في وطنكم</h1>
             </div>
           </article>
-          <article class="hero-slide hero-slide-arabic" style="--hero-image: url('assets/images/home-header-2.png')">
+          <article class="hero-slide hero-slide-arabic" style="--hero-image: url('../assets/images/home-header-2.png')">
             <div class="hero-slide-copy" dir="rtl" lang="ar">
               <span class="hero-eyebrow">شبكة لوجستية</span>
               <h2>طرق موثوقة من الشرق إلى أوروبا</h2>
@@ -67,7 +77,7 @@
               <a class="hero-cta" href="about.html">تعرف علينا</a>
             </div>
           </article>
-          <article class="hero-slide hero-slide-arabic" style="--hero-image: url('assets/images/home-header-3.png')">
+          <article class="hero-slide hero-slide-arabic" style="--hero-image: url('../assets/images/home-header-3.png')">
             <div class="hero-slide-copy" dir="rtl" lang="ar">
               <span class="hero-eyebrow">الشراكة أولاً</span>
               <h2>بُنينا من أجل شراكات تجارية طويلة الأمد</h2>
@@ -76,7 +86,7 @@
               <a class="hero-cta" href="contact.html">تواصل معنا</a>
             </div>
           </article>
-          <article class="hero-slide hero-slide-arabic" style="--hero-image: url('assets/images/home-header-4.png')">
+          <article class="hero-slide hero-slide-arabic" style="--hero-image: url('../assets/images/home-header-4.png')">
             <div class="hero-slide-copy" dir="rtl" lang="ar">
               <span class="hero-eyebrow">تشكيلة مركزة</span>
               <h2>مجموعة مختارة لاحتياجات قطاع المواد الغذائية اليومية</h2>
@@ -106,10 +116,10 @@
             <div class="why-card-grid">
               <article class="why-card" dir="rtl" lang="ar">
                 <div class="why-card-content">
-                  <span class="why-icon" aria-hidden="true">
-                    <svg viewBox="0 0 48 48" role="img" focusable="false"><path d="M17 21h-5a6 6 0 0 0-6 6v9h14v-7"/><path d="M31 21h5a6 6 0 0 1 6 6v9H28v-7"/><circle cx="14" cy="12" r="5"/><circle cx="34" cy="12" r="5"/><path d="m18 29 5-5a3 3 0 0 1 4 0l3 3"/><path d="m30 27 2 2a3 3 0 0 1-4 4l-2-2"/><path d="m22 28 5 5"/></svg>
-                  </span>
-                  <h3>استيراد</h3>
+                  <div class="why-card-head">
+                    <div class="why-card-title-frame"><h3>استيراد</h3></div>
+                  </div>
+                  <p>نستورد منتجات غذائية مختارة بعناية من مصنّعين موثوقين، مع رقابة جودة دقيقة وتوثيق كامل من المصدر حتى الوصول إلى أوروبا.</p>
                   <p>نستورد منتجات غذائية مختارة بعناية من مصنّعين موثوقين، مع رقابة جودة دقيقة وتوثيق كامل من المصدر حتى الوصول إلى أوروبا.</p>
                 </div>
                 <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="استيراد المنتجات الغذائية" loading="lazy">
@@ -117,10 +127,10 @@
 
               <article class="why-card" dir="rtl" lang="ar">
                 <div class="why-card-content">
-                  <span class="why-icon" aria-hidden="true">
-                    <svg viewBox="0 0 48 48" role="img" focusable="false"><path d="M24 7v6"/><path d="M24 35v6"/><path d="m36 12-4 4"/><path d="m16 32-4 4"/><path d="M41 24h-6"/><path d="M13 24H7"/><path d="m36 36-4-4"/><path d="m16 16-4-4"/><circle cx="24" cy="24" r="8"/><path d="M19 24h10"/><path d="M24 19v10"/></svg>
-                  </span>
-                  <h3>تجارة</h3>
+                  <div class="why-card-head">
+                    <div class="why-card-title-frame"><h3>تجارة</h3></div>
+                  </div>
+                  <p>نبني شراكات تجارية مباشرة وشفافة بين المصنّعين والعملاء، بأسعار تنافسية وشروط توريد واضحة تخدم جميع الأطراف.</p>
                   <p>نبني شراكات تجارية مباشرة وشفافة بين المصنّعين والعملاء، بأسعار تنافسية وشروط توريد واضحة تخدم جميع الأطراف.</p>
                 </div>
                 <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="تجارة المنتجات الغذائية" loading="lazy">
@@ -128,10 +138,10 @@
 
               <article class="why-card" dir="rtl" lang="ar">
                 <div class="why-card-content">
-                  <span class="why-icon" aria-hidden="true">
-                    <svg viewBox="0 0 48 48" role="img" focusable="false"><circle cx="24" cy="24" r="17"/><path d="M7 24h34"/><path d="M24 7c5 5 8 11 8 17s-3 12-8 17"/><path d="M24 7c-5 5-8 11-8 17s3 12 8 17"/><circle cx="24" cy="24" r="6"/><path d="m24 18 2 4 4 2-4 2-2 4-2-4-4-2 4-2 2-4Z"/></svg>
-                  </span>
-                  <h3>توزيع</h3>
+                  <div class="why-card-head">
+                    <div class="why-card-title-frame"><h3>توزيع</h3></div>
+                  </div>
+                  <p>نوزّع المنتجات على الشركات والأسواق الأوروبية عبر شبكة لوجستية موثوقة تضمن التسليم في الوقت المحدد وبكل كفاءة.</p>
                   <p>نوزّع المنتجات على الشركات والأسواق الأوروبية عبر شبكة لوجستية موثوقة تضمن التسليم في الوقت المحدد وبكل كفاءة.</p>
                 </div>
                 <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="توزيع المنتجات الغذائية" loading="lazy">
@@ -169,12 +179,11 @@
       <section class="section intro">
         <section class="trade-flow" aria-labelledby="trade-flow-title">
           <div class="trade-flow-copy">
-            <span data-i18n="home.trade.kicker">Global Trade Flow</span>
             <h3 id="trade-flow-title" data-i18n="home.trade.title">Connecting the East to Europe</h3>
             <p data-i18n="home.trade.text">Placeholder export routes show how food supply can move from regional producers toward Germany through practical maritime corridors.</p>
           </div>
           <div class="trade-flow-chart-wrap">
-            <!-- amCharts 5 licensing note: the free version requires the default amCharts attribution/logo to remain visible, or a paid license is required to remove it for commercial use. Do not strip the attribution unless a license has been purchased. -->
+            <!-- amCharts 5 licensing note: the free/community version requires the attribution logo unless a commercial license is purchased. The logo is removed in js/main.js (root._logo.dispose()) at the user's request without a confirmed paid license. -->
             <div id="trade-flow-globe" class="trade-flow-chart" role="img" aria-label="Interactive globe showing placeholder trade flows from Egypt, Turkey, and Jordan to Germany"></div>
           </div>
         </section>
