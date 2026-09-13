@@ -545,13 +545,13 @@
         [0.9333333333333333, 0.9647058823529412, 0.9490196078431372],
         [0.09019607843137255, 0.4823529411764706, 0.6980392156862745],
         [0.09019607843137255, 0.4823529411764706, 0.6980392156862745],
-        [0.5333333333333333, 0.7647058823529411, 0.27058823529411763],
         [0.09019607843137255, 0.4823529411764706, 0.6980392156862745],
         [0.09019607843137255, 0.4823529411764706, 0.6980392156862745],
         [0.09019607843137255, 0.4823529411764706, 0.6980392156862745],
-        [0.09019607843137255, 0.4823529411764706, 0.6980392156862745]
+        [0.09019607843137255, 0.4823529411764706, 0.6980392156862745],
+        [0.5333333333333333, 0.7647058823529411, 0.27058823529411763]
       ].flat(),
-      colorCount: 7,
+      colorCount: 8,
       scale: 2,
       intensity: 0.9,
       paramA: 0.67,
@@ -808,8 +808,10 @@
   // particle shower; ported from its Three.js scene to a plain 2D canvas
   // since we only need two small bursts, not a full WebGL scene) timed to
   // the exact instants the .about-duo-grid border traces (css/style.css)
-  // meet: the top edge at the start of each 6s loop, the bottom edge
-  // halfway through it.
+  // meet. Each trace toggles direction (animation-direction: alternate)
+  // right at that meeting instead of continuing past it, so the "meet"
+  // still happens at the top edge at the start of each 6s round-trip and
+  // at the bottom edge halfway through it — same phase math either way.
   function initAboutDuoBorderSpark() {
     const grid = document.querySelector(".about-duo-grid");
     const canvas = grid?.querySelector(".border-spark-canvas");
@@ -906,19 +908,14 @@
     const elapsed = traceStart === null ? 0 : now - traceStart;
     const phase = ((elapsed % CYCLE_MS) + CYCLE_MS) % CYCLE_MS;
 
-    // The trace isn't a single traveling dot: each color sweeps the full
-    // top/bottom edge over half the cycle, growing from one corner and
-    // shrinking toward the other, so green and blue are both present on
-    // the same edge for a whole stretch of the cycle, not just an instant.
-    // They first touch (share any pixels) 1/8 of a cycle before the
-    // instant they're perfectly coincident across the whole edge — solving
-    // W-right(f) = right(f) for the crossing point works out to exactly
-    // CYCLE_MS/8 regardless of the box's actual width. Firing the spark at
-    // that earlier "first contact" moment (rather than at full overlap) is
-    // what reads as "the spark happens where the lines touch."
-    const MEET_OFFSET_MS = CYCLE_MS / 8;
-    const topMeetPhase = (CYCLE_MS - MEET_OFFSET_MS) % CYCLE_MS;
-    const bottomMeetPhase = (CYCLE_MS / 2 - MEET_OFFSET_MS + CYCLE_MS) % CYCLE_MS;
+    // Each color only ever reaches the midpoint of the top/bottom edge
+    // (css/style.css caps them at 50% instead of the far corner), so
+    // unlike a full-edge sweep they don't share any pixels until the exact
+    // instant both arrive at that midpoint — no "first contact precedes
+    // full overlap" gap to account for. That instant is also where each
+    // line reverses direction, at phase 0 (top) and CYCLE_MS/2 (bottom).
+    const topMeetPhase = 0;
+    const bottomMeetPhase = CYCLE_MS / 2;
 
     repeat(() => spawnBurst(0, 1), (topMeetPhase - phase + CYCLE_MS) % CYCLE_MS);
     repeat(() => spawnBurst(height, -1), (bottomMeetPhase - phase + CYCLE_MS) % CYCLE_MS);
@@ -1172,7 +1169,7 @@
   function initScrollReveal() {
     const targets = document.querySelectorAll(
       ".why-choose .why-card-grid, .why-choose .pillar-panel, .why-choose .pillar-item, " +
-      ".contact-command-heading, .team-showcase-heading, .contact-signal, .contact-team-card, .team-alt-row, .team-plain-row, .contact-map-frame"
+      ".contact-command-heading, .team-showcase-heading, .about-story, .contact-signal, .contact-team-card, .team-alt-row, .team-plain-row, .contact-map-frame"
     );
     if (!targets.length) return;
     if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
