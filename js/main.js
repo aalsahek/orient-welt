@@ -73,7 +73,6 @@
     });
     const toggle = document.querySelector(".menu-toggle");
     const header = document.querySelector(".site-header");
-    const footer = document.querySelector(".site-footer");
     toggle?.addEventListener("click", () => {
       const open = nav.classList.toggle("open");
       toggle.setAttribute("aria-expanded", String(open));
@@ -97,60 +96,21 @@
     header?.addEventListener("mouseleave", () => {
       header.classList.remove("is-glowing");
     });
-    setupScrollChromeEffect(header, footer, nav);
+    setupScrollChromeEffect(header);
     requestAnimationFrame(() => updateNavPill(undefined, false));
   }
 
-  function setupScrollChromeEffect(header, footer, nav) {
+  function setupScrollChromeEffect(header) {
     let ticking = false;
     let previousY = Math.max(0, window.scrollY || document.documentElement.scrollTop || 0);
-    let coverflowInView = false;
-    let scrollActive = false;
-    let scrollResumeTimer = null;
-
-    function setCoverflowHeaderState(forceVisible = false) {
-      if (!header) return;
-      const menuOpen = nav?.classList.contains("open");
-      header.classList.toggle("is-coverflow-hidden", coverflowInView && !forceVisible && !menuOpen);
-    }
-
-    function setupCoverflowHeaderObserver() {
-      const coverflowStage = document.querySelector(".products-stage-section");
-      if (document.body.dataset.page !== "products" || !coverflowStage || !header || !("IntersectionObserver" in window)) return;
-
-      const observer = new IntersectionObserver(([entry]) => {
-        coverflowInView = Boolean(entry?.isIntersecting && entry.intersectionRatio >= 0.55);
-        setCoverflowHeaderState(scrollActive);
-      }, { threshold: [0, 0.55, 0.8] });
-
-      observer.observe(coverflowStage);
-    }
 
     function update() {
       const scroller = document.scrollingElement || document.documentElement;
       const currentY = Math.max(0, window.scrollY || scroller.scrollTop || 0);
-      const footerHeight = footer?.offsetHeight || 0;
-      const maxScroll = Math.max(0, scroller.scrollHeight - window.innerHeight);
-      const revealPoint = Math.max(0, maxScroll - footerHeight);
-      const menuOpen = nav?.classList.contains("open");
 
-      if (footer) {
-        document.documentElement.style.setProperty("--footer-reveal-space", `${Math.ceil(footerHeight)}px`);
-        footer.classList.toggle("topper", currentY >= revealPoint);
-      }
-
-      if (header) {
-        if (!header.classList.contains("is-glowing")) {
-          header.style.setProperty("--glare-x", "50%");
-          header.style.setProperty("--glare-y", "50%");
-        }
-        scrollActive = true;
-        setCoverflowHeaderState(true);
-        window.clearTimeout(scrollResumeTimer);
-        scrollResumeTimer = window.setTimeout(() => {
-          scrollActive = false;
-          setCoverflowHeaderState();
-        }, 220);
+      if (header && !header.classList.contains("is-glowing")) {
+        header.style.setProperty("--glare-x", "50%");
+        header.style.setProperty("--glare-y", "50%");
       }
       previousY = currentY;
       ticking = false;
@@ -163,7 +123,6 @@
     }
 
     update();
-    setupCoverflowHeaderObserver();
     window.addEventListener("scroll", requestUpdate, { passive: true });
     window.addEventListener("resize", requestUpdate);
   }
@@ -215,7 +174,7 @@
   }
 
   function initHomeShaderBackground() {
-    if (document.body.dataset.page !== "home") return;
+    if (!["home", "products"].includes(document.body.dataset.page)) return;
     const canvas = document.querySelector(".home-shader-bg");
     if (!canvas) return;
 
@@ -1101,11 +1060,9 @@
     wrapper.innerHTML = window.products.filter((product) => product.category === "vegetables").map((product) => {
       const name = shortNames[state.lang]?.[product.id] || productText(product.name, state.lang);
       const weight = productWeight(product);
-      const halalAlt = state.lang === "de" ? "Halal zertifiziert" : "Halal certified";
       const nameDir = state.lang === "en" ? ' dir="rtl" lang="ar"' : "";
       return `
         <article class="swiper-slide product-stage-card" data-product-id="${product.id}">
-          <img class="product-stage-badge" src="assets/images/halal.png" alt="${halalAlt}" loading="lazy">
           <img class="product-stage-image" src="${product.image}" alt="${productText(product.alt, state.lang) || name}" loading="lazy">
           <div class="product-stage-label"><h3${nameDir}>${name} (${weight})</h3></div>
         </article>`;
@@ -1763,6 +1720,28 @@
     state.rotatingTimer = setInterval(changeWord, 4000);
   }
 
+  function initMulticolorText() {
+    const diacritics = /[ؐ-ًؚ-ٰٟۖ-ۭ]/g;
+    document.querySelectorAll(".multicolor-text").forEach((el) => {
+      if (el.dataset.multicolorReady) return;
+      const full = el.textContent;
+      const base = full.replace(diacritics, "");
+      el.textContent = "";
+      el.setAttribute("aria-label", full);
+      el.classList.add("multicolor-text-overlay");
+      const fullLayer = document.createElement("span");
+      fullLayer.className = "tashkeel-full";
+      fullLayer.setAttribute("aria-hidden", "true");
+      fullLayer.textContent = full;
+      const baseLayer = document.createElement("span");
+      baseLayer.className = "tashkeel-base";
+      baseLayer.setAttribute("aria-hidden", "true");
+      baseLayer.textContent = base;
+      el.append(fullLayer, baseLayer);
+      el.dataset.multicolorReady = "true";
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     if (document.body.dataset.lang) {
       state.lang = document.body.dataset.lang;
@@ -1783,5 +1762,6 @@
     initGlobalTradeGlobe();
     applyTranslations();
     initRotatingText();
+    initMulticolorText();
   });
 })();
