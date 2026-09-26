@@ -763,123 +763,6 @@
     });
   }
 
-  // Particle-burst spark (reference: CodePen /kaigth/pen/PoQMMv — a fading
-  // particle shower; ported from its Three.js scene to a plain 2D canvas
-  // since we only need two small bursts, not a full WebGL scene) timed to
-  // the exact instants the .about-duo-grid border traces (css/style.css)
-  // meet. Each trace toggles direction (animation-direction: alternate)
-  // right at that meeting instead of continuing past it, so the "meet"
-  // still happens at the top edge at the start of each 6s round-trip and
-  // at the bottom edge halfway through it — same phase math either way.
-  function initAboutDuoBorderSpark() {
-    const grid = document.querySelector(".about-duo-grid");
-    const canvas = grid?.querySelector(".border-spark-canvas");
-    if (!grid || !canvas || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    const ctx = canvas.getContext("2d");
-    const GOLD = ["255, 244, 214", "247, 190, 73", "217, 148, 31"];
-    const CYCLE_MS = 6000;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    let width = 0;
-    let height = 0;
-    let particles = [];
-
-    function resize() {
-      const rect = grid.getBoundingClientRect();
-      width = rect.width;
-      height = rect.height;
-      canvas.width = Math.round(width * dpr);
-      canvas.height = Math.round(height * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-    resize();
-    window.addEventListener("resize", resize);
-
-    function spawnBurst(originY, directionY) {
-      const originX = width / 2;
-      for (let i = 0; i < 34; i++) {
-        const angle = (Math.random() - 0.5) * Math.PI * 0.9;
-        const speed = 0.6 + Math.random() * 1.8;
-        particles.push({
-          x: originX,
-          y: originY,
-          vx: Math.sin(angle) * speed,
-          vy: Math.cos(angle) * speed * directionY,
-          size: 1 + Math.random() * 1.8,
-          life: 1,
-          fade: 0.02 + Math.random() * 0.02,
-          color: GOLD[i % GOLD.length]
-        });
-      }
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, width, height);
-      for (let i = particles.length - 1; i >= 0; i--) {
-        const p = particles[i];
-        p.vx *= 0.97;
-        p.vy = p.vy * 0.97 + 0.03;
-        p.x += p.vx;
-        p.y += p.vy;
-        p.life -= p.fade;
-        if (p.life <= 0) {
-          particles.splice(i, 1);
-          continue;
-        }
-        ctx.globalAlpha = Math.max(p.life, 0);
-        ctx.fillStyle = `rgba(${p.color}, 1)`;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      ctx.globalAlpha = 1;
-      requestAnimationFrame(draw);
-    }
-    requestAnimationFrame(draw);
-
-    function repeat(fn, delay) {
-      window.setTimeout(function fire() {
-        fn();
-        window.setTimeout(fire, CYCLE_MS);
-      }, Math.max(delay, 0));
-    }
-
-    // The CSS border-trace (::before/::after on this element, css/style.css)
-    // starts as soon as the page applies styles — long before this deferred
-    // script finishes loading three.js/anime.js and runs. Starting the burst
-    // timers from "now" instead of the trace's own clock left the spark
-    // trailing the actual meeting point by however long that load took. The
-    // Web Animations API exposes the trace's real start time, so phase-align
-    // to that instead of to script-init time. document.getAnimations() (not
-    // element.getAnimations({subtree:true})) is used because it reliably
-    // reports pseudo-element animations across browsers.
-    let traceStart = null;
-    if (typeof document.getAnimations === "function") {
-      const traceAnim = document
-        .getAnimations()
-        .find((a) => a.animationName === "aboutDuoBorderTraceCCW");
-      if (traceAnim && typeof traceAnim.startTime === "number") {
-        traceStart = traceAnim.startTime;
-      }
-    }
-
-    const now = (document.timeline && document.timeline.currentTime) || performance.now();
-    const elapsed = traceStart === null ? 0 : now - traceStart;
-    const phase = ((elapsed % CYCLE_MS) + CYCLE_MS) % CYCLE_MS;
-
-    // Each color only ever reaches the midpoint of the top/bottom edge
-    // (css/style.css caps them at 50% instead of the far corner), so
-    // unlike a full-edge sweep they don't share any pixels until the exact
-    // instant both arrive at that midpoint — no "first contact precedes
-    // full overlap" gap to account for. That instant is also where each
-    // line reverses direction, at phase 0 (top) and CYCLE_MS/2 (bottom).
-    const topMeetPhase = 0;
-    const bottomMeetPhase = CYCLE_MS / 2;
-
-    repeat(() => spawnBurst(0, 1), (topMeetPhase - phase + CYCLE_MS) % CYCLE_MS);
-    repeat(() => spawnBurst(height, -1), (bottomMeetPhase - phase + CYCLE_MS) % CYCLE_MS);
-  }
-
   function setupProductsStageCarousel() {
     const carousel = document.querySelector(".products-coverflow");
     const modal = document.getElementById("product-stage-modal");
@@ -1721,13 +1604,12 @@
   }
 
   function initMulticolorText() {
-    const diacritics = /[ؐ-ًؚ-ٰٟۖ-ۭ]/g;
-    document.querySelectorAll(".multicolor-text").forEach((el) => {
-      if (el.dataset.multicolorReady) return;
-      const full = el.textContent;
-      const base = full.replace(diacritics, "");
+    const diacriticsG = /[ؐ-ًؚ-ٰٟۖ-ۭ]/g;
+    const diacritic1 = /[ؐ-ًؚ-ٰٟۖ-ۭ]/;
+
+    function renderSimple(el, full) {
+      const base = full.replace(diacriticsG, "");
       el.textContent = "";
-      el.setAttribute("aria-label", full);
       el.classList.add("multicolor-text-overlay");
       const fullLayer = document.createElement("span");
       fullLayer.className = "tashkeel-full";
@@ -1738,7 +1620,128 @@
       baseLayer.setAttribute("aria-hidden", "true");
       baseLayer.textContent = base;
       el.append(fullLayer, baseLayer);
+    }
+
+    function splitLines(el, full) {
+      el.textContent = full;
+      const textNode = el.firstChild;
+      if (!textNode) return [full];
+      const range = document.createRange();
+      const lines = [];
+      let lineStart = 0;
+      let lastTop = null;
+      for (let i = 0; i < full.length; i++) {
+        range.setStart(textNode, i);
+        range.setEnd(textNode, i + 1);
+        const rect = range.getClientRects()[0];
+        if (!rect) continue;
+        if (lastTop === null) {
+          lastTop = rect.top;
+        } else if (Math.abs(rect.top - lastTop) > 1) {
+          lines.push(full.slice(lineStart, i));
+          lineStart = i;
+          lastTop = rect.top;
+        }
+      }
+      lines.push(full.slice(lineStart));
+      return lines;
+    }
+
+    function maskDiacritics(dup) {
+      const lineText = dup.textContent;
+      if (!diacritic1.test(lineText)) return;
+      const textNode = dup.firstChild;
+      const dupRect = dup.getBoundingClientRect();
+      if (!dupRect.width || !dupRect.height) return;
+      const range = document.createRange();
+      const holes = [];
+      for (let i = 0; i < lineText.length; i++) {
+        if (!diacritic1.test(lineText[i])) continue;
+        range.setStart(textNode, i);
+        range.setEnd(textNode, i + 1);
+        const rect = range.getClientRects()[0];
+        if (!rect) continue;
+        holes.push({
+          left: rect.left - dupRect.left,
+          top: rect.top - dupRect.top,
+          width: rect.width,
+          height: rect.height,
+        });
+      }
+      if (!holes.length) return;
+      const pad = 2;
+      const rects = holes
+        .map(
+          (h) =>
+            `<rect x="${(h.left - pad).toFixed(1)}" y="${(h.top - pad).toFixed(1)}" width="${(h.width + pad * 2).toFixed(1)}" height="${(h.height + pad * 2).toFixed(1)}" fill="black"/>`
+        )
+        .join("");
+      const w = Math.ceil(dupRect.width);
+      const hgt = Math.ceil(dupRect.height);
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${hgt}"><rect width="100%" height="100%" fill="white"/>${rects}</svg>`;
+      const url = `url("data:image/svg+xml;base64,${btoa(svg)}")`;
+      dup.style.maskImage = url;
+      dup.style.webkitMaskImage = url;
+      dup.style.maskSize = w + "px " + hgt + "px";
+      dup.style.webkitMaskSize = w + "px " + hgt + "px";
+      dup.style.maskRepeat = "no-repeat";
+      dup.style.webkitMaskRepeat = "no-repeat";
+    }
+
+    function renderMasked(el, full) {
+      const lines = splitLines(el, full);
+      el.textContent = "";
+      lines.forEach((lineText) => {
+        const lineEl = document.createElement("span");
+        lineEl.className = "tashkeel-mline";
+
+        const fullLayer = document.createElement("span");
+        fullLayer.className = "tashkeel-full";
+        fullLayer.setAttribute("aria-hidden", "true");
+        fullLayer.textContent = lineText;
+        lineEl.append(fullLayer);
+
+        const dup = document.createElement("span");
+        dup.className = "tashkeel-mline-dup";
+        dup.setAttribute("aria-hidden", "true");
+        dup.textContent = lineText;
+        lineEl.append(dup);
+
+        el.append(lineEl);
+        maskDiacritics(dup);
+      });
+    }
+
+    const targets = [];
+    document.querySelectorAll(".multicolor-text").forEach((el) => {
+      if (el.dataset.multicolorReady) return;
+      el.dataset.multicolorFull = el.textContent;
+      el.setAttribute("aria-label", el.textContent);
       el.dataset.multicolorReady = "true";
+      targets.push(el);
+    });
+    if (!targets.length) return;
+
+    function renderAll() {
+      targets.forEach((el) => {
+        const full = el.dataset.multicolorFull;
+        const usesAmiri = /amiri/i.test(getComputedStyle(el).fontFamily);
+        if (usesAmiri) {
+          renderMasked(el, full);
+        } else {
+          renderSimple(el, full);
+        }
+      });
+    }
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(renderAll);
+    } else {
+      renderAll();
+    }
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(renderAll, 150);
     });
   }
 
@@ -1752,7 +1755,6 @@
     setupHomeHeroScrollEffect();
     setupStoryParallax();
     initHandwrittenHeading();
-    initAboutDuoBorderSpark();
     setupProductsStageCarousel();
     setupProductsStageSnap();
     initScrollReveal();
