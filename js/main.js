@@ -19,9 +19,18 @@
     const filterBar = document.getElementById("filter-bar");
     const grid = document.getElementById("product-grid");
     const modal = document.getElementById("product-modal");
-    [filterHeading, filterBar, grid, modal].forEach((el) => {
+    const ctaStrip = document.querySelector(".cta-strip");
+    [filterHeading, filterBar, grid, modal, ctaStrip].forEach((el) => {
       if (el) el.dir = isArabic ? "rtl" : "ltr";
     });
+  }
+
+  function sizeFooterIcon() {
+    const icon = document.querySelector(".footer-icon");
+    const columns = document.querySelectorAll(".footer-brand, .footer-links, .footer-contact");
+    if (!icon || !columns.length) return;
+    const tallest = Math.max(...[...columns].map((el) => el.offsetHeight));
+    icon.style.height = `${tallest * 0.9}px`;
   }
 
   function applyTranslations() {
@@ -41,6 +50,7 @@
     refreshProductsStageCarousel();
     initRotatingText();
     requestAnimationFrame(() => updateNavPill(undefined, false));
+    requestAnimationFrame(sizeFooterIcon);
   }
 
   function setupNavigation() {
@@ -86,6 +96,7 @@
     });
     window.addEventListener("resize", () => {
       window.requestAnimationFrame(() => updateNavPill(undefined, false));
+      window.requestAnimationFrame(sizeFooterIcon);
     });
     header?.addEventListener("mousemove", (event) => {
       const rect = header.getBoundingClientRect();
@@ -1009,7 +1020,7 @@
   function initScrollReveal() {
     const targets = document.querySelectorAll(
       ".why-choose .why-card-grid, .why-choose .pillar-panel, .why-choose .pillar-item, " +
-      ".contact-command-heading, .team-showcase-heading, .about-story, .contact-signal, .contact-team-card, .team-alt-row, .team-plain-row, .contact-map-frame"
+      ".contact-command-heading, .team-showcase-heading, .about-story, .contact-signal, .contact-team-card, .team-alt-row, .team-plain-row, .contact-map-frame, .about-story-name"
     );
     if (!targets.length) return;
     if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -1060,7 +1071,7 @@
       scheduleHide();
     }
 
-    window.setTimeout(handleActivity, 1000);
+    handleActivity();
 
     window.addEventListener("mousemove", handleActivity, { passive: true });
     window.addEventListener("touchstart", handleActivity, { passive: true });
@@ -1603,6 +1614,37 @@
     state.rotatingTimer = setInterval(changeWord, 4000);
   }
 
+  function initNameLetterGlow() {
+    const el = document.querySelector(".about-story-name");
+    if (!el || el.dataset.glowReady) return;
+    const text = el.textContent;
+    el.setAttribute("aria-label", text);
+    el.textContent = "";
+    const wrap = document.createElement("span");
+    wrap.setAttribute("aria-hidden", "true");
+    const chars = Array.from(text);
+    const visibleCount = chars.filter((ch) => !/\s/.test(ch)).length;
+    const revealStep = 0.05;
+    const revealDuration = 0.7;
+    const totalRevealTime = (visibleCount - 1) * revealStep + revealDuration;
+    const sweepDuration = 5;
+    const sweepStep = sweepDuration / visibleCount;
+    let visibleIndex = 0;
+    chars.forEach((ch) => {
+      const span = document.createElement("span");
+      span.className = "glow-letter";
+      const i = /\s/.test(ch) ? Math.max(visibleIndex - 1, 0) : visibleIndex;
+      const revealDelay = (i * revealStep).toFixed(2);
+      const sweepDelay = (totalRevealTime + i * sweepStep).toFixed(2);
+      span.style.animationDelay = revealDelay + "s, " + sweepDelay + "s";
+      span.textContent = ch;
+      wrap.appendChild(span);
+      if (!/\s/.test(ch)) visibleIndex++;
+    });
+    el.appendChild(wrap);
+    el.dataset.glowReady = "true";
+  }
+
   function initMulticolorText() {
     const diacriticsG = /[ؐ-ًؚ-ٰٟۖ-ۭ]/g;
     const diacritic1 = /[ؐ-ًؚ-ٰٟۖ-ۭ]/;
@@ -1757,6 +1799,7 @@
     initHandwrittenHeading();
     setupProductsStageCarousel();
     setupProductsStageSnap();
+    initNameLetterGlow();
     initScrollReveal();
     setupAutoHideChrome();
     setupModal();

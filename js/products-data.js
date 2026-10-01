@@ -54,165 +54,6 @@ window.productCategories = [
 ];
 
 window.products = [
-  // --- CHEESE PRODUCTS ---
-  {
-    id: "akkawi-cheese",
-    category: "cheese",
-    image: "assets/images/icons/cheese-icon.png",
-    alt: { en: "Akkawi Cheese product image", de: "Produktbild von Akawi Käse", ar: "صورة منتج جبنة عكاوي" },
-    name: { en: "Akkawi Cheese", de: "Akawi Käse", ar: "جبنة عكاوي" },
-    spec: { en: "10 x 800g | Vacuum Pack in Brine", de: "10 x 800g | Vakuumbeutel in Salzlake", ar: "10 × 800 جم | عبوة مفرغة من الهواء في محلول ملحي" },
-    short: { en: "Mild, smooth white brine cheese for pastries, grilling, and breakfast tables.", de: "Milder weißer Salzlakenkäse für Gebäck, Grillen und Frühstück.", ar: "جبنة بيضاء ناعمة ومعتدلة الملوحة في محلول ملحي، مثالية للمعجنات والشوي ووجبات الإفطار." },
-    description: {
-      en: "Authentic Akkawi cheese crafted with a smooth texture and balanced salinity. Excellent for Middle Eastern pastries, knafeh, baking, and table service.",
-      de: "Authentischer Akawi-Käse mit geschmeidiger Textur und ausgewogenem Salzgehalt. Hervorragend geeignet für nahöstliches Gebäck, Knafeh, Backwaren und den Gastronomiebereich.",
-      ar: "جبنة عكاوي أصيلة بقوام ناعم ونسبة ملوحة متوازنة. ممتازة للمعجنات الشرقية والكنافة والخبز وتقديم الموائد."
-    },
-    packaging: { en: "10 x 800g vacuum packs / 10kg bulk tins", de: "10 x 800g Vakuumbeutel / 10kg Gastrodosen", ar: "10 × 800 جم عبوات مفرغة / 10 كجم علب سائبة" },
-    storage: { en: "Keep refrigerated at +2°C to +6°C", de: "Gekühlt lagern bei +2°C bis +6°C", ar: "تُحفظ مبردة بين +2°م و +6°م" },
-    origin: { en: "Middle East / EU Certified", de: "Naher Osten / EU-zertifiziert", ar: "الشرق الأوسط / معتمد أوروبياً" }
-  },
-  {
-    id: "halloumi-cheese",
-    category: "cheese",
-    image: "assets/images/icons/cheese-icon.png",
-    alt: { en: "Grill Cheese Halloumi Style product image", de: "Produktbild von Grillkäse Halloumi Art", ar: "صورة منتج جبنة شوي على طراز الحلوم" },
-    name: { en: "Grill Cheese (Halloumi Style)", de: "Grillkäse (Halloumi Art)", ar: "جبنة شوي (على طراز الحلوم)" },
-    spec: { en: "12 x 250g | Retail Vacuum Pack", de: "12 x 250g | Einzelhandels-Vakuumbeutel", ar: "12 × 250 جم | عبوة تجزئة مفرغة من الهواء" },
-    short: { en: "Firm semi-hard cheese with high melting point, ideal for frying and grilling.", de: "Fester halbfester Käse mit hohem Schmelzpunkt, ideal zum Braten und Grillen.", ar: "جبنة شبه صلبة متماسكة بدرجة انصهار عالية، مثالية للقلي والشوي." },
-    description: {
-      en: "Traditional semi-hard grill cheese made from selected milk. Maintains shape and develops a golden crust when pan-fried, grilled, or baked.",
-      de: "Traditioneller schnittfester Grillkäse aus ausgewählter Milch. Behält beim Braten und Grillen seine Form und bildet eine appetitliche Kruste.",
-      ar: "جبنة شوي تقليدية شبه صلبة مصنوعة من حليب مختار. تحافظ على شكلها وتكوّن قشرة ذهبية عند القلي أو الشوي أو الخَبز."
-    },
-    packaging: { en: "12 x 250g vacuum packs / 5kg catering blocks", de: "12 x 250g Vakuumverpackung / 5kg Gastroblock", ar: "12 × 250 جم عبوات مفرغة / كتل كيتررينج 5 كجم" },
-    storage: { en: "Keep refrigerated at +2°C to +6°C", de: "Gekühlt lagern bei +2°C bis +6°C", ar: "تُحفظ مبردة بين +2°م و +6°م" },
-    origin: { en: "Cyprus / Mediterranean", de: "Zypern / Mittelmeerraum", ar: "قبرص / منطقة البحر الأبيض المتوسط" }
-  },
-  {
-    id: "kashkaval-cheese",
-    category: "cheese",
-    image: "assets/images/icons/cheese-icon.png",
-    alt: { en: "Kashkaval Cheese product image", de: "Produktbild von Kaschkawal Käse", ar: "صورة منتج جبنة كشكفال" },
-    name: { en: "Kashkaval Cheese", de: "Kaschkawal Käse", ar: "جبنة كشكفال" },
-    spec: { en: "8 x 1kg | Vacuum Wheel Block", de: "8 x 1kg | Vakuum-Radblock", ar: "8 × 1 كجم | كتلة عجلة مفرغة من الهواء" },
-    short: { en: "Aromatic yellow cheese with smooth melt, versatile for baking and slicing.", de: "Aromatischer Schnittkäse mit zartem Schmelz für Backen und Brotbelag.", ar: "جبنة صفراء عطرية سهلة الذوبان، متعددة الاستخدامات للخبز والتقطيع." },
-    description: {
-      en: "Traditional yellow Kashkaval cheese aged for full flavor. Perfect for sandwiches, manakish toppings, melting, and charcuterie platters.",
-      de: "Traditioneller gelber Kaschkawal-Käse, gereift für volles Aroma. Perfekt für Sandwiches, Manakish-Beläge, Gratinieren und Wurst-/Käseplatten.",
-      ar: "جبنة كشكفال صفراء تقليدية معتقة لنكهة كاملة. مثالية للسندويشات وإضافات المناقيش والذوبان وأطباق المقبلات الباردة."
-    },
-    packaging: { en: "8 x 1kg blocks / 2.5kg wheels", de: "8 x 1kg Blöcke / 2,5kg Räder", ar: "8 × 1 كجم كتل / عجلات 2.5 كجم" },
-    storage: { en: "Keep refrigerated at +2°C to +6°C", de: "Gekühlt lagern bei +2°C bis +6°C", ar: "تُحفظ مبردة بين +2°م و +6°م" },
-    origin: { en: "Eastern Europe / Middle East", de: "Osteuropa / Naher Osten", ar: "أوروبا الشرقية / الشرق الأوسط" }
-  },
-
-  // --- DAIRY PRODUCTS ---
-  {
-    id: "labneh",
-    category: "dairy",
-    image: "assets/images/icons/cheese-spread.png",
-    alt: { en: "Traditional Labneh product image", de: "Produktbild von Traditionellem Labneh", ar: "صورة منتج لبنة تقليدية" },
-    name: { en: "Traditional Labneh", de: "Traditioneller Labneh", ar: "لبنة تقليدية" },
-    spec: { en: "6 x 500g | Sealed Fresh Tub", de: "6 x 500g | Versiegelter Frischebecher", ar: "6 × 500 جم | علبة طازجة محكمة الغلق" },
-    short: { en: "Creamy strained yogurt spread with pleasant tang for breakfast and mezze.", de: "Cremiger Frischkäse-Joghurt mit feiner Säure für Frühstück und Mezze.", ar: "زبادي مصفّى كريمي بنكهة حامضة لطيفة، مثالي للإفطار والمازة." },
-    description: {
-      en: "Thick, strained yogurt prepared according to classic Levant traditions. Rich in texture and protein, perfect with olive oil, za'atar, and warm pita.",
-      de: "Dickflüssiger, abgetropfter Joghurt nach klassischer levantinischer Tradition. Reichhaltige Textur, ideal verfeinert mit Olivenöl, Za'atar und Fladenbrot.",
-      ar: "زبادي سميك مصفّى مُحضَّر وفق التقاليد الشامية الكلاسيكية. قوام غني وغني بالبروتين، ويُقدَّم مثالياً مع زيت الزيتون والزعتر والخبز الدافئ."
-    },
-    packaging: { en: "6 x 500g tubs / 5kg catering buckets", de: "6 x 500g Becher / 5kg Gastro-Eimer", ar: "6 × 500 جم علب / دلاء كيتررينج 5 كجم" },
-    storage: { en: "Keep refrigerated at +2°C to +6°C", de: "Gekühlt lagern bei +2°C bis +6°C", ar: "تُحفظ مبردة بين +2°م و +6°م" },
-    origin: { en: "Middle East", de: "Naher Osten", ar: "الشرق الأوسط" }
-  },
-  {
-    id: "cheese-spread",
-    category: "dairy",
-    image: "assets/images/icons/cheese-spread.png",
-    alt: { en: "Cream Cheese Spread product image", de: "Produktbild von Schmelzkäsezubereitung", ar: "صورة منتج جبنة مطبوخة للدهن" },
-    name: { en: "Cream Cheese Spread", de: "Schmelzkäse-Zubereitung", ar: "جبنة مطبوخة للدهن" },
-    spec: { en: "24 x 240g | Glass Jar Tray", de: "24 x 240g | Gläser-Tray", ar: "24 × 240 جم | صينية علب زجاجية" },
-    short: { en: "Smooth and creamy processed cheese spread in convenient glass jars.", de: "Cremig-streichzarter Schmelzkäse im praktischen Schraubglas.", ar: "جبنة مطبوخة ناعمة وكريمية سهلة الدهن في علب زجاجية عملية." },
-    description: {
-      en: "A pantry staple offering rich taste and smooth spreadability for bakery items, quick breakfasts, and culinary dips.",
-      de: "Klassischer Brotaufstrich mit vollmundigem Geschmack und hoher Streichfähigkeit für Backwaren, Frühstück und Dips.",
-      ar: "منتج أساسي بمذاق غني وقابلية دهن ناعمة للمخبوزات ووجبات الإفطار السريعة وأطباق الغمس."
-    },
-    packaging: { en: "24 x 240g / 12 x 500g glass jars", de: "24 x 240g / 12 x 500g Schraubgläser", ar: "24 × 240 جم / 12 × 500 جم علب زجاجية" },
-    storage: { en: "Store in cool dry place; refrigerate after opening", de: "Kühl und trocken lagern; nach dem Öffnen kühlen", ar: "تُحفظ في مكان بارد وجاف؛ تُبرَّد بعد الفتح" },
-    origin: { en: "Middle East", de: "Naher Osten", ar: "الشرق الأوسط" }
-  },
-  {
-    id: "qashta-cream",
-    category: "dairy",
-    image: "assets/images/icons/cheese-spread.png",
-    alt: { en: "Qashta Clotted Cream product image", de: "Produktbild von Qashta Rahm", ar: "صورة منتج قشطة (كريمة مكثفة)" },
-    name: { en: "Qashta (Clotted Cream)", de: "Qashta (Arabischer Rahm)", ar: "قشطة (كريمة مكثفة)" },
-    spec: { en: "12 x 170g | Easy-Open Tin", de: "12 x 170g | Dose mit Aufreißlasche", ar: "12 × 170 جم | علبة سهلة الفتح" },
-    short: { en: "Rich, velvety clotted cream for traditional desserts and sweets.", de: "Samtiger, reichhaltiger Rahm für orientalische Desserts und Süßspeisen.", ar: "قشطة غنية ومخملية للحلويات الشرقية التقليدية." },
-    description: {
-      en: "Luxurious thickened cream ideal for filling baklava, atayef, kunafa, fruit salads, or spreading with honey.",
-      de: "Feinster eingedickter Rahm, optimal für die Füllung von Baklava, Qatayef, Knafeh, Obstsalaten oder mit Honig.",
-      ar: "قشطة فاخرة مكثفة، مثالية لحشو البقلاوة والقطايف والكنافة أو مع سلطات الفاكهة أو العسل."
-    },
-    packaging: { en: "12 x 170g easy-open tins per tray", de: "12 x 170g Dosen pro Tray", ar: "12 × 170 جم علب سهلة الفتح لكل صينية" },
-    storage: { en: "Ambient dry storage; refrigerate after opening", de: "Trocken lagern; nach dem Öffnen gekühlt aufbewahren", ar: "تُخزَّن في درجة حرارة الغرفة الجافة؛ تُبرَّد بعد الفتح" },
-    origin: { en: "Middle East", de: "Naher Osten", ar: "الشرق الأوسط" }
-  },
-
-  // --- MEAT PRODUCTS ---
-  {
-    id: "beef-shawarma",
-    category: "meat",
-    image: "assets/images/icons/kebab-icon.png",
-    alt: { en: "Marinated Beef Shawarma product image", de: "Produktbild von Mariniertem Rindfleisch-Schawarma", ar: "صورة منتج شاورما لحم بقري متبلة" },
-    name: { en: "Beef Shawarma (Halal)", de: "Rindfleisch-Schawarma (Halal)", ar: "شاورما لحم بقري (حلال)" },
-    spec: { en: "4 x 2.5kg | Frozen Gastro Pack", de: "4 x 2,5kg | Gastro-Tiefkühlpack", ar: "4 × 2.5 كجم | عبوة مجمدة للمطاعم" },
-    short: { en: "Pre-marinated premium beef slices seasoned with authentic Oriental spices.", de: "Vormariniertes Rindfleisch, gewürzt mit orientalischen Gewürzen.", ar: "شرائح لحم بقري فاخر متبلة مسبقاً بتوابل شرقية أصيلة." },
-    description: {
-      en: "Carefully sliced Halal beef marinated in classic spices, ready for spit roasting or rapid high-heat pan frying in commercial kitchens.",
-      de: "Sorgfältig geschnittenes Halal-Rindfleisch in klassischer Gewürzmarinade, servierfertig für Drehspieße oder schnelles Braten in Profiküchen.",
-      ar: "لحم بقري حلال مقطّع بعناية ومتبل بتوابل كلاسيكية، جاهز للشواء على السيخ أو القلي السريع على حرارة عالية في المطابخ التجارية."
-    },
-    packaging: { en: "4 x 2.5kg vacuum bags / 10kg-20kg frozen cones", de: "4 x 2,5kg Vakuumbeutel / 10kg-20kg Tiefkühlspieße", ar: "4 × 2.5 كجم أكياس مفرغة / مخاريط مجمدة 10-20 كجم" },
-    storage: { en: "Keep frozen at -18°C", de: "Tiefgekühlt lagern bei -18°C", ar: "تُحفظ مجمدة عند -18°م" },
-    origin: { en: "Halal Certified EU Production", de: "Halal-zertifizierte EU-Produktion", ar: "إنتاج حلال معتمد في الاتحاد الأوروبي" }
-  },
-  {
-    id: "lamb-kebab",
-    category: "meat",
-    image: "assets/images/icons/kebab-icon.png",
-    alt: { en: "Prepared Lamb & Beef Kebab product image", de: "Produktbild von Lamm & Rind Kebab", ar: "صورة منتج كباب لحم ضأن وبقري محضّر" },
-    name: { en: "Lamb & Beef Kebab Skewers", de: "Lamm- & Rinderhack-Kebab", ar: "أسياخ كباب لحم ضأن وبقري" },
-    spec: { en: "10 x 800g | IQF Tray Pack", de: "10 x 800g | IQF Schalenpackung", ar: "10 × 800 جم | عبوة صينية IQF" },
-    short: { en: "Seasoned ground lamb and beef skewers prepared for rapid grilling.", de: "Gewürzte Lamm- und Rinderhackspieße, fertig für Grill und Pfanne.", ar: "أسياخ لحم ضأن وبقري مفروم ومتبل، جاهزة للشواء السريع." },
-    description: {
-      en: "Formed Halal minced meat skewers blended with parsley, onion, and oriental spices. Quick to cook from frozen for catering and restaurant workflows.",
-      de: "Geformte Halal-Hackfleischspieße mit Petersilie, Zwiebeln und orientalischen Gewürzen. Schnell aus dem Tiefkühlzustand zubereitbar.",
-      ar: "أسياخ لحم مفروم حلال مشكّلة، ممزوجة بالبقدونس والبصل والتوابل الشرقية. سريعة الطهي من حالة التجميد لسير عمل الكيترينج والمطاعم."
-    },
-    packaging: { en: "10 x 800g trays / 8kg bulk boxes", de: "10 x 800g Schalen / 8kg Großkarton", ar: "10 × 800 جم صواني / كراتين سائبة 8 كجم" },
-    storage: { en: "Keep frozen at -18°C", de: "Tiefgekühlt lagern bei -18°C", ar: "تُحفظ مجمدة عند -18°م" },
-    origin: { en: "Halal Certified Production", de: "Halal-zertifizierte Produktion", ar: "إنتاج حلال معتمد" }
-  },
-  {
-    id: "halal-beef-sausage",
-    category: "meat",
-    image: "assets/images/icons/kebab-icon.png",
-    alt: { en: "Sujuk Halal Beef Sausage product image", de: "Produktbild von Sucuk Halal Rinderwurst", ar: "صورة منتج سجق نقانق لحم بقري حلال" },
-    name: { en: "Sujuk / Halal Beef Sausage", de: "Sucuk / Halal Rinderwurst", ar: "سجق / نقانق لحم بقري حلال" },
-    spec: { en: "15 x 400g | Vacuum Twin Pack", de: "15 x 400g | Doppel-Vakuumpack", ar: "15 × 400 جم | عبوة مزدوجة مفرغة من الهواء" },
-    short: { en: "Dry-fermented spiced Halal beef sausage with rich garlic and cumin notes.", de: "Würzige luftgetrocknete Rinder-Rohwurst mit Knoblauch- und Kreuzkümmelnote.", ar: "نقانق لحم بقري حلال متبلة ومجففة بالهواء بنكهة ثوم وكمون غنية." },
-    description: {
-      en: "Traditional spiced beef sausage prepared under strict Halal standards. Slices easily and crisps perfectly when pan-fried with eggs or baked in flatbreads.",
-      de: "Traditionell gewürzte Halal-Rindfleischwurst. Lässt sich leicht schneiden und schmeckt hervorragend gebraten mit Eiern oder gebacken im Fladenbrot.",
-      ar: "نقانق لحم بقري متبلة تقليدياً ومُحضَّرة وفق معايير حلال صارمة. تُقطَّع بسهولة وتصبح مقرمشة عند القلي مع البيض أو الخَبز داخل الخبز المسطح."
-    },
-    packaging: { en: "15 x 400g vacuum packs per carton", de: "15 x 400g Vakuumbeutel pro Karton", ar: "15 × 400 جم أكياس مفرغة لكل كرتون" },
-    storage: { en: "Keep refrigerated at +2°C to +7°C", de: "Gekühlt lagern bei +2°C bis +7°C", ar: "تُحفظ مبردة بين +2°م و +7°م" },
-    origin: { en: "Halal Certified Production", de: "Halal-zertifizierte Produktion", ar: "إنتاج حلال معتمد" }
-  },
-
   // --- VEGETABLE PRODUCTS ---
   {
     id: "ardh-shawki",
@@ -468,5 +309,164 @@ window.products = [
     packaging: { en: "20 x 400g bags per carton", de: "20 x 400g Beutel pro Karton", ar: "20 × 400 جم أكياس لكل كرتون" },
     storage: { en: "Keep frozen at -18°C", de: "Tiefgekühlt lagern bei -18°C", ar: "تُحفظ مجمدة عند -18°م" },
     origin: { en: "Egypt / Selected Farms", de: "Ägypten / Ausgewählte Betriebe", ar: "مصر / مزارع مختارة" }
-  }
+  },
+
+  // --- CHEESE PRODUCTS ---
+  {
+    id: "akkawi-cheese",
+    category: "cheese",
+    image: "assets/images/icons/cheese-icon.png",
+    alt: { en: "Akkawi Cheese product image", de: "Produktbild von Akawi Käse", ar: "صورة منتج جبنة عكاوي" },
+    name: { en: "Akkawi Cheese", de: "Akawi Käse", ar: "جبنة عكاوي" },
+    spec: { en: "10 x 800g | Vacuum Pack in Brine", de: "10 x 800g | Vakuumbeutel in Salzlake", ar: "10 × 800 جم | عبوة مفرغة من الهواء في محلول ملحي" },
+    short: { en: "Mild, smooth white brine cheese for pastries, grilling, and breakfast tables.", de: "Milder weißer Salzlakenkäse für Gebäck, Grillen und Frühstück.", ar: "جبنة بيضاء ناعمة ومعتدلة الملوحة في محلول ملحي، مثالية للمعجنات والشوي ووجبات الإفطار." },
+    description: {
+      en: "Authentic Akkawi cheese crafted with a smooth texture and balanced salinity. Excellent for Middle Eastern pastries, knafeh, baking, and table service.",
+      de: "Authentischer Akawi-Käse mit geschmeidiger Textur und ausgewogenem Salzgehalt. Hervorragend geeignet für nahöstliches Gebäck, Knafeh, Backwaren und den Gastronomiebereich.",
+      ar: "جبنة عكاوي أصيلة بقوام ناعم ونسبة ملوحة متوازنة. ممتازة للمعجنات الشرقية والكنافة والخبز وتقديم الموائد."
+    },
+    packaging: { en: "10 x 800g vacuum packs / 10kg bulk tins", de: "10 x 800g Vakuumbeutel / 10kg Gastrodosen", ar: "10 × 800 جم عبوات مفرغة / 10 كجم علب سائبة" },
+    storage: { en: "Keep refrigerated at +2°C to +6°C", de: "Gekühlt lagern bei +2°C bis +6°C", ar: "تُحفظ مبردة بين +2°م و +6°م" },
+    origin: { en: "Middle East / EU Certified", de: "Naher Osten / EU-zertifiziert", ar: "الشرق الأوسط / معتمد أوروبياً" }
+  },
+  {
+    id: "halloumi-cheese",
+    category: "cheese",
+    image: "assets/images/icons/cheese-icon.png",
+    alt: { en: "Grill Cheese Halloumi Style product image", de: "Produktbild von Grillkäse Halloumi Art", ar: "صورة منتج جبنة شوي على طراز الحلوم" },
+    name: { en: "Grill Cheese (Halloumi Style)", de: "Grillkäse (Halloumi Art)", ar: "جبنة شوي (على طراز الحلوم)" },
+    spec: { en: "12 x 250g | Retail Vacuum Pack", de: "12 x 250g | Einzelhandels-Vakuumbeutel", ar: "12 × 250 جم | عبوة تجزئة مفرغة من الهواء" },
+    short: { en: "Firm semi-hard cheese with high melting point, ideal for frying and grilling.", de: "Fester halbfester Käse mit hohem Schmelzpunkt, ideal zum Braten und Grillen.", ar: "جبنة شبه صلبة متماسكة بدرجة انصهار عالية، مثالية للقلي والشوي." },
+    description: {
+      en: "Traditional semi-hard grill cheese made from selected milk. Maintains shape and develops a golden crust when pan-fried, grilled, or baked.",
+      de: "Traditioneller schnittfester Grillkäse aus ausgewählter Milch. Behält beim Braten und Grillen seine Form und bildet eine appetitliche Kruste.",
+      ar: "جبنة شوي تقليدية شبه صلبة مصنوعة من حليب مختار. تحافظ على شكلها وتكوّن قشرة ذهبية عند القلي أو الشوي أو الخَبز."
+    },
+    packaging: { en: "12 x 250g vacuum packs / 5kg catering blocks", de: "12 x 250g Vakuumverpackung / 5kg Gastroblock", ar: "12 × 250 جم عبوات مفرغة / كتل كيتررينج 5 كجم" },
+    storage: { en: "Keep refrigerated at +2°C to +6°C", de: "Gekühlt lagern bei +2°C bis +6°C", ar: "تُحفظ مبردة بين +2°م و +6°م" },
+    origin: { en: "Cyprus / Mediterranean", de: "Zypern / Mittelmeerraum", ar: "قبرص / منطقة البحر الأبيض المتوسط" }
+  },
+  {
+    id: "kashkaval-cheese",
+    category: "cheese",
+    image: "assets/images/icons/cheese-icon.png",
+    alt: { en: "Kashkaval Cheese product image", de: "Produktbild von Kaschkawal Käse", ar: "صورة منتج جبنة كشكفال" },
+    name: { en: "Kashkaval Cheese", de: "Kaschkawal Käse", ar: "جبنة كشكفال" },
+    spec: { en: "8 x 1kg | Vacuum Wheel Block", de: "8 x 1kg | Vakuum-Radblock", ar: "8 × 1 كجم | كتلة عجلة مفرغة من الهواء" },
+    short: { en: "Aromatic yellow cheese with smooth melt, versatile for baking and slicing.", de: "Aromatischer Schnittkäse mit zartem Schmelz für Backen und Brotbelag.", ar: "جبنة صفراء عطرية سهلة الذوبان، متعددة الاستخدامات للخبز والتقطيع." },
+    description: {
+      en: "Traditional yellow Kashkaval cheese aged for full flavor. Perfect for sandwiches, manakish toppings, melting, and charcuterie platters.",
+      de: "Traditioneller gelber Kaschkawal-Käse, gereift für volles Aroma. Perfekt für Sandwiches, Manakish-Beläge, Gratinieren und Wurst-/Käseplatten.",
+      ar: "جبنة كشكفال صفراء تقليدية معتقة لنكهة كاملة. مثالية للسندويشات وإضافات المناقيش والذوبان وأطباق المقبلات الباردة."
+    },
+    packaging: { en: "8 x 1kg blocks / 2.5kg wheels", de: "8 x 1kg Blöcke / 2,5kg Räder", ar: "8 × 1 كجم كتل / عجلات 2.5 كجم" },
+    storage: { en: "Keep refrigerated at +2°C to +6°C", de: "Gekühlt lagern bei +2°C bis +6°C", ar: "تُحفظ مبردة بين +2°م و +6°م" },
+    origin: { en: "Eastern Europe / Middle East", de: "Osteuropa / Naher Osten", ar: "أوروبا الشرقية / الشرق الأوسط" }
+  },
+
+  // --- DAIRY PRODUCTS ---
+  {
+    id: "labneh",
+    category: "dairy",
+    image: "assets/images/icons/cheese-spread.png",
+    alt: { en: "Traditional Labneh product image", de: "Produktbild von Traditionellem Labneh", ar: "صورة منتج لبنة تقليدية" },
+    name: { en: "Traditional Labneh", de: "Traditioneller Labneh", ar: "لبنة تقليدية" },
+    spec: { en: "6 x 500g | Sealed Fresh Tub", de: "6 x 500g | Versiegelter Frischebecher", ar: "6 × 500 جم | علبة طازجة محكمة الغلق" },
+    short: { en: "Creamy strained yogurt spread with pleasant tang for breakfast and mezze.", de: "Cremiger Frischkäse-Joghurt mit feiner Säure für Frühstück und Mezze.", ar: "زبادي مصفّى كريمي بنكهة حامضة لطيفة، مثالي للإفطار والمازة." },
+    description: {
+      en: "Thick, strained yogurt prepared according to classic Levant traditions. Rich in texture and protein, perfect with olive oil, za'atar, and warm pita.",
+      de: "Dickflüssiger, abgetropfter Joghurt nach klassischer levantinischer Tradition. Reichhaltige Textur, ideal verfeinert mit Olivenöl, Za'atar und Fladenbrot.",
+      ar: "زبادي سميك مصفّى مُحضَّر وفق التقاليد الشامية الكلاسيكية. قوام غني وغني بالبروتين، ويُقدَّم مثالياً مع زيت الزيتون والزعتر والخبز الدافئ."
+    },
+    packaging: { en: "6 x 500g tubs / 5kg catering buckets", de: "6 x 500g Becher / 5kg Gastro-Eimer", ar: "6 × 500 جم علب / دلاء كيتررينج 5 كجم" },
+    storage: { en: "Keep refrigerated at +2°C to +6°C", de: "Gekühlt lagern bei +2°C bis +6°C", ar: "تُحفظ مبردة بين +2°م و +6°م" },
+    origin: { en: "Middle East", de: "Naher Osten", ar: "الشرق الأوسط" }
+  },
+  {
+    id: "cheese-spread",
+    category: "dairy",
+    image: "assets/images/icons/cheese-spread.png",
+    alt: { en: "Cream Cheese Spread product image", de: "Produktbild von Schmelzkäsezubereitung", ar: "صورة منتج جبنة مطبوخة للدهن" },
+    name: { en: "Cream Cheese Spread", de: "Schmelzkäse-Zubereitung", ar: "جبنة مطبوخة للدهن" },
+    spec: { en: "24 x 240g | Glass Jar Tray", de: "24 x 240g | Gläser-Tray", ar: "24 × 240 جم | صينية علب زجاجية" },
+    short: { en: "Smooth and creamy processed cheese spread in convenient glass jars.", de: "Cremig-streichzarter Schmelzkäse im praktischen Schraubglas.", ar: "جبنة مطبوخة ناعمة وكريمية سهلة الدهن في علب زجاجية عملية." },
+    description: {
+      en: "A pantry staple offering rich taste and smooth spreadability for bakery items, quick breakfasts, and culinary dips.",
+      de: "Klassischer Brotaufstrich mit vollmundigem Geschmack und hoher Streichfähigkeit für Backwaren, Frühstück und Dips.",
+      ar: "منتج أساسي بمذاق غني وقابلية دهن ناعمة للمخبوزات ووجبات الإفطار السريعة وأطباق الغمس."
+    },
+    packaging: { en: "24 x 240g / 12 x 500g glass jars", de: "24 x 240g / 12 x 500g Schraubgläser", ar: "24 × 240 جم / 12 × 500 جم علب زجاجية" },
+    storage: { en: "Store in cool dry place; refrigerate after opening", de: "Kühl und trocken lagern; nach dem Öffnen kühlen", ar: "تُحفظ في مكان بارد وجاف؛ تُبرَّد بعد الفتح" },
+    origin: { en: "Middle East", de: "Naher Osten", ar: "الشرق الأوسط" }
+  },
+  {
+    id: "qashta-cream",
+    category: "dairy",
+    image: "assets/images/icons/cheese-spread.png",
+    alt: { en: "Qashta Clotted Cream product image", de: "Produktbild von Qashta Rahm", ar: "صورة منتج قشطة (كريمة مكثفة)" },
+    name: { en: "Qashta (Clotted Cream)", de: "Qashta (Arabischer Rahm)", ar: "قشطة (كريمة مكثفة)" },
+    spec: { en: "12 x 170g | Easy-Open Tin", de: "12 x 170g | Dose mit Aufreißlasche", ar: "12 × 170 جم | علبة سهلة الفتح" },
+    short: { en: "Rich, velvety clotted cream for traditional desserts and sweets.", de: "Samtiger, reichhaltiger Rahm für orientalische Desserts und Süßspeisen.", ar: "قشطة غنية ومخملية للحلويات الشرقية التقليدية." },
+    description: {
+      en: "Luxurious thickened cream ideal for filling baklava, atayef, kunafa, fruit salads, or spreading with honey.",
+      de: "Feinster eingedickter Rahm, optimal für die Füllung von Baklava, Qatayef, Knafeh, Obstsalaten oder mit Honig.",
+      ar: "قشطة فاخرة مكثفة، مثالية لحشو البقلاوة والقطايف والكنافة أو مع سلطات الفاكهة أو العسل."
+    },
+    packaging: { en: "12 x 170g easy-open tins per tray", de: "12 x 170g Dosen pro Tray", ar: "12 × 170 جم علب سهلة الفتح لكل صينية" },
+    storage: { en: "Ambient dry storage; refrigerate after opening", de: "Trocken lagern; nach dem Öffnen gekühlt aufbewahren", ar: "تُخزَّن في درجة حرارة الغرفة الجافة؛ تُبرَّد بعد الفتح" },
+    origin: { en: "Middle East", de: "Naher Osten", ar: "الشرق الأوسط" }
+  },
+
+  // --- MEAT PRODUCTS ---
+  {
+    id: "beef-shawarma",
+    category: "meat",
+    image: "assets/images/icons/kebab-icon.png",
+    alt: { en: "Marinated Beef Shawarma product image", de: "Produktbild von Mariniertem Rindfleisch-Schawarma", ar: "صورة منتج شاورما لحم بقري متبلة" },
+    name: { en: "Beef Shawarma (Halal)", de: "Rindfleisch-Schawarma (Halal)", ar: "شاورما لحم بقري (حلال)" },
+    spec: { en: "4 x 2.5kg | Frozen Gastro Pack", de: "4 x 2,5kg | Gastro-Tiefkühlpack", ar: "4 × 2.5 كجم | عبوة مجمدة للمطاعم" },
+    short: { en: "Pre-marinated premium beef slices seasoned with authentic Oriental spices.", de: "Vormariniertes Rindfleisch, gewürzt mit orientalischen Gewürzen.", ar: "شرائح لحم بقري فاخر متبلة مسبقاً بتوابل شرقية أصيلة." },
+    description: {
+      en: "Carefully sliced Halal beef marinated in classic spices, ready for spit roasting or rapid high-heat pan frying in commercial kitchens.",
+      de: "Sorgfältig geschnittenes Halal-Rindfleisch in klassischer Gewürzmarinade, servierfertig für Drehspieße oder schnelles Braten in Profiküchen.",
+      ar: "لحم بقري حلال مقطّع بعناية ومتبل بتوابل كلاسيكية، جاهز للشواء على السيخ أو القلي السريع على حرارة عالية في المطابخ التجارية."
+    },
+    packaging: { en: "4 x 2.5kg vacuum bags / 10kg-20kg frozen cones", de: "4 x 2,5kg Vakuumbeutel / 10kg-20kg Tiefkühlspieße", ar: "4 × 2.5 كجم أكياس مفرغة / مخاريط مجمدة 10-20 كجم" },
+    storage: { en: "Keep frozen at -18°C", de: "Tiefgekühlt lagern bei -18°C", ar: "تُحفظ مجمدة عند -18°م" },
+    origin: { en: "Halal Certified EU Production", de: "Halal-zertifizierte EU-Produktion", ar: "إنتاج حلال معتمد في الاتحاد الأوروبي" }
+  },
+  {
+    id: "lamb-kebab",
+    category: "meat",
+    image: "assets/images/icons/kebab-icon.png",
+    alt: { en: "Prepared Lamb & Beef Kebab product image", de: "Produktbild von Lamm & Rind Kebab", ar: "صورة منتج كباب لحم ضأن وبقري محضّر" },
+    name: { en: "Lamb & Beef Kebab Skewers", de: "Lamm- & Rinderhack-Kebab", ar: "أسياخ كباب لحم ضأن وبقري" },
+    spec: { en: "10 x 800g | IQF Tray Pack", de: "10 x 800g | IQF Schalenpackung", ar: "10 × 800 جم | عبوة صينية IQF" },
+    short: { en: "Seasoned ground lamb and beef skewers prepared for rapid grilling.", de: "Gewürzte Lamm- und Rinderhackspieße, fertig für Grill und Pfanne.", ar: "أسياخ لحم ضأن وبقري مفروم ومتبل، جاهزة للشواء السريع." },
+    description: {
+      en: "Formed Halal minced meat skewers blended with parsley, onion, and oriental spices. Quick to cook from frozen for catering and restaurant workflows.",
+      de: "Geformte Halal-Hackfleischspieße mit Petersilie, Zwiebeln und orientalischen Gewürzen. Schnell aus dem Tiefkühlzustand zubereitbar.",
+      ar: "أسياخ لحم مفروم حلال مشكّلة، ممزوجة بالبقدونس والبصل والتوابل الشرقية. سريعة الطهي من حالة التجميد لسير عمل الكيترينج والمطاعم."
+    },
+    packaging: { en: "10 x 800g trays / 8kg bulk boxes", de: "10 x 800g Schalen / 8kg Großkarton", ar: "10 × 800 جم صواني / كراتين سائبة 8 كجم" },
+    storage: { en: "Keep frozen at -18°C", de: "Tiefgekühlt lagern bei -18°C", ar: "تُحفظ مجمدة عند -18°م" },
+    origin: { en: "Halal Certified Production", de: "Halal-zertifizierte Produktion", ar: "إنتاج حلال معتمد" }
+  },
+  {
+    id: "halal-beef-sausage",
+    category: "meat",
+    image: "assets/images/icons/kebab-icon.png",
+    alt: { en: "Sujuk Halal Beef Sausage product image", de: "Produktbild von Sucuk Halal Rinderwurst", ar: "صورة منتج سجق نقانق لحم بقري حلال" },
+    name: { en: "Sujuk / Halal Beef Sausage", de: "Sucuk / Halal Rinderwurst", ar: "سجق / نقانق لحم بقري حلال" },
+    spec: { en: "15 x 400g | Vacuum Twin Pack", de: "15 x 400g | Doppel-Vakuumpack", ar: "15 × 400 جم | عبوة مزدوجة مفرغة من الهواء" },
+    short: { en: "Dry-fermented spiced Halal beef sausage with rich garlic and cumin notes.", de: "Würzige luftgetrocknete Rinder-Rohwurst mit Knoblauch- und Kreuzkümmelnote.", ar: "نقانق لحم بقري حلال متبلة ومجففة بالهواء بنكهة ثوم وكمون غنية." },
+    description: {
+      en: "Traditional spiced beef sausage prepared under strict Halal standards. Slices easily and crisps perfectly when pan-fried with eggs or baked in flatbreads.",
+      de: "Traditionell gewürzte Halal-Rindfleischwurst. Lässt sich leicht schneiden und schmeckt hervorragend gebraten mit Eiern oder gebacken im Fladenbrot.",
+      ar: "نقانق لحم بقري متبلة تقليدياً ومُحضَّرة وفق معايير حلال صارمة. تُقطَّع بسهولة وتصبح مقرمشة عند القلي مع البيض أو الخَبز داخل الخبز المسطح."
+    },
+    packaging: { en: "15 x 400g vacuum packs per carton", de: "15 x 400g Vakuumbeutel pro Karton", ar: "15 × 400 جم أكياس مفرغة لكل كرتون" },
+    storage: { en: "Keep refrigerated at +2°C to +7°C", de: "Gekühlt lagern bei +2°C bis +7°C", ar: "تُحفظ مبردة بين +2°م و +7°م" },
+    origin: { en: "Halal Certified Production", de: "Halal-zertifizierte Produktion", ar: "إنتاج حلال معتمد" }
+  },
 ];
